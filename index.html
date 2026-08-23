@@ -128,7 +128,8 @@
       cursor: wait;
     }
 
-    #screen2 {
+    #screen2,
+    #screen3 {
       position: absolute;
       inset: 0;
       z-index: 15;
@@ -142,9 +143,13 @@
         max(72px, calc(env(safe-area-inset-top, 0px) + 56px))
         16px
         max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px));
-      gap: 14px;
+      gap: 10px;
     }
-    #screen2.active {
+    #screen3 {
+      z-index: 16;
+    }
+    #screen2.active,
+    #screen3.active {
       display: flex;
       animation: screenIn 0.6s ease forwards;
     }
@@ -334,10 +339,24 @@
       text-align: center;
     }
 
-    #screen3 {
+
+    .screen-title {
+      position: relative;
+      z-index: 3;
+      margin: 0 0 8px;
+      width: 100%;
+      text-align: center;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 246, 0.9);
+      flex: 0 0 auto;
+    }
+    #screen4 {
       position: absolute;
       inset: 0;
-      z-index: 16;
+      z-index: 17;
       display: none;
       flex-direction: column;
       align-items: center;
@@ -350,11 +369,11 @@
       gap: 18px;
       overflow: hidden;
     }
-    #screen3.active {
+    #screen4.active {
       display: flex;
       animation: screenIn 0.55s ease forwards;
     }
-    #screen3[hidden] { display: none !important; }
+    #screen4[hidden] { display: none !important; }
     .s3-bg {
       position: absolute;
       inset: 0;
@@ -476,7 +495,8 @@
       <button type="button" class="start-btn" id="start-btn">Start</button>
     </div>
 
-    <div id="screen2" aria-label="Split self">
+    <div id="screen2" aria-label="Who are you">
+      <h1 class="screen-title">Who are you?</h1>
       <div class="portrait-wrap">
         <div class="portrait">
           <img src="assets/split-self.png" alt="" />
@@ -519,7 +539,52 @@
       <input class="file-input" type="file" accept="image/*" id="file-photo" tabindex="-1" aria-hidden="true" />
     </div>
 
-    <div id="screen3" aria-label="Scenarios" hidden>
+    
+    <div id="screen3" aria-label="Who do you meet" hidden>
+      <h1 class="screen-title">Who do you meet?</h1>
+      <div class="portrait-wrap">
+        <div class="portrait">
+          <img src="assets/split-meet.png" alt="" />
+        </div>
+      </div>
+
+      <div class="editors">
+        <div class="side-box">
+          <input
+            class="side-input"
+            id="meet-input-left"
+            type="text"
+            maxlength="120"
+            placeholder="change this one…"
+            aria-label="Edit left meet version"
+          />
+        </div>
+        <div class="side-box">
+          <input
+            class="side-input"
+            id="meet-input-right"
+            type="text"
+            maxlength="120"
+            placeholder="change this one…"
+            aria-label="Edit right meet version"
+          />
+        </div>
+      </div>
+
+      <div class="controls">
+        <button type="button" class="photo-btn" id="meet-add-photo" aria-label="Add photo" title="Add photo">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7.5h3l1.4-2h7.2l1.4 2H20a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5z" />
+            <circle cx="12" cy="13" r="3.2" />
+          </svg>
+        </button>
+        <button type="button" class="world-btn" id="meet-continue" aria-disabled="false">Continue <span class="arrow" aria-hidden="true"></span></button>
+      </div>
+      <p class="hint" id="meet-hint"></p>
+      <input class="file-input" type="file" accept="image/*" id="meet-file-photo" tabindex="-1" aria-hidden="true" />
+    </div>
+
+    <div id="screen4" aria-label="Scenarios" hidden>
       <div class="s3-bg" aria-hidden="true"></div>
       <p class="s3-head">Where do you meet</p>
       <div class="scenario-grid" id="scenario-grid" role="listbox" aria-label="Scenarios">
@@ -559,6 +624,7 @@
       var screen1 = document.getElementById("screen1");
       var screen2 = document.getElementById("screen2");
       var screen3 = document.getElementById("screen3");
+      var screen4 = document.getElementById("screen4");
       var wordmark = document.getElementById("wordmark");
       var beam = document.getElementById("beam");
       var startBtn = document.getElementById("start-btn");
@@ -647,6 +713,13 @@
       var scenarios = Array.prototype.slice.call(document.querySelectorAll(".scenario"));
       var scenarioContinue = document.getElementById("scenario-continue");
       var selectedScenario = null;
+      var meetContinue = document.getElementById("meet-continue");
+      var meetAddPhoto = document.getElementById("meet-add-photo");
+      var meetFilePhoto = document.getElementById("meet-file-photo");
+      var meetHint = document.getElementById("meet-hint");
+      var meetInputLeft = document.getElementById("meet-input-left");
+      var meetInputRight = document.getElementById("meet-input-right");
+      var meetPhotoUrl = null;
 
       function goToScreen3() {
         screen2.classList.remove("active");
@@ -654,8 +727,49 @@
         screen3.classList.add("active");
       }
 
+      function goToScreen4() {
+        screen3.classList.remove("active");
+        screen3.hidden = true;
+        screen4.hidden = false;
+        screen4.classList.add("active");
+      }
+
       worldBtn.addEventListener("click", function () {
         goToScreen3();
+      });
+
+      meetAddPhoto.addEventListener("click", function () {
+        meetFilePhoto.click();
+      });
+      meetFilePhoto.addEventListener("change", function () {
+        var file = meetFilePhoto.files && meetFilePhoto.files[0];
+        if (!file) return;
+        if (meetPhotoUrl) URL.revokeObjectURL(meetPhotoUrl);
+        meetPhotoUrl = URL.createObjectURL(file);
+        meetHint.textContent = "photo added";
+      });
+      function onMeetEdit(side, value) {
+        var text = (value || "").trim();
+        if (!text) return;
+        meetHint.textContent = side + ": " + text;
+      }
+      meetInputLeft.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          onMeetEdit("left", meetInputLeft.value);
+          meetInputLeft.value = "";
+        }
+      });
+      meetInputRight.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          onMeetEdit("right", meetInputRight.value);
+          meetInputRight.value = "";
+        }
+      });
+
+      meetContinue.addEventListener("click", function () {
+        goToScreen4();
       });
 
       scenarios.forEach(function (btn) {
@@ -671,8 +785,7 @@
 
       scenarioContinue.addEventListener("click", function () {
         if (!selectedScenario) return;
-        hint.textContent = "scenario: " + selectedScenario;
-        // page 4 (who you meet) next
+        meetHint.textContent = "scenario: " + selectedScenario;
       });
     })();
   </script>
