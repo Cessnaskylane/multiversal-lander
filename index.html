@@ -379,6 +379,28 @@
     }
 
 
+    
+    .screen-titles {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: max(72px, calc(env(safe-area-inset-top, 0px) + 52px));
+      z-index: 4;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      pointer-events: none;
+      width: min(100%, 1100px);
+      margin: 0 auto;
+      padding: 0 12px;
+    }
+    .screen-titles .screen-title {
+      margin: 0;
+      text-align: center;
+    }
+    #screen2 .portrait-wrap {
+      position: relative;
+    }
+
     .screen-title {
       position: relative;
       z-index: 3;
@@ -561,11 +583,14 @@
       <div class="beam" id="beam" aria-hidden="true"></div>
     </div>
 
-    <div id="screen2" aria-label="Who are you">
-      <h1 class="screen-title">Who are you?</h1>
+    <div id="screen2" aria-label="Who are you / Who do you meet">
+      <div class="screen-titles" aria-hidden="false">
+        <h1 class="screen-title">Who are you?</h1>
+        <h1 class="screen-title">Who do you meet?</h1>
+      </div>
       <div class="portrait-wrap">
         <div class="portrait">
-          <img src="assets/split-self.png" alt="" />
+          <img src="assets/split-you-meet.png?v=1" alt="" />
         </div>
       </div>
 
