@@ -397,6 +397,27 @@
       color: rgba(244, 240, 246, 0.9);
       flex: 0 0 auto;
     }
+
+    #screen2 .title-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: min(100%, 1100px);
+      margin: 0 auto 6px;
+      padding: 0 8px;
+      box-sizing: border-box;
+      flex: 0 0 auto;
+    }
+    #screen2 .title-row .screen-title {
+      margin: 0;
+      width: auto;
+      text-align: center;
+    }
+    #screen2 .title-spacer {
+      display: block;
+    }
+
+
+
     #screen4 {
       position: absolute;
       inset: 0;
@@ -567,7 +588,10 @@
     </div>
 
         <div id="screen2" aria-label="Who are you">
-      <h1 class="screen-title">Who are you?</h1>
+      <div class="title-row">
+        <h1 class="screen-title">Who are you?</h1>
+        <span class="title-spacer" aria-hidden="true"></span>
+      </div>
       <div class="portrait-wrap">
         <div class="portrait">
           <img src="assets/split-you-meet.png?v=5" alt="" />
