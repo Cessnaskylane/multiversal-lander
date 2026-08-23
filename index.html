@@ -97,36 +97,7 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    .start-btn {
-      appearance: none;
-      position: relative;
-      z-index: 12;
-      margin-bottom: max(48px, calc(env(safe-area-inset-bottom, 0px) + 36px));
-      border: 1px solid rgba(232, 61, 154, 0.55);
-      background: transparent;
-      color: rgba(244, 240, 246, 0.88);
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      padding: 14px 36px;
-      min-height: 48px;
-      border-radius: 999px;
-      cursor: pointer;
-    }
-    .start-btn:hover,
-    .start-btn:focus-visible {
-      border-color: var(--line);
-      color: #fff;
-      background: rgba(232, 61, 154, 0.1);
-      box-shadow: 0 0 24px rgba(232, 61, 154, 0.22);
-      outline: none;
-    }
-    .start-btn:disabled {
-      opacity: 0.45;
-      cursor: wait;
-    }
+
 
     #screen2,
     #screen3 {
@@ -277,10 +248,16 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-left: auto;
+      margin-left: 0;
       filter: none;
       text-shadow: none;
       opacity: 1;
+    }
+    .nav-pair {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      margin-left: auto;
     }
     .world-btn .arrow {
       display: inline-block;
@@ -327,6 +304,64 @@
       cursor: not-allowed;
       text-shadow: none;
     }
+
+    .back-btn {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--line);
+      font: 500 12px/1 Syne, system-ui, sans-serif;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      padding: 12px 12px 12px 4px;
+      border-radius: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      filter: none;
+      text-shadow: none;
+      opacity: 1;
+    }
+    .back-btn .arrow {
+      display: inline-block;
+      width: 36px;
+      height: 12px;
+      position: relative;
+      letter-spacing: 0;
+      font-size: 0;
+      line-height: 0;
+    }
+    .back-btn .arrow::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 0;
+      top: 50%;
+      height: 1.5px;
+      background: currentColor;
+      box-shadow: none;
+      transform: translateY(-50%);
+    }
+    .back-btn .arrow::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 9px;
+      height: 9px;
+      border-left: 1.5px solid currentColor;
+      border-top: 1.5px solid currentColor;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+    .back-btn:hover {
+      color: #ff5ab8;
+      text-shadow: 0 0 16px rgba(232, 61, 154, 0.95);
+    }
+    .back-btn:hover .arrow {
+      transform: translateX(-3px);
+    }
+
     .file-input {
       position: absolute;
       width: 1px;
@@ -524,7 +559,6 @@
 
     <div id="screen1" aria-label="Door">
       <div class="beam" id="beam" aria-hidden="true"></div>
-      <button type="button" class="start-btn" id="start-btn">Start</button>
     </div>
 
     <div id="screen2" aria-label="Who are you">
@@ -565,7 +599,10 @@
             <circle cx="12" cy="13" r="3.2" />
           </svg>
         </button>
-        <button type="button" class="world-btn" id="world-btn" aria-disabled="false">Continue <span class="arrow" aria-hidden="true"></span></button>
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-2" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="world-btn" aria-disabled="false">Continue <span class="arrow" aria-hidden="true"></span></button>
+        </div>
       </div>
       <p class="hint" id="hint"></p>
       <input class="file-input" type="file" accept="image/*" id="file-photo" tabindex="-1" aria-hidden="true" />
@@ -610,7 +647,10 @@
             <circle cx="12" cy="13" r="3.2" />
           </svg>
         </button>
-        <button type="button" class="world-btn" id="meet-continue" aria-disabled="false">Continue <span class="arrow" aria-hidden="true"></span></button>
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-3" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="meet-continue" aria-disabled="false">Continue <span class="arrow" aria-hidden="true"></span></button>
+        </div>
       </div>
       <p class="hint" id="meet-hint"></p>
       <input class="file-input" type="file" accept="image/*" id="meet-file-photo" tabindex="-1" aria-hidden="true" />
@@ -646,7 +686,10 @@
         </button>
       </div>
       <div class="s3-foot">
-        <button type="button" class="world-btn" id="scenario-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-4" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="scenario-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
+        </div>
       </div>
     </div>
   </div>
@@ -659,7 +702,6 @@
       var screen4 = document.getElementById("screen4");
       var wordmark = document.getElementById("wordmark");
       var beam = document.getElementById("beam");
-      var startBtn = document.getElementById("start-btn");
       var worldBtn = document.getElementById("world-btn");
       var addPhoto = document.getElementById("add-photo");
       var filePhoto = document.getElementById("file-photo");
@@ -686,28 +728,60 @@
         wordmark.classList.add("animate");
       }
 
+      function hideAllScreens() {
+        screen2.classList.remove("active");
+        screen3.classList.remove("active");
+        screen4.classList.remove("active");
+        screen3.hidden = true;
+        screen4.hidden = true;
+        screen1.classList.add("hidden");
+        screen1.setAttribute("aria-hidden", "true");
+        screen1.style.display = "none";
+      }
+
+      function goToScreen1() {
+        screen2.classList.remove("active");
+        screen3.classList.remove("active");
+        screen4.classList.remove("active");
+        screen3.hidden = true;
+        screen4.hidden = true;
+        screen1.style.display = "";
+        screen1.classList.remove("hidden");
+        screen1.removeAttribute("aria-hidden");
+        advanced = false;
+        starting = false;
+        wordmark.classList.remove("animate", "visible");
+        beam.classList.remove("play");
+        void wordmark.offsetWidth;
+        void beam.offsetWidth;
+        onStart();
+      }
+
       function goToScreen2() {
-        if (advanced) return;
-        advanced = true;
+        screen3.classList.remove("active");
+        screen4.classList.remove("active");
+        screen3.hidden = true;
+        screen4.hidden = true;
         screen1.classList.add("hidden");
         screen1.setAttribute("aria-hidden", "true");
         wordmark.classList.remove("animate");
         wordmark.classList.add("visible");
         screen2.classList.add("active");
+        advanced = true;
         setTimeout(function () {
-          screen1.style.display = "none";
+          if (advanced) screen1.style.display = "none";
         }, reduceMotion ? 0 : 560);
       }
 
       function onStart() {
         if (advanced || starting) return;
         starting = true;
-        startBtn.disabled = true;
         replayIntro();
         setTimeout(goToScreen2, introMs);
       }
 
-      startBtn.addEventListener("click", onStart);
+      // Page 1 plays on load, then advances
+      onStart();
 
       function onEdit(side, value) {
         var text = (value || "").trim();
@@ -755,16 +829,29 @@
 
       function goToScreen3() {
         screen2.classList.remove("active");
+        screen4.classList.remove("active");
+        screen4.hidden = true;
         screen3.hidden = false;
         screen3.classList.add("active");
       }
 
       function goToScreen4() {
+        screen2.classList.remove("active");
         screen3.classList.remove("active");
         screen3.hidden = true;
         screen4.hidden = false;
         screen4.classList.add("active");
       }
+
+      document.getElementById("back-2").addEventListener("click", function () {
+        goToScreen1();
+      });
+      document.getElementById("back-3").addEventListener("click", function () {
+        goToScreen2();
+      });
+      document.getElementById("back-4").addEventListener("click", function () {
+        goToScreen3();
+      });
 
       worldBtn.addEventListener("click", function () {
         goToScreen3();
