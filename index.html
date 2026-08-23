@@ -397,26 +397,6 @@
       color: rgba(244, 240, 246, 0.9);
       flex: 0 0 auto;
     }
-
-    #screen2 .screen-titles {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: min(100%, 1100px);
-      margin: 0 auto 6px;
-      padding: 0 8px;
-      gap: 8px;
-      flex: 0 0 auto;
-    }
-    #screen2 .screen-titles .screen-title {
-      margin: 0;
-      width: auto;
-      text-align: center;
-      font-size: clamp(10px, 1.35vw, 14px);
-      letter-spacing: 0.2em;
-    }
-
-
-
     #screen4 {
       position: absolute;
       inset: 0;
@@ -586,11 +566,8 @@
       <div class="beam" id="beam" aria-hidden="true"></div>
     </div>
 
-        <div id="screen2" aria-label="Who are you / Who will you meet">
-      <div class="screen-titles">
-        <h1 class="screen-title">Who are you?</h1>
-        <h1 class="screen-title">Who will you meet?</h1>
-      </div>
+        <div id="screen2" aria-label="Who are you">
+      <h1 class="screen-title">Who are you?</h1>
       <div class="portrait-wrap">
         <div class="portrait">
           <img src="assets/split-you-meet.png?v=4" alt="" />
