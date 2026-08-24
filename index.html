@@ -83,8 +83,8 @@
       opacity: 1;
     }
     .door-svg {
-      width: min(36vw, 180px);
-      height: min(72vh, 560px);
+      width: min(40vw, 200px);
+      height: min(74vh, 580px);
       overflow: visible;
       filter:
         drop-shadow(0 0 10px rgba(232, 61, 154, 0.9))
@@ -93,17 +93,28 @@
     .door-outline {
       fill: none;
       stroke: var(--line);
-      stroke-width: 2.5;
+      stroke-width: 5;
       stroke-linejoin: miter;
       stroke-linecap: square;
       stroke-dasharray: 720;
       stroke-dashoffset: 720;
     }
+    .door-knob {
+      fill: var(--line);
+      opacity: 0;
+      filter: drop-shadow(0 0 6px rgba(232, 61, 154, 0.95));
+    }
     .door.play .door-outline {
       animation: doorDraw 0.9s cubic-bezier(0.22, 0.9, 0.3, 1) 0.1s forwards;
     }
+    .door.play .door-knob {
+      animation: doorKnob 0.35s ease 0.85s forwards;
+    }
     @keyframes doorDraw {
       to { stroke-dashoffset: 0; }
+    }
+    @keyframes doorKnob {
+      to { opacity: 1; }
     }
     @keyframes fadeMark {
       from { opacity: 0; }
@@ -757,8 +768,8 @@
     <div id="screen1" aria-label="Door">
       <div class="door" id="beam" aria-hidden="true">
         <svg class="door-svg" viewBox="0 0 100 200" aria-hidden="true">
-          <!-- iconic door outline only -->
           <rect class="door-outline" x="18" y="12" width="64" height="176" pathLength="720" />
+          <circle class="door-knob" cx="68" cy="112" r="3.8" />
         </svg>
       </div>
     </div>
