@@ -160,12 +160,14 @@
     }
     .portrait-wrap {
       position: relative;
-      width: 100%;
-      flex: 1 1 auto;
-      min-height: min(46dvh, 440px);
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
+      width: min(100%, 360px);
+      max-width: 360px;
+      aspect-ratio: 3 / 4;
+      flex: 0 0 auto;
+      min-height: 0;
+      height: auto;
+      margin: 0 auto;
+      display: block;
       border: 1px solid rgba(232, 61, 154, 0.85);
       border-radius: 0;
       overflow: hidden;
@@ -673,18 +675,21 @@
     @media (min-width: 860px) {
       .stage {
         display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.9fr);
+        grid-template-columns: 360px minmax(280px, 1fr);
         gap: 22px;
-        align-items: stretch;
+        align-items: start;
+        justify-content: center;
       }
       .portrait-wrap {
-        min-height: 0;
-        max-height: min(68dvh, 620px);
-        align-self: stretch;
+        width: 360px;
+        max-width: 360px;
+        margin: 0;
+        align-self: start;
       }
       .personalize {
         justify-content: center;
         gap: 12px;
+        padding-top: 4px;
       }
       #screen2 .screen-title {
         text-align: left;
@@ -709,7 +714,8 @@
         padding: 0;
       }
       .portrait-wrap {
-        min-height: min(42dvh, 380px);
+        width: min(100%, 300px);
+        max-width: 300px;
       }
       .chip {
         padding: 7px 10px;
@@ -725,8 +731,8 @@
         max-height: min(46dvh, 400px);
       }
       .portrait-wrap {
-        flex: 1 1 auto;
-        min-height: 0;
+        width: min(100%, 300px);
+        max-width: 300px;
       }
       .hint {
         display: none;
