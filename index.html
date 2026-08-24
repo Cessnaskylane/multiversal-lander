@@ -411,9 +411,8 @@
       margin: 0;
       width: auto;
       text-align: center;
-    }
-    #screen2 .title-spacer {
-      display: block;
+      font-size: clamp(12px, 1.7vw, 15.3px);
+      letter-spacing: 0.28em;
     }
 
 
@@ -567,6 +566,10 @@
         letter-spacing: 0.28em;
         margin-bottom: 4px;
       }
+      #screen2 .title-row .screen-title {
+        font-size: 11px;
+        letter-spacing: 0.24em;
+      }
       .world-btn {
         min-height: 44px;
         padding: 14px 8px 14px 12px;
@@ -587,14 +590,14 @@
       <div class="beam" id="beam" aria-hidden="true"></div>
     </div>
 
-        <div id="screen2" aria-label="Who are you">
+        <div id="screen2" aria-label="Who are you / Who do you meet">
       <div class="title-row">
         <h1 class="screen-title">Who are you?</h1>
-        <span class="title-spacer" aria-hidden="true"></span>
+        <h1 class="screen-title">Who do you meet?</h1>
       </div>
       <div class="portrait-wrap">
         <div class="portrait">
-          <img src="assets/split-you-meet.png?v=5" alt="" />
+          <img src="assets/split-you-meet.png?v=6" alt="" />
         </div>
       </div>
 
