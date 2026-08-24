@@ -396,22 +396,34 @@
       box-shadow: 0 0 18px rgba(232, 61, 154, 0.35);
     }
     .photo-btn svg {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       fill: none;
       stroke: currentColor;
-      stroke-width: 1.5;
+      stroke-width: 1.55;
       stroke-linecap: round;
       stroke-linejoin: round;
       shape-rendering: geometricPrecision;
+    }
+    #tray-model {
+      width: 52px;
+      height: 52px;
+    }
+    #tray-model svg {
+      width: 34px;
+      height: 34px;
+      stroke-width: 1.4;
     }
     #tray-model svg circle.dot {
       fill: currentColor;
       stroke: none;
     }
     #tray-doors svg {
-      fill: currentColor;
-      stroke: none;
+      width: 26px;
+      height: 26px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
     }
 
 
@@ -822,16 +834,17 @@
           </button>
           <button type="button" class="photo-btn tray-btn" id="tray-model" aria-label="Model" title="Model" aria-pressed="false" aria-expanded="false" aria-controls="panel-model">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="6" y="8" width="12" height="11" rx="2" />
-              <circle class="dot" cx="10" cy="13" r="1" />
-              <circle class="dot" cx="14" cy="13" r="1" />
-              <path d="M12 4v4" />
-              <circle class="dot" cx="12" cy="3.5" r="1" />
+              <rect x="3.2" y="6.2" width="17.6" height="14.6" rx="2.4" />
+              <circle class="dot" cx="9.1" cy="13.2" r="1.55" />
+              <circle class="dot" cx="14.9" cy="13.2" r="1.55" />
+              <path d="M8.4 17.8h7.2" />
+              <path d="M12 2.4v3.8" />
+              <circle class="dot" cx="12" cy="2.2" r="1.2" />
             </svg>
           </button>
           <button type="button" class="photo-btn tray-btn" id="tray-doors" aria-label="Plugins" title="Plugins" aria-pressed="false" aria-expanded="false" aria-controls="panel-doors">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9 3.25c0-.69.56-1.25 1.25-1.25h3.5c.69 0 1.25.56 1.25 1.25V5.5h2.75c.69 0 1.25.56 1.25 1.25v2.25h1.25a1.75 1.75 0 1 1 0 3.5H19v2.25c0 .69-.56 1.25-1.25 1.25H15v2.25a1.75 1.75 0 1 1-3.5 0V16H9.25C8.56 16 8 15.44 8 14.75V12H5.75a1.75 1.75 0 1 1 0-3.5H8V6.75C8 6.06 8.56 5.5 9.25 5.5H11V3.25z" />
+              <path d="M4 4h10v3.8a2.6 2.6 0 1 1 0 5.4V18h-3.2a2.6 2.6 0 1 0-5.4 0H4V4z" />
             </svg>
           </button>
         </div>
