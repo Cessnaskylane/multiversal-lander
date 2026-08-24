@@ -201,6 +201,53 @@
     .chip:hover {
       border-color: var(--line);
     }
+
+    .personality-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      padding-top: 2px;
+      border-top: 1px solid rgba(232, 61, 154, 0.22);
+      margin-top: 2px;
+    }
+    .personality-row .chip-label {
+      width: 100%;
+      margin-top: 6px;
+    }
+    .md-btn {
+      appearance: none;
+      border: 1px dashed rgba(232, 61, 154, 0.7);
+      background: transparent;
+      color: var(--line);
+      font: 500 11px/1 Syne, system-ui, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .md-btn:hover,
+    .md-btn:focus-visible {
+      border-style: solid;
+      border-color: var(--line);
+      background: rgba(232, 61, 154, 0.1);
+      outline: none;
+    }
+    .md-btn.has-file {
+      border-style: solid;
+      background: rgba(232, 61, 154, 0.14);
+    }
+    .md-name {
+      font: 400 12px/1.3 Syne, system-ui, sans-serif;
+      color: rgba(244, 240, 246, 0.55);
+      letter-spacing: 0.04em;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .side-box {
       display: flex;
       flex-direction: column;
@@ -660,6 +707,13 @@
           <button type="button" class="chip" data-model="grok" aria-pressed="true">Grok</button>
         </div>
 
+        <div class="personality-row" aria-label="Personality">
+          <p class="chip-label">Personality</p>
+          <button type="button" class="md-btn" id="add-md" aria-label="Add markdown personality">Add MD</button>
+          <span class="md-name" id="md-name" hidden></span>
+          <input class="file-input" type="file" accept=".md,text/markdown,text/plain" id="file-md" tabindex="-1" aria-hidden="true" />
+        </div>
+
         <div class="chip-row" role="group" aria-label="First wire">
           <p class="chip-label">First wire</p>
           <button type="button" class="chip" data-wire="mail" aria-pressed="true">Mail</button>
@@ -841,6 +895,28 @@
         filePhoto.click();
       });
 
+      var addMd = document.getElementById("add-md");
+      var fileMd = document.getElementById("file-md");
+      var mdName = document.getElementById("md-name");
+      var personalityMd = null;
+      addMd.addEventListener("click", function () {
+        fileMd.click();
+      });
+      fileMd.addEventListener("change", function () {
+        var file = fileMd.files && fileMd.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function () {
+          personalityMd = String(reader.result || "");
+          mdName.textContent = file.name;
+          mdName.hidden = false;
+          addMd.classList.add("has-file");
+          addMd.textContent = "MD added";
+          hint.textContent = "personality layer on";
+        };
+        reader.readAsText(file);
+      });
+
       filePhoto.addEventListener("change", function () {
         var file = filePhoto.files && filePhoto.files[0];
         if (!file) return;
@@ -894,6 +970,7 @@
         hint.textContent =
           (agentName.value || "agent").trim() +
           " · " + selectedModel +
+          (personalityMd ? " · md" : "") +
           " · " + selectedWire +
           " · " + selectedScenario;
       });
