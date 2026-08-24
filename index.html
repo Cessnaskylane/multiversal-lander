@@ -127,7 +127,7 @@
 
     .portrait-wrap {
       position: relative;
-      width: min(100%, 1100px);
+      width: min(100%, 420px);
       flex: 1 1 auto;
       min-height: 0;
       display: flex;
@@ -150,14 +150,56 @@
       user-select: none;
     }
 
-    .editors {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .personalize {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       width: 100%;
-      max-width: 720px;
+      max-width: 420px;
       margin: 0 auto;
       padding: 0 8px;
+      flex: 0 0 auto;
+    }
+    .face-name {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .chip-label {
+      width: 100%;
+      margin: 0;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 246, 0.45);
+    }
+    .chip {
+      appearance: none;
+      border: 1px solid rgba(232, 61, 154, 0.55);
+      background: rgba(232, 61, 154, 0.06);
+      color: rgba(244, 240, 246, 0.88);
+      font: 500 11px/1 Syne, system-ui, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .chip[aria-pressed="true"] {
+      border-color: var(--line);
+      background: rgba(232, 61, 154, 0.18);
+      color: var(--line);
+      box-shadow: 0 0 18px rgba(232, 61, 154, 0.25);
+    }
+    .chip:hover {
+      border-color: var(--line);
     }
     .side-box {
       display: flex;
@@ -230,25 +272,6 @@
       stroke-linejoin: round;
     }
 
-    #screen2 .controls {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 14px;
-      padding-top: 14px;
-    }
-    #screen2 .photo-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    #screen2 .photo-row .photo-btn {
-      justify-self: center;
-    }
-    #screen2 .nav-pair {
-      margin-top: 4px;
-    }
 
     .world-btn {
       appearance: none;
@@ -268,6 +291,17 @@
       filter: none;
       text-shadow: none;
       opacity: 1;
+    }
+
+    #screen2 .controls {
+      width: 100%;
+      max-width: 420px;
+      justify-content: flex-end;
+      padding-top: 8px;
+    }
+    #screen2 .screen-title {
+      max-width: 420px;
+      margin: 0 auto 4px;
     }
     .nav-pair {
       display: inline-flex;
@@ -414,22 +448,6 @@
       flex: 0 0 auto;
     }
 
-    #screen2 .title-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: min(100%, 1100px);
-      margin: 0 auto 6px;
-      padding: 0 8px;
-      box-sizing: border-box;
-      flex: 0 0 auto;
-    }
-    #screen2 .title-row .screen-title {
-      margin: 0;
-      width: auto;
-      text-align: center;
-      font-size: clamp(12px, 1.7vw, 15.3px);
-      letter-spacing: 0.28em;
-    }
 
 
 
@@ -562,11 +580,9 @@
     }
 
     @media (max-width: 720px) {
-      .editors {
+      .personalize {
         max-width: 100%;
-        gap: 10px;
         padding: 0;
-        flex: 0 0 auto;
       }
       .side-input {
         font-size: 12px;
@@ -589,10 +605,6 @@
         letter-spacing: 0.28em;
         margin-bottom: 4px;
       }
-      #screen2 .title-row .screen-title {
-        font-size: 11px;
-        letter-spacing: 0.24em;
-      }
       .world-btn {
         min-height: 44px;
         padding: 14px 8px 14px 12px;
@@ -612,55 +624,50 @@
       <div class="beam" id="beam" aria-hidden="true"></div>
     </div>
 
-        <div id="screen2" aria-label="Who are you / Who do you meet">
-      <div class="title-row">
-        <h1 class="screen-title">Who are you?</h1>
-        <h1 class="screen-title">Who do you meet?</h1>
-      </div>
+        <div id="screen2" aria-label="Personalize your agent">
+      <h1 class="screen-title">Who answers</h1>
       <div class="portrait-wrap">
         <div class="portrait">
-          <img src="assets/split-you-meet.png?v=8" alt="" />
+          <img id="agent-face" src="assets/agent-face.png?v=1" alt="" />
         </div>
       </div>
 
-      <div class="editors">
-        <div class="side-box">
+      <div class="personalize">
+        <div class="face-name">
+          <button type="button" class="photo-btn" id="add-photo" aria-label="Add face" title="Add face">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7.5h3l1.4-2h7.2l1.4 2H20a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5z" />
+              <circle cx="12" cy="13" r="3.2" />
+            </svg>
+          </button>
           <input
             class="side-input"
-            id="input-left"
+            id="agent-name"
             type="text"
-            maxlength="120"
-            placeholder="change this version…"
-            aria-label="Edit left version"
+            maxlength="48"
+            placeholder="name → your .ai door"
+            aria-label="Agent name"
+            autocomplete="off"
           />
         </div>
-        <div class="side-box">
-          <input
-            class="side-input"
-            id="input-right"
-            type="text"
-            maxlength="120"
-            placeholder="change this version…"
-            aria-label="Edit right version"
-          />
+
+        <div class="chip-row" role="group" aria-label="Model">
+          <p class="chip-label">Model</p>
+          <button type="button" class="chip" data-model="grok" aria-pressed="true">Grok</button>
+          <button type="button" class="chip" data-model="claude" aria-pressed="false">Claude</button>
+          <button type="button" class="chip" data-model="gpt" aria-pressed="false">GPT</button>
+        </div>
+
+        <div class="chip-row" role="group" aria-label="First wire">
+          <p class="chip-label">First wire</p>
+          <button type="button" class="chip" data-wire="mail" aria-pressed="true">Mail</button>
+          <button type="button" class="chip" data-wire="x" aria-pressed="false">X</button>
+          <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
+          <button type="button" class="chip" data-wire="calendar" aria-pressed="false">Calendar</button>
         </div>
       </div>
 
       <div class="controls">
-        <div class="photo-row">
-          <button type="button" class="photo-btn" id="add-photo" aria-label="Add photo" title="Add photo">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 7.5h3l1.4-2h7.2l1.4 2H20a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5z" />
-              <circle cx="12" cy="13" r="3.2" />
-            </svg>
-          </button>
-          <button type="button" class="photo-btn" id="add-photo-right" aria-label="Add photo" title="Add photo">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 7.5h3l1.4-2h7.2l1.4 2H20a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5z" />
-              <circle cx="12" cy="13" r="3.2" />
-            </svg>
-          </button>
-        </div>
         <div class="nav-pair">
           <button type="button" class="back-btn" id="back-2" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
           <button type="button" class="world-btn" id="world-btn" aria-disabled="false">Continue <span class="arrow" aria-hidden="true"></span></button>
@@ -669,6 +676,7 @@
       <p class="hint" id="hint"></p>
       <input class="file-input" type="file" accept="image/*" id="file-photo" tabindex="-1" aria-hidden="true" />
     </div>
+
 
 
     <div id="screen4" aria-label="Scenarios" hidden>
@@ -732,8 +740,10 @@
       var addPhoto = document.getElementById("add-photo");
       var filePhoto = document.getElementById("file-photo");
       var hint = document.getElementById("hint");
-      var inputLeft = document.getElementById("input-left");
-      var inputRight = document.getElementById("input-right");
+      var agentName = document.getElementById("agent-name");
+      var agentFace = document.getElementById("agent-face");
+      var selectedModel = "grok";
+      var selectedWire = "mail";
       var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var introMs = reduceMotion ? 200 : 2100;
       var advanced = false;
@@ -803,43 +813,46 @@
       // Page 1 plays on load, then advances
       onStart();
 
-      function onEdit(side, value) {
-        var text = (value || "").trim();
-        if (!text) return;
-        hint.textContent = side + ": " + text;
+      function setExclusivePressed(buttons, active) {
+        buttons.forEach(function (b) {
+          b.setAttribute("aria-pressed", b === active ? "true" : "false");
+        });
       }
 
-      inputLeft.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          onEdit("left", inputLeft.value);
-          inputLeft.value = "";
-        }
+      var modelChips = Array.prototype.slice.call(document.querySelectorAll("[data-model]"));
+      modelChips.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          selectedModel = btn.getAttribute("data-model");
+          setExclusivePressed(modelChips, btn);
+        });
       });
-      inputRight.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          onEdit("right", inputRight.value);
-          inputRight.value = "";
-        }
+
+      var wireChips = Array.prototype.slice.call(document.querySelectorAll("[data-wire]"));
+      wireChips.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          selectedWire = btn.getAttribute("data-wire");
+          setExclusivePressed(wireChips, btn);
+        });
       });
 
       addPhoto.addEventListener("click", function () {
         filePhoto.click();
       });
-      var addPhotoRight = document.getElementById("add-photo-right");
-      if (addPhotoRight) {
-        addPhotoRight.addEventListener("click", function () {
-          filePhoto.click();
-        });
-      }
 
       filePhoto.addEventListener("change", function () {
         var file = filePhoto.files && filePhoto.files[0];
         if (!file) return;
         if (photoUrl) URL.revokeObjectURL(photoUrl);
         photoUrl = URL.createObjectURL(file);
-        hint.textContent = "photo added";
+        agentFace.src = photoUrl;
+        hint.textContent = "face set";
+      });
+
+      agentName.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          worldBtn.click();
+        }
       });
 
       var scenarios = Array.prototype.slice.call(document.querySelectorAll(".scenario"));
@@ -876,7 +889,11 @@
 
       scenarioContinue.addEventListener("click", function () {
         if (!selectedScenario) return;
-        hint.textContent = "scenario: " + selectedScenario;
+        hint.textContent =
+          (agentName.value || "agent").trim() +
+          " · " + selectedModel +
+          " · " + selectedWire +
+          " · " + selectedScenario;
       });
     })();
   </script>
