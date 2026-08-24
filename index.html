@@ -83,8 +83,8 @@
       opacity: 1;
     }
     .door-svg {
-      width: min(40vw, 200px);
-      height: min(74vh, 580px);
+      width: min(36vw, 180px);
+      height: min(72vh, 560px);
       overflow: visible;
       filter:
         drop-shadow(0 0 10px rgba(232, 61, 154, 0.9))
@@ -93,7 +93,7 @@
     .door-outline {
       fill: none;
       stroke: var(--line);
-      stroke-width: 5;
+      stroke-width: 1.25;
       stroke-linejoin: miter;
       stroke-linecap: square;
       stroke-dasharray: 720;
@@ -199,11 +199,8 @@
       padding: 0;
       flex: 0 0 auto;
     }
-    .face-name {
-      display: grid;
-      grid-template-columns: 46px 46px 1fr;
-      gap: 10px;
-      align-items: center;
+    .face-row .photo-btn {
+      flex: 0 0 auto;
     }
     .chip-row {
       display: flex;
@@ -242,17 +239,7 @@
     }
 
     .personality-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      padding-top: 2px;
-      border-top: 1px solid rgba(232, 61, 154, 0.22);
-      margin-top: 2px;
-    }
-    .personality-row .chip-label {
-      width: 100%;
-      margin-top: 6px;
+      /* same chip-row rhythm; MD is the layer under model */
     }
     .md-btn {
       appearance: none;
@@ -769,7 +756,7 @@
       <div class="door" id="beam" aria-hidden="true">
         <svg class="door-svg" viewBox="0 0 100 200" aria-hidden="true">
           <rect class="door-outline" x="18" y="12" width="64" height="176" pathLength="720" />
-          <circle class="door-knob" cx="68" cy="112" r="3.8" />
+          <circle class="door-knob" cx="70" cy="112" r="2.2" />
         </svg>
       </div>
     </div>
@@ -784,7 +771,8 @@
       </div>
 
       <div class="personalize">
-        <div class="face-name">
+        <div class="chip-row face-row" role="group" aria-label="Face">
+          <p class="chip-label">Face</p>
           <button type="button" class="photo-btn" id="add-photo" aria-label="Upload face" title="Upload face">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4 7.5h3l1.4-2h7.2l1.4 2H20a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5z" />
@@ -798,15 +786,6 @@
               <path d="M17 11.5l5-2.5v8l-5-2.5" />
             </svg>
           </button>
-          <input
-            class="side-input"
-            id="agent-name"
-            type="text"
-            maxlength="48"
-            placeholder="name → your .ai door"
-            aria-label="Agent name"
-            autocomplete="off"
-          />
         </div>
 
         <div class="chip-row" role="group" aria-label="Model">
@@ -818,7 +797,7 @@
           <button type="button" class="chip" data-model="deepseek" aria-pressed="false">DeepSeek</button>
         </div>
 
-        <div class="personality-row" aria-label="Personality">
+        <div class="chip-row personality-row" aria-label="Personality">
           <p class="chip-label">Personality</p>
           <button type="button" class="md-btn" id="add-md" aria-label="Add markdown personality">Add MD</button>
           <span class="md-name" id="md-name" hidden></span>
@@ -916,7 +895,6 @@
       var addPhoto = document.getElementById("add-photo");
       var filePhoto = document.getElementById("file-photo");
       var hint = document.getElementById("hint");
-      var agentName = document.getElementById("agent-name");
       var agentFace = document.getElementById("agent-face");
       var selectedModel = "grok";
       var selectedWire = "domain";
@@ -1100,12 +1078,6 @@
         hint.textContent = "face set";
       });
 
-      agentName.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          worldBtn.click();
-        }
-      });
 
       var scenarios = Array.prototype.slice.call(document.querySelectorAll(".scenario"));
       var scenarioContinue = document.getElementById("scenario-continue");
@@ -1142,8 +1114,7 @@
       scenarioContinue.addEventListener("click", function () {
         if (!selectedScenario) return;
         hint.textContent =
-          (agentName.value || "agent").trim() +
-          " · " + selectedModel +
+          selectedModel +
           (personalityMd ? " · md" : "") +
           " · " + selectedWire +
           " · " + selectedScenario;
