@@ -167,15 +167,14 @@
       flex-direction: column;
       align-items: stretch;
       border: 1px solid rgba(232, 61, 154, 0.85);
-      border-radius: 10px;
+      border-radius: 0;
       overflow: hidden;
       background: #07070a;
       box-shadow: 0 0 0 1px rgba(232, 61, 154, 0.2);
     }
     .portrait {
-      position: relative;
-      flex: 1 1 auto;
-      min-height: 0;
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
     }
@@ -183,7 +182,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center center;
       display: block;
       pointer-events: none;
       user-select: none;
@@ -250,7 +249,7 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       padding: 10px 14px;
-      border-radius: 8px;
+      border-radius: 0;
       cursor: pointer;
     }
     .md-btn:hover,
@@ -799,7 +798,7 @@
 
         <div class="chip-row personality-row" aria-label="Personality">
           <p class="chip-label">Personality</p>
-          <button type="button" class="md-btn" id="add-md" aria-label="Add markdown personality">Add MD</button>
+          <button type="button" class="md-btn" id="add-md" aria-label="Add .md file">Add .md</button>
           <span class="md-name" id="md-name" hidden></span>
           <input class="file-input" type="file" accept=".md,text/markdown,text/plain" id="file-md" tabindex="-1" aria-hidden="true" />
         </div>
@@ -1063,7 +1062,7 @@
           mdName.textContent = file.name;
           mdName.hidden = false;
           addMd.classList.add("has-file");
-          addMd.textContent = "MD added";
+          addMd.textContent = ".md added";
           hint.textContent = "personality layer on";
         };
         reader.readAsText(file);
