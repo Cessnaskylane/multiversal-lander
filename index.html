@@ -489,7 +489,7 @@
     }
     .scenario {
       appearance: none;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(232, 61, 154, 0.85);
       background: rgba(8, 8, 12, 0.72);
       color: var(--text);
       border-radius: 10px;
@@ -503,7 +503,7 @@
       transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
     .scenario:hover {
-      border-color: rgba(232, 61, 154, 0.55);
+      border-color: var(--line);
     }
     .scenario[aria-pressed="true"] {
       border-color: var(--line);
@@ -520,10 +520,7 @@
     }
     .scenario-label {
       flex: 0 0 auto;
-      padding: 12px 14px 14px;
-      font-size: 13px;
-      letter-spacing: 0.04em;
-      line-height: 1.35;
+      padding: 10px 12px 12px;
     }
     .scenario-label strong {
       display: block;
@@ -532,7 +529,7 @@
       text-transform: uppercase;
       font-size: 11px;
       color: var(--line);
-      margin-bottom: 6px;
+      margin: 0;
     }
     .s3-foot {
       position: relative;
@@ -673,39 +670,39 @@
       <div class="scenario-grid" id="scenario-grid" role="listbox" aria-label="Scenarios">
         <button type="button" class="scenario" role="option" data-scenario="couch" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/couch.png?v=2" alt="" />
-          <span class="scenario-label"><strong>Couch at home</strong>Late light. The TV is on, ignored.</span>
+          <span class="scenario-label"><strong>Couch at home</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-scenario="dinner" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/dinner.png?v=2" alt="" />
-          <span class="scenario-label"><strong>Restaurant</strong>A quiet table. Someone across from you.</span>
+          <span class="scenario-label"><strong>Restaurant</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-scenario="concert" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/concert.png?v=2" alt="" />
-          <span class="scenario-label"><strong>Concert</strong>Loud enough that you have to lean in.</span>
+          <span class="scenario-label"><strong>Concert</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-scenario="london" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/london.png?v=1" alt="" />
-          <span class="scenario-label"><strong>London</strong>Wet streets. The city keeps its voice down.</span>
+          <span class="scenario-label"><strong>London</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-scenario="paris" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/paris.png?v=1" alt="" />
-          <span class="scenario-label"><strong>Paris</strong>A long street. The tower waits at the end.</span>
+          <span class="scenario-label"><strong>Paris</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-scenario="future" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/future.png?v=1" alt="" />
-          <span class="scenario-label"><strong>Futuristic city</strong>Neon stacked to the sky. Another night.</span>
+          <span class="scenario-label"><strong>Futuristic city</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-scenario="heaven" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/heaven.png?v=1" alt="" />
-          <span class="scenario-label"><strong>Heaven</strong>Soft light. The hall keeps going.</span>
+          <span class="scenario-label"><strong>Heaven</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-scenario="hell" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/hell.png?v=1" alt="" />
-          <span class="scenario-label"><strong>Hell</strong>Heat under the floor. No exit sign.</span>
+          <span class="scenario-label"><strong>Hell</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-scenario="purgatory" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/purgatory.png?v=1" alt="" />
-          <span class="scenario-label"><strong>Purgatory</strong>A corridor that waits with you.</span>
+          <span class="scenario-label"><strong>Purgatory</strong></span>
         </button>
       </div>
       <div class="s3-foot">
