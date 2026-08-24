@@ -201,8 +201,35 @@
       padding: 0;
       flex: 0 0 auto;
     }
-    .face-row .photo-btn {
-      flex: 0 0 auto;
+
+    .icon-tray {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .tray-btn[aria-pressed="true"] {
+      border-color: var(--line);
+      background: rgba(232, 61, 154, 0.18);
+      box-shadow: 0 0 18px rgba(232, 61, 154, 0.35);
+    }
+    .tray-panel {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      padding-top: 2px;
+    }
+    .tray-panel.open {
+      display: flex;
+    }
+    .tray-panel .chip-row {
+      justify-content: center;
+    }
+    .tray-panel .chip-label {
+      text-align: center;
     }
     .chip-row {
       display: flex;
@@ -769,40 +796,64 @@
       </div>
 
       <div class="personalize">
-        <div class="chip-row face-row" role="group" aria-label="Face">
-          <p class="chip-label">Face</p>
-          <button type="button" class="photo-btn" id="add-photo" aria-label="Upload face" title="Upload face">
+        <div class="icon-tray" role="toolbar" aria-label="Personalize">
+          <button type="button" class="photo-btn" id="add-photo" aria-label="Upload face" title="Upload">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4 7.5h3l1.4-2h7.2l1.4 2H20a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18v-9A1.5 1.5 0 0 1 4 7.5z" />
               <circle cx="12" cy="13" r="3.2" />
             </svg>
           </button>
-          <button type="button" class="photo-btn" id="webcam-photo" aria-label="Take photo with camera" title="Take photo">
+          <button type="button" class="photo-btn" id="webcam-photo" aria-label="Take photo with camera" title="Camera">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3 8.5h12.5A1.5 1.5 0 0 1 17 10v8a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18v-8A1.5 1.5 0 0 1 3 8.5z" />
               <circle cx="9.25" cy="14" r="2.6" />
               <path d="M17 11.5l5-2.5v8l-5-2.5" />
             </svg>
           </button>
+          <button type="button" class="photo-btn tray-btn" id="tray-model" aria-label="Model" title="Model" aria-pressed="false" aria-expanded="false" aria-controls="panel-model">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="7" y="8" width="10" height="9" rx="2" />
+              <circle cx="10" cy="12.5" r="1" />
+              <circle cx="14" cy="12.5" r="1" />
+              <path d="M10 16h4" />
+              <path d="M12 4v3" />
+              <circle cx="12" cy="3.5" r="1" />
+            </svg>
+          </button>
+          <button type="button" class="photo-btn tray-btn" id="tray-doors" aria-label="Doors" title="Doors" aria-pressed="false" aria-expanded="false" aria-controls="panel-doors">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 7h3v10H8z" />
+              <path d="M13 7h3v10h-3z" />
+              <path d="M6 9.5h2" />
+              <path d="M16 9.5h2" />
+              <path d="M6 14.5h2" />
+              <path d="M16 14.5h2" />
+              <rect x="4.5" y="5.5" width="15" height="13" rx="2" />
+            </svg>
+          </button>
         </div>
 
-        <div class="chip-row" role="group" aria-label="Model">
-          <p class="chip-label">Model</p>
-          <button type="button" class="chip" data-model="grok" aria-pressed="true">Grok</button>
-          <button type="button" class="chip" data-model="gpt" aria-pressed="false">GPT</button>
-          <button type="button" class="chip" data-model="gemini" aria-pressed="false">Gemini</button>
-          <button type="button" class="chip" data-model="claude" aria-pressed="false">Claude</button>
-          <button type="button" class="chip" data-model="deepseek" aria-pressed="false">DeepSeek</button>
+        <div class="tray-panel" id="panel-model" hidden>
+          <div class="chip-row" role="group" aria-label="Model">
+            <p class="chip-label">Model</p>
+            <button type="button" class="chip" data-model="grok" aria-pressed="true">Grok</button>
+            <button type="button" class="chip" data-model="gpt" aria-pressed="false">GPT</button>
+            <button type="button" class="chip" data-model="gemini" aria-pressed="false">Gemini</button>
+            <button type="button" class="chip" data-model="claude" aria-pressed="false">Claude</button>
+            <button type="button" class="chip" data-model="deepseek" aria-pressed="false">DeepSeek</button>
+          </div>
         </div>
 
-        <div class="chip-row" role="group" aria-label="First door">
-          <p class="chip-label">First door</p>
-          <button type="button" class="chip" data-wire="domain" aria-pressed="true">Web domain</button>
-          <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
-          <button type="button" class="chip" data-wire="x" aria-pressed="false">X.com</button>
-          <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
-          <button type="button" class="chip" data-wire="calendar" aria-pressed="false">Calendar</button>
-          <button type="button" class="chip" data-wire="inscription" aria-pressed="false">Blockchain inscription</button>
+        <div class="tray-panel" id="panel-doors" hidden>
+          <div class="chip-row" role="group" aria-label="First door">
+            <p class="chip-label">First door</p>
+            <button type="button" class="chip" data-wire="domain" aria-pressed="true">Web domain</button>
+            <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
+            <button type="button" class="chip" data-wire="x" aria-pressed="false">X.com</button>
+            <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
+            <button type="button" class="chip" data-wire="calendar" aria-pressed="false">Calendar</button>
+            <button type="button" class="chip" data-wire="inscription" aria-pressed="false">Blockchain inscription</button>
+          </div>
         </div>
       </div>
       </div>
@@ -985,6 +1036,32 @@
           selectedWire = btn.getAttribute("data-wire");
           setExclusivePressed(wireChips, btn);
         });
+      });
+
+
+      var trayModel = document.getElementById("tray-model");
+      var trayDoors = document.getElementById("tray-doors");
+      var panelModel = document.getElementById("panel-model");
+      var panelDoors = document.getElementById("panel-doors");
+
+      function setTrayOpen(which) {
+        var openModel = which === "model";
+        var openDoors = which === "doors";
+        panelModel.hidden = !openModel;
+        panelDoors.hidden = !openDoors;
+        panelModel.classList.toggle("open", openModel);
+        panelDoors.classList.toggle("open", openDoors);
+        trayModel.setAttribute("aria-pressed", openModel ? "true" : "false");
+        trayModel.setAttribute("aria-expanded", openModel ? "true" : "false");
+        trayDoors.setAttribute("aria-pressed", openDoors ? "true" : "false");
+        trayDoors.setAttribute("aria-expanded", openDoors ? "true" : "false");
+      }
+
+      trayModel.addEventListener("click", function () {
+        setTrayOpen(panelModel.classList.contains("open") ? null : "model");
+      });
+      trayDoors.addEventListener("click", function () {
+        setTrayOpen(panelDoors.classList.contains("open") ? null : "doors");
       });
 
       addPhoto.addEventListener("click", function () {
