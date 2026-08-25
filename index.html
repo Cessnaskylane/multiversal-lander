@@ -169,11 +169,10 @@
       height: auto;
       margin: 0 auto;
       display: block;
-      border: 1px solid rgba(232, 61, 154, 0.85);
+      border: 1px solid var(--line);
       border-radius: 0;
       overflow: hidden;
       background: #07070a;
-      box-shadow: 0 0 0 1px rgba(232, 61, 154, 0.2);
     }
     .portrait {
       position: absolute;
@@ -254,7 +253,7 @@
     }
     .chip {
       appearance: none;
-      border: 1px solid rgba(232, 61, 154, 0.55);
+      border: 1px solid var(--line);
       background: rgba(232, 61, 154, 0.06);
       color: rgba(244, 240, 246, 0.88);
       font: 500 11px/1 Syne, system-ui, sans-serif;
@@ -279,7 +278,7 @@
     }
     .md-btn {
       appearance: none;
-      border: 1px dashed rgba(232, 61, 154, 0.7);
+      border: 1px dashed var(--line);
       background: transparent;
       color: var(--line);
       font: 500 11px/1 Syne, system-ui, sans-serif;
@@ -386,7 +385,7 @@
       width: 46px;
       height: 46px;
       border-radius: 999px;
-      border: 1px solid rgba(232, 61, 154, 0.55);
+      border: 1px solid var(--line);
       background: rgba(232, 61, 154, 0.06);
       color: var(--line);
       display: grid;
@@ -662,7 +661,7 @@
     .scenario-grid {
       position: relative;
       z-index: 2;
-      width: min(100%, 720px);
+      width: min(100%, 560px);
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-content: start;
@@ -687,7 +686,7 @@
     .scenario {
       appearance: none;
       position: relative;
-      border: 1px solid rgba(232, 61, 154, 0.85);
+      border: 1px solid var(--line);
       background: #0a0a0e;
       color: var(--text);
       border-radius: 0;
@@ -697,7 +696,7 @@
       text-align: left;
       display: block;
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 3 / 4;
       height: auto;
       min-height: unset;
       align-self: start;
@@ -708,13 +707,12 @@
     }
     .scenario[aria-pressed="true"] {
       border-color: var(--line);
-      box-shadow: 0 0 0 1px rgba(232, 61, 154, 0.45), 0 0 28px rgba(232, 61, 154, 0.22);
     }
     .scenario-art {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 18%;
+      object-fit: contain;
+      object-position: center top;
       display: block;
       background: #0a0a0e;
     }
@@ -940,40 +938,40 @@
       </div>
       <div class="scenario-grid" id="scenario-grid" role="listbox" aria-label="Specialty personalities">
         <button type="button" class="scenario" role="option" data-layer="companion" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/companion.png?v=2" alt="" />
+          <img class="scenario-art" src="assets/scenarios/companion.png?v=3" alt="" />
           <span class="scenario-label"><strong>Companion</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="host" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/host.png?v=2" alt="" />
+          <img class="scenario-art" src="assets/scenarios/host.png?v=3" alt="" />
           <span class="scenario-label"><strong>Host</strong></span>
         </button>
-        <button type="button" class="scenario" role="option" data-layer="muse" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/muse.png?v=2" alt="" />
-          <span class="scenario-label"><strong>Muse</strong></span>
-        </button>
-        <button type="button" class="scenario" role="option" data-layer="doctor" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/doctor.png?v=2" alt="" />
-          <span class="scenario-label"><strong>Doctor</strong></span>
-        </button>
-        <button type="button" class="scenario" role="option" data-layer="scientist" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/scientist.png?v=2" alt="" />
-          <span class="scenario-label"><strong>Scientist</strong></span>
-        </button>
-        <button type="button" class="scenario" role="option" data-layer="nurse" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/nurse.png?v=2" alt="" />
-          <span class="scenario-label"><strong>Nurse</strong></span>
-        </button>
-        <button type="button" class="scenario" role="option" data-layer="librarian" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/librarian.png?v=2" alt="" />
-          <span class="scenario-label"><strong>Librarian</strong></span>
+        <button type="button" class="scenario" role="option" data-layer="pulse" aria-pressed="false">
+          <img class="scenario-art" src="assets/scenarios/nurse.png?v=3" alt="" />
+          <span class="scenario-label"><strong>Pulse</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="correspondent" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/correspondent.png?v=2" alt="" />
+          <img class="scenario-art" src="assets/scenarios/correspondent.png?v=3" alt="" />
           <span class="scenario-label"><strong>Correspondent</strong></span>
         </button>
+        <button type="button" class="scenario" role="option" data-layer="muse" aria-pressed="false">
+          <img class="scenario-art" src="assets/scenarios/muse.png?v=3" alt="" />
+          <span class="scenario-label"><strong>Muse</strong></span>
+        </button>
+        <button type="button" class="scenario" role="option" data-layer="operator" aria-pressed="false">
+          <img class="scenario-art" src="assets/scenarios/scientist.png?v=3" alt="" />
+          <span class="scenario-label"><strong>Operator</strong></span>
+        </button>
         <button type="button" class="scenario" role="option" data-layer="guide" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/guide.png?v=2" alt="" />
+          <img class="scenario-art" src="assets/scenarios/guide.png?v=3" alt="" />
           <span class="scenario-label"><strong>Guide</strong></span>
+        </button>
+        <button type="button" class="scenario" role="option" data-layer="adversary" aria-pressed="false">
+          <img class="scenario-art" src="assets/scenarios/doctor.png?v=3" alt="" />
+          <span class="scenario-label"><strong>Adversary</strong></span>
+        </button>
+        <button type="button" class="scenario" role="option" data-layer="mediator" aria-pressed="false">
+          <img class="scenario-art" src="assets/scenarios/librarian.png?v=3" alt="" />
+          <span class="scenario-label"><strong>Mediator</strong></span>
         </button>
       </div>
       <div class="s3-foot">
