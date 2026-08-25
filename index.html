@@ -624,13 +624,13 @@
       display: none;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       background: #000;
       padding:
         max(72px, calc(env(safe-area-inset-top, 0px) + 56px))
         20px
-        max(96px, calc(env(safe-area-inset-bottom, 0px) + 72px));
-      gap: 18px;
+        max(20px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+      gap: 14px;
       overflow: hidden;
     }
     #screen4.active {
@@ -662,14 +662,27 @@
     .scenario-grid {
       position: relative;
       z-index: 2;
-      width: min(100%, 980px);
+      width: min(100%, 720px);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      flex: 0 1 auto;
-      max-height: min(72dvh, 780px);
-      overflow: auto;
-      padding: 2px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-content: start;
+      gap: 12px;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      padding: 2px 10px 8px 2px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(232, 61, 154, 0.7) rgba(255, 255, 255, 0.06);
+    }
+    .scenario-grid::-webkit-scrollbar {
+      width: 8px;
+    }
+    .scenario-grid::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .scenario-grid::-webkit-scrollbar-thumb {
+      background: rgba(232, 61, 154, 0.7);
     }
     .scenario {
       appearance: none;
@@ -683,7 +696,11 @@
       cursor: pointer;
       text-align: left;
       display: block;
-      min-height: 0;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      height: auto;
+      min-height: unset;
+      align-self: start;
       transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
     .scenario:hover {
@@ -695,9 +712,9 @@
     }
     .scenario-art {
       width: 100%;
-      aspect-ratio: 3 / 4;
+      height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 18%;
       display: block;
       background: #0a0a0e;
     }
@@ -750,14 +767,15 @@
 
     @media (max-width: 820px) {
       .scenario-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-height: min(70dvh, 720px);
+        width: min(100%, 560px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
     @media (max-width: 520px) {
       .scenario-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-height: min(70dvh, 720px);
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
       }
     }
 
@@ -922,39 +940,39 @@
       </div>
       <div class="scenario-grid" id="scenario-grid" role="listbox" aria-label="Specialty personalities">
         <button type="button" class="scenario" role="option" data-layer="companion" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/companion.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/companion.png?v=2" alt="" />
           <span class="scenario-label"><strong>Companion</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="host" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/host.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/host.png?v=2" alt="" />
           <span class="scenario-label"><strong>Host</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="muse" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/muse.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/muse.png?v=2" alt="" />
           <span class="scenario-label"><strong>Muse</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="doctor" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/doctor.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/doctor.png?v=2" alt="" />
           <span class="scenario-label"><strong>Doctor</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="scientist" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/scientist.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/scientist.png?v=2" alt="" />
           <span class="scenario-label"><strong>Scientist</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="nurse" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/nurse.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/nurse.png?v=2" alt="" />
           <span class="scenario-label"><strong>Nurse</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="librarian" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/librarian.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/librarian.png?v=2" alt="" />
           <span class="scenario-label"><strong>Librarian</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="correspondent" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/correspondent.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/correspondent.png?v=2" alt="" />
           <span class="scenario-label"><strong>Correspondent</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="guide" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/guide.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/guide.png?v=2" alt="" />
           <span class="scenario-label"><strong>Guide</strong></span>
         </button>
       </div>
