@@ -682,7 +682,60 @@
 
 
 
-    #screen4 {
+    #screen3 {
+      position: absolute;
+      inset: 0;
+      z-index: 16;
+      display: none;
+      place-items: center;
+      place-content: center;
+      background: #000;
+      padding: 16px;
+    }
+    #screen3.active {
+      display: grid;
+      animation: screenIn 0.55s ease forwards;
+    }
+    #screen3[hidden] { display: none !important; }
+    .layer-pick {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: min(100%, 420px);
+    }
+    .layer-box {
+      appearance: none;
+      width: 100%;
+      min-height: 96px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--line);
+      font: 500 12px/1.2 Syne, system-ui, sans-serif;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 22px 18px;
+      text-align: center;
+    }
+    .layer-box:hover,
+    .layer-box:focus-visible {
+      background: rgba(232, 61, 154, 0.1);
+      outline: none;
+    }
+    @media (min-width: 900px) {
+      .layer-pick {
+        flex-direction: row;
+        width: min(100%, 960px);
+        align-items: stretch;
+      }
+      .layer-box {
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .layer-screen {
       position: absolute;
       inset: 0;
       z-index: 17;
@@ -698,11 +751,24 @@
       gap: 14px;
       overflow: hidden;
     }
-    #screen4.active {
+    .layer-screen.active {
       display: flex;
       animation: screenIn 0.55s ease forwards;
     }
-    #screen4[hidden] { display: none !important; }
+    .layer-screen[hidden] { display: none !important; }
+    .upload-stage {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 420px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin: auto 0;
+    }
+    .upload-stage .md-btn {
+      min-width: 220px;
+    }
             .s3-bg {
       position: absolute;
       inset: -8%;
@@ -903,7 +969,7 @@
         min-height: 44px;
         padding: 14px 8px 14px 12px;
       }
-      #screen4 {
+      .layer-screen {
         padding-bottom: max(108px, calc(env(safe-area-inset-bottom, 0px) + 88px));
       }
       #screen2 {
@@ -1025,16 +1091,18 @@
 
 
 
-    <div id="screen4" aria-label="Personality layer" hidden>
-      <div class="s3-bg" aria-hidden="true"></div>
-      <p class="s3-head">Personality layer</p>
-      <div class="layer-custom">
-        <p class="chip-label">Custom personality</p>
-        <button type="button" class="md-btn" id="add-md" aria-label="Add .md file">Add .md</button>
-        <span class="md-name" id="md-name" hidden></span>
-        <input class="file-input" type="file" accept=".md,text/markdown,text/plain" id="file-md" tabindex="-1" aria-hidden="true" />
+    <div id="screen3" aria-label="Choose a layer" hidden>
+      <div class="layer-pick">
+        <button type="button" class="layer-box" id="pick-upload">Upload your own layer</button>
+        <button type="button" class="layer-box" id="pick-celeb">Celebrity layer</button>
+        <button type="button" class="layer-box" id="pick-skill">Skill layer</button>
       </div>
-      <div class="scenario-grid" id="scenario-grid" role="listbox" aria-label="Specialty personalities">
+    </div>
+
+    <div id="screen4" class="layer-screen" aria-label="Skill layer" hidden>
+      <div class="s3-bg" aria-hidden="true"></div>
+      <p class="s3-head">Skill layer</p>
+      <div class="scenario-grid" id="skill-grid" role="listbox" aria-label="Skill personalities">
         <button type="button" class="scenario" role="option" data-layer="companion" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/companion.png?v=5" alt="" />
           <span class="scenario-label"><strong>Companion</strong></span>
@@ -1111,6 +1179,19 @@
           <img class="scenario-art" src="assets/scenarios/pilot.png?v=2" alt="" />
           <span class="scenario-label"><strong>Pilot</strong></span>
         </button>
+      </div>
+      <div class="s3-foot">
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-4" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="skill-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="screen5" class="layer-screen" aria-label="Celebrity layer" hidden>
+      <div class="s3-bg" aria-hidden="true"></div>
+      <p class="s3-head">Celebrity layer</p>
+      <div class="scenario-grid" id="celeb-grid" role="listbox" aria-label="Celebrity personalities">
         <button type="button" class="scenario" role="option" data-layer="agnetha" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/agnetha.png?v=1" alt="" />
           <span class="scenario-label"><strong>Agnetha</strong></span>
@@ -1134,8 +1215,25 @@
       </div>
       <div class="s3-foot">
         <div class="nav-pair">
-          <button type="button" class="back-btn" id="back-4" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
-          <button type="button" class="world-btn" id="scenario-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
+          <button type="button" class="back-btn" id="back-5" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="celeb-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="screen6" class="layer-screen" aria-label="Upload your own layer" hidden>
+      <div class="s3-bg" aria-hidden="true"></div>
+      <p class="s3-head">Upload your own layer</p>
+      <div class="upload-stage">
+        <p class="chip-label">Brain file</p>
+        <button type="button" class="md-btn" id="add-md" aria-label="Add a brain file">Add .md or file</button>
+        <span class="md-name" id="md-name" hidden></span>
+        <input class="file-input" type="file" accept=".md,.txt,.json,.pdf,text/markdown,text/plain,application/json,application/pdf" id="file-md" tabindex="-1" aria-hidden="true" />
+      </div>
+      <div class="s3-foot">
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-6" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="upload-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
         </div>
       </div>
     </div>
@@ -1145,7 +1243,10 @@
     (function () {
       var screen1 = document.getElementById("screen1");
       var screen2 = document.getElementById("screen2");
+      var screen3 = document.getElementById("screen3");
       var screen4 = document.getElementById("screen4");
+      var screen5 = document.getElementById("screen5");
+      var screen6 = document.getElementById("screen6");
       var wordmark = document.getElementById("wordmark");
       var promise = document.getElementById("promise");
       var beam = document.getElementById("beam");
@@ -1180,10 +1281,17 @@
         wordmark.classList.add("animate");
       }
 
+      function hideLayerScreens() {
+        [screen3, screen4, screen5, screen6].forEach(function (el) {
+          if (!el) return;
+          el.classList.remove("active");
+          el.hidden = true;
+        });
+      }
+
       function hideAllScreens() {
         screen2.classList.remove("active");
-        screen4.classList.remove("active");
-        screen4.hidden = true;
+        hideLayerScreens();
         screen1.classList.add("hidden");
         screen1.setAttribute("aria-hidden", "true");
         screen1.style.display = "none";
@@ -1191,8 +1299,7 @@
 
       function goToScreen1() {
         screen2.classList.remove("active");
-        screen4.classList.remove("active");
-        screen4.hidden = true;
+        hideLayerScreens();
         screen1.style.display = "";
         screen1.classList.remove("hidden");
         screen1.removeAttribute("aria-hidden");
@@ -1206,8 +1313,7 @@
       }
 
       function goToScreen2() {
-        screen4.classList.remove("active");
-        screen4.hidden = true;
+        hideLayerScreens();
         screen1.classList.add("hidden");
         screen1.setAttribute("aria-hidden", "true");
         wordmark.classList.remove("animate");
@@ -1358,10 +1464,11 @@
           addMd.classList.add("has-file");
           addMd.textContent = ".md added";
           hint.textContent = "custom personality on";
-          var sc = document.getElementById("scenario-continue");
-          if (sc) {
-            sc.disabled = false;
-            sc.setAttribute("aria-disabled", "false");
+          selectedLayer = "upload";
+          var uc = document.getElementById("upload-continue");
+          if (uc) {
+            uc.disabled = false;
+            uc.setAttribute("aria-disabled", "false");
           }
         };
         reader.readAsText(file);
@@ -1378,42 +1485,60 @@
 
 
       var scenarios = Array.prototype.slice.call(document.querySelectorAll(".scenario"));
-      var scenarioContinue = document.getElementById("scenario-continue");
+      var skillContinue = document.getElementById("skill-continue");
+      var celebContinue = document.getElementById("celeb-continue");
+      var uploadContinue = document.getElementById("upload-continue");
       var selectedLayer = null;
 
-      function goToScreen4() {
+      function showScreen(el) {
         screen2.classList.remove("active");
-        screen4.hidden = false;
-        screen4.classList.add("active");
+        hideLayerScreens();
+        el.hidden = false;
+        el.classList.add("active");
       }
 
-      document.getElementById("back-4").addEventListener("click", function () {
-        goToScreen2();
-      });
+      function goToScreen3() { showScreen(screen3); }
+      function goToScreen4() { showScreen(screen4); }
+      function goToScreen5() { showScreen(screen5); }
+      function goToScreen6() { showScreen(screen6); }
 
-      worldBtn.addEventListener("click", function () {
-        goToScreen4();
-      });
+      function finishLayer() {
+        if (!selectedLayer && !personalityMd) return;
+        hint.textContent =
+          selectedModel +
+          (personalityMd ? " · file" : "") +
+          " · " + selectedWire +
+          (selectedLayer ? " · " + selectedLayer : "");
+      }
+
+      document.getElementById("back-4").addEventListener("click", goToScreen3);
+      document.getElementById("back-5").addEventListener("click", goToScreen3);
+      document.getElementById("back-6").addEventListener("click", goToScreen3);
+
+      worldBtn.addEventListener("click", goToScreen3);
+      document.getElementById("pick-upload").addEventListener("click", goToScreen6);
+      document.getElementById("pick-celeb").addEventListener("click", goToScreen5);
+      document.getElementById("pick-skill").addEventListener("click", goToScreen4);
 
       scenarios.forEach(function (btn) {
         btn.addEventListener("click", function () {
           selectedLayer = btn.getAttribute("data-layer");
+          personalityMd = null;
           scenarios.forEach(function (b) {
             b.setAttribute("aria-pressed", b === btn ? "true" : "false");
           });
-          scenarioContinue.disabled = false;
-          scenarioContinue.setAttribute("aria-disabled", "false");
+          var grid = btn.closest(".scenario-grid");
+          var cont = (grid && grid.id === "celeb-grid") ? celebContinue : skillContinue;
+          if (cont) {
+            cont.disabled = false;
+            cont.setAttribute("aria-disabled", "false");
+          }
         });
       });
 
-      scenarioContinue.addEventListener("click", function () {
-        if (!selectedLayer && !personalityMd) return;
-        hint.textContent =
-          selectedModel +
-          (personalityMd ? " · md" : "") +
-          " · " + selectedWire +
-          (selectedLayer ? " · " + selectedLayer : "");
-      });
+      skillContinue.addEventListener("click", finishLayer);
+      celebContinue.addEventListener("click", finishLayer);
+      uploadContinue.addEventListener("click", finishLayer);
     })();
   </script>
 </body>
