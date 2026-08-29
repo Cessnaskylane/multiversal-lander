@@ -31,16 +31,11 @@
       background: var(--bg);
     }
     .mark {
-      appearance: none;
       position: absolute;
       z-index: 40;
       top: max(28px, env(safe-area-inset-top, 0px));
       left: max(28px, env(safe-area-inset-left, 0px));
       margin: 0;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      font-family: inherit;
       font-size: clamp(13px, 1.6vw, 18px);
       font-weight: 400;
       letter-spacing: 0.28em;
@@ -48,11 +43,6 @@
       color: #f4f0f6;
       opacity: 0;
       pointer-events: none;
-      cursor: pointer;
-    }
-    .mark.visible,
-    .mark.animate {
-      pointer-events: auto;
     }
     .mark.visible { opacity: 1; }
     .mark.animate { animation: fadeMark 1.1s ease 0.85s forwards; }
@@ -699,26 +689,16 @@
       inset: 0;
       z-index: 16;
       display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      place-items: center;
+      place-content: center;
       background: #000;
-      padding:
-        max(72px, calc(env(safe-area-inset-top, 0px) + 56px))
-        20px
-        max(20px, calc(env(safe-area-inset-bottom, 0px) + 16px));
-      gap: 14px;
+      padding: 16px;
     }
     #screen3.active {
-      display: flex;
+      display: grid;
       animation: screenIn 0.55s ease forwards;
     }
     #screen3[hidden] { display: none !important; }
-    #screen3 .layer-pick { margin: auto 0; }
-    #screen3 .s3-foot { width: min(100%, 980px); }
-    .layer-box[aria-pressed="true"] {
-      background: rgba(232, 61, 154, 0.12);
-    }
     .layer-pick {
       display: flex;
       flex-direction: column;
@@ -1038,7 +1018,7 @@
 </head>
 <body>
   <div class="frame">
-    <button type="button" class="mark" id="wordmark" aria-label="multiversal.ai, back to start"><span class="accent">Multi</span>versal <span class="accent">.ai</span></button>
+    <p class="mark" id="wordmark"><span class="accent">Multi</span>versal <span class="accent">.ai</span></p>
     <p class="promise" id="promise">A named voice you put on Grok.</p>
 
     <div id="screen1" aria-label="Door">
@@ -1146,15 +1126,9 @@
 
     <div id="screen3" aria-label="Choose a layer" hidden>
       <div class="layer-pick">
-        <button type="button" class="layer-box" id="pick-upload" aria-pressed="false">Upload layer</button>
-        <button type="button" class="layer-box" id="pick-celeb" aria-pressed="false">Celebrity layers</button>
-        <button type="button" class="layer-box" id="pick-skill" aria-pressed="false">Skill layers</button>
-      </div>
-      <div class="s3-foot">
-        <div class="nav-pair">
-          <button type="button" class="back-btn" id="back-3" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
-          <button type="button" class="world-btn" id="chooser-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
-        </div>
+        <button type="button" class="layer-box" id="pick-upload">Upload layer</button>
+        <button type="button" class="layer-box" id="pick-celeb">Celebrity layers</button>
+        <button type="button" class="layer-box" id="pick-skill">Skill layers</button>
       </div>
     </div>
 
@@ -1590,32 +1564,10 @@
       document.getElementById("back-5").addEventListener("click", goToScreen3);
       document.getElementById("back-6").addEventListener("click", goToScreen3);
 
-      wordmark.addEventListener("click", goToScreen1);
       worldBtn.addEventListener("click", goToScreen3);
-      document.getElementById("back-3").addEventListener("click", goToScreen2);
-
-      var pickUpload = document.getElementById("pick-upload");
-      var pickCeleb = document.getElementById("pick-celeb");
-      var pickSkill = document.getElementById("pick-skill");
-      var chooserContinue = document.getElementById("chooser-continue");
-      var chooserPicks = [pickUpload, pickCeleb, pickSkill];
-      var chooserTarget = null;
-
-      function selectChooser(btn, go) {
-        chooserTarget = go;
-        chooserPicks.forEach(function (b) {
-          b.setAttribute("aria-pressed", b === btn ? "true" : "false");
-        });
-        chooserContinue.disabled = false;
-        chooserContinue.setAttribute("aria-disabled", "false");
-        go();
-      }
-      pickUpload.addEventListener("click", function () { selectChooser(pickUpload, goToScreen6); });
-      pickCeleb.addEventListener("click", function () { selectChooser(pickCeleb, goToScreen5); });
-      pickSkill.addEventListener("click", function () { selectChooser(pickSkill, goToScreen4); });
-      chooserContinue.addEventListener("click", function () {
-        if (chooserTarget) chooserTarget();
-      });
+      document.getElementById("pick-upload").addEventListener("click", goToScreen6);
+      document.getElementById("pick-celeb").addEventListener("click", goToScreen5);
+      document.getElementById("pick-skill").addEventListener("click", goToScreen4);
 
       scenarios.forEach(function (btn) {
         btn.addEventListener("click", function () {
