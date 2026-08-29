@@ -153,8 +153,9 @@
       place-content: center;
       opacity: 0;
       background: #000;
-      padding: 0;
-      overflow: hidden;
+      padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      overflow-x: hidden;
+      overflow-y: auto;
     }
     #screen2.active {
       display: grid;
@@ -164,8 +165,10 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: max(16px, env(safe-area-inset-bottom, 0px));
-      z-index: 6;
+      bottom: 0;
+      z-index: 8;
+      padding: 28px 0 max(16px, env(safe-area-inset-bottom, 0px));
+      background: linear-gradient(to top, #000 42%, rgba(0,0,0,0));
     }
     #screen2 > .hint,
     #screen2 > .file-input {
@@ -188,7 +191,7 @@
       align-items: center;
       justify-content: flex-start;
       gap: 12px;
-      width: min(100%, 420px);
+      width: min(100%, 920px);
       margin: 0;
       padding: 16px;
       flex: 0 0 auto;
@@ -197,7 +200,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      width: min(100%, 420px);
+      width: min(100%, 920px);
       flex: 0 0 auto;
       min-height: 0;
       align-self: center;
@@ -240,7 +243,7 @@
       flex-direction: column;
       gap: 10px;
       width: 100%;
-      max-width: 420px;
+      max-width: none;
       margin: 0 auto;
       padding: 0;
       flex: 0 0 auto;
@@ -260,10 +263,10 @@
       box-shadow: 0 0 18px rgba(232, 61, 154, 0.35);
     }
     .tray-slot {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 100%;
+      position: relative;
+      left: auto;
+      right: auto;
+      top: auto;
       width: 100%;
       min-height: 0;
       display: flex;
@@ -275,16 +278,29 @@
       flex-direction: column;
       gap: 8px;
       width: 100%;
-      padding-top: 2px;
+      padding-top: 8px;
     }
     .tray-panel.open {
       display: flex;
     }
     .tray-panel .chip-row {
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      justify-content: stretch;
+      width: 100%;
     }
     .tray-panel .chip-label {
+      grid-column: 1 / -1;
       text-align: center;
+      width: auto;
+    }
+    .tray-panel .chip {
+      width: 100%;
+      min-width: 0;
+      text-align: center;
+      padding: 8px 6px;
+      letter-spacing: 0.08em;
     }
     .chip-row {
       display: flex;
@@ -503,7 +519,7 @@
     }
 
     #screen2 .controls {
-      width: min(100%, 420px);
+      width: 100%;
       justify-content: center;
       padding-top: 4px;
       flex: 0 0 auto;
@@ -843,6 +859,15 @@
       .chip {
         padding: 7px 10px;
         font-size: 10px;
+      }
+      .tray-panel .chip-row {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 6px;
+      }
+      .tray-panel .chip {
+        padding: 8px 4px;
+        font-size: 9px;
+        letter-spacing: 0.04em;
       }
       .side-input {
         font-size: 12px;
@@ -1237,6 +1262,7 @@
         trayModel.setAttribute("aria-expanded", openModel ? "true" : "false");
         trayDoors.setAttribute("aria-pressed", openDoors ? "true" : "false");
         trayDoors.setAttribute("aria-expanded", openDoors ? "true" : "false");
+        screen2.classList.toggle("tray-open", openModel || openDoors);
       }
 
       trayModel.addEventListener("click", function () {
