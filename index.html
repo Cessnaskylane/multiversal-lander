@@ -149,21 +149,24 @@
       inset: 0;
       z-index: 15;
       display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      place-items: center;
+      place-content: center;
       opacity: 0;
       background: #000;
-      padding:
-        max(28px, env(safe-area-inset-top, 0px))
-        16px
-        max(28px, env(safe-area-inset-bottom, 0px));
-      gap: 10px;
+      padding: 0;
       overflow: auto;
     }
     #screen2.active {
-      display: flex;
+      display: grid;
       animation: screenIn 0.6s ease forwards;
+    }
+    #screen2 > .hint,
+    #screen2 > .file-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
     }
     @keyframes screenIn {
       from { opacity: 0; }
@@ -175,10 +178,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
-      width: 100%;
+      width: min(100%, 420px);
       margin: 0;
+      padding: 16px;
       flex: 0 0 auto;
     }
     .stage {
@@ -856,11 +860,8 @@
         padding-bottom: max(108px, calc(env(safe-area-inset-bottom, 0px) + 88px));
       }
       #screen2 {
-        padding:
-          max(28px, env(safe-area-inset-top, 0px))
-          16px
-          max(28px, env(safe-area-inset-bottom, 0px));
-        justify-content: center;
+        padding: 0;
+        place-items: center;
       }
       .s2-stack {
         margin: 0;
@@ -1003,11 +1004,11 @@
           <span class="scenario-label"><strong>Correspondent</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="muse" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/muse.png?v=6" alt="" />
+          <img class="scenario-art" src="assets/scenarios/muse.png?v=7" alt="" />
           <span class="scenario-label"><strong>Muse</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="operator" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/scientist.png?v=6" alt="" />
+          <img class="scenario-art" src="assets/scenarios/scientist.png?v=7" alt="" />
           <span class="scenario-label"><strong>Operator</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="guide" aria-pressed="false">
@@ -1023,43 +1024,43 @@
           <span class="scenario-label"><strong>Mediator</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="skipper" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/skipper.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/skipper.png?v=2" alt="" />
           <span class="scenario-label"><strong>Skipper</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="composer" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/composer.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/composer.png?v=2" alt="" />
           <span class="scenario-label"><strong>Composer</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="architect" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/architect.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/architect.png?v=2" alt="" />
           <span class="scenario-label"><strong>Architect</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="editor" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/editor.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/editor.png?v=2" alt="" />
           <span class="scenario-label"><strong>Editor</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="broker" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/broker.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/broker.png?v=2" alt="" />
           <span class="scenario-label"><strong>Broker</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="scholar" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/scholar.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/scholar.png?v=2" alt="" />
           <span class="scenario-label"><strong>Scholar</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="director" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/director.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/director.png?v=2" alt="" />
           <span class="scenario-label"><strong>Director</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="chef" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/chef.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/chef.png?v=2" alt="" />
           <span class="scenario-label"><strong>Chef</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="counsel" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/counsel.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/counsel.png?v=2" alt="" />
           <span class="scenario-label"><strong>Counsel</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="pilot" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/pilot.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/pilot.png?v=2" alt="" />
           <span class="scenario-label"><strong>Pilot</strong></span>
         </button>
       </div>
