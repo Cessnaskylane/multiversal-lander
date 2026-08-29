@@ -713,7 +713,7 @@
       background: transparent;
       color: var(--line);
       font: 500 16px/1.2 Syne, system-ui, sans-serif;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       cursor: pointer;
       padding: 22px 18px;
@@ -785,9 +785,9 @@
       position: relative;
       z-index: 2;
       margin: 0;
-      font-size: clamp(15px, 1.8vw, 18px);
-      font-weight: 400;
-      letter-spacing: 0.24em;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: rgba(244, 240, 246, 0.72);
       text-align: center;
@@ -1098,7 +1098,7 @@
 
     <div id="screen3" aria-label="Choose a layer" hidden>
       <div class="layer-pick">
-        <button type="button" class="layer-box" id="pick-upload">Upload your own layer</button>
+        <button type="button" class="layer-box" id="pick-upload">Upload layer</button>
         <button type="button" class="layer-box" id="pick-celeb">Celebrity layers</button>
         <button type="button" class="layer-box" id="pick-skill">Skill layers</button>
       </div>
@@ -1226,9 +1226,9 @@
       </div>
     </div>
 
-    <div id="screen6" class="layer-screen" aria-label="Upload your own layer" hidden>
+    <div id="screen6" class="layer-screen" aria-label="Upload layer" hidden>
       <div class="s3-bg" aria-hidden="true"></div>
-      <p class="s3-head">Upload your own layer</p>
+      <p class="s3-head">Upload layer</p>
       <div class="upload-stage">
         <p class="chip-label">Brain file</p>
         <button type="button" class="md-btn" id="add-md" aria-label="Add a brain file">Add .md or file</button>
