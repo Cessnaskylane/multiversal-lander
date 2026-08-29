@@ -689,16 +689,26 @@
       inset: 0;
       z-index: 16;
       display: none;
-      place-items: center;
-      place-content: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
       background: #000;
-      padding: 16px;
+      padding:
+        max(72px, calc(env(safe-area-inset-top, 0px) + 56px))
+        20px
+        max(20px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+      gap: 14px;
     }
     #screen3.active {
-      display: grid;
+      display: flex;
       animation: screenIn 0.55s ease forwards;
     }
     #screen3[hidden] { display: none !important; }
+    #screen3 .layer-pick { margin: auto 0; }
+    #screen3 .s3-foot { width: min(100%, 980px); }
+    .layer-box[aria-pressed="true"] {
+      background: rgba(232, 61, 154, 0.12);
+    }
     .layer-pick {
       display: flex;
       flex-direction: column;
@@ -1126,9 +1136,15 @@
 
     <div id="screen3" aria-label="Choose a layer" hidden>
       <div class="layer-pick">
-        <button type="button" class="layer-box" id="pick-upload">Upload layer</button>
-        <button type="button" class="layer-box" id="pick-celeb">Celebrity layers</button>
-        <button type="button" class="layer-box" id="pick-skill">Skill layers</button>
+        <button type="button" class="layer-box" id="pick-upload" aria-pressed="false">Upload layer</button>
+        <button type="button" class="layer-box" id="pick-celeb" aria-pressed="false">Celebrity layers</button>
+        <button type="button" class="layer-box" id="pick-skill" aria-pressed="false">Skill layers</button>
+      </div>
+      <div class="s3-foot">
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-3" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="chooser-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
+        </div>
       </div>
     </div>
 
@@ -1565,9 +1581,29 @@
       document.getElementById("back-6").addEventListener("click", goToScreen3);
 
       worldBtn.addEventListener("click", goToScreen3);
-      document.getElementById("pick-upload").addEventListener("click", goToScreen6);
-      document.getElementById("pick-celeb").addEventListener("click", goToScreen5);
-      document.getElementById("pick-skill").addEventListener("click", goToScreen4);
+      document.getElementById("back-3").addEventListener("click", goToScreen2);
+
+      var pickUpload = document.getElementById("pick-upload");
+      var pickCeleb = document.getElementById("pick-celeb");
+      var pickSkill = document.getElementById("pick-skill");
+      var chooserContinue = document.getElementById("chooser-continue");
+      var chooserPicks = [pickUpload, pickCeleb, pickSkill];
+      var chooserTarget = null;
+
+      function selectChooser(btn, go) {
+        chooserTarget = go;
+        chooserPicks.forEach(function (b) {
+          b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+        });
+        chooserContinue.disabled = false;
+        chooserContinue.setAttribute("aria-disabled", "false");
+      }
+      pickUpload.addEventListener("click", function () { selectChooser(pickUpload, goToScreen6); });
+      pickCeleb.addEventListener("click", function () { selectChooser(pickCeleb, goToScreen5); });
+      pickSkill.addEventListener("click", function () { selectChooser(pickSkill, goToScreen4); });
+      chooserContinue.addEventListener("click", function () {
+        if (chooserTarget) chooserTarget();
+      });
 
       scenarios.forEach(function (btn) {
         btn.addEventListener("click", function () {
