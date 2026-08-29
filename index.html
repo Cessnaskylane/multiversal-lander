@@ -204,8 +204,8 @@
     .portrait img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center center;
+      object-fit: contain;
+      object-position: center top;
       display: block;
       pointer-events: none;
       user-select: none;
@@ -685,7 +685,8 @@
       width: min(100%, 520px);
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: auto;
+      grid-auto-rows: max-content;
+      align-items: start;
       align-content: start;
       gap: 12px;
       flex: 1 1 auto;
@@ -718,10 +719,10 @@
       text-align: left;
       display: block;
       width: 100%;
-      aspect-ratio: 2 / 3;
+      aspect-ratio: 3 / 4;
       height: auto;
       min-height: 0;
-      align-self: stretch;
+      align-self: start;
       transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
     .scenario:hover {
@@ -735,8 +736,8 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center center;
+      object-fit: contain;
+      object-position: center top;
       display: block;
       background: #0a0a0e;
     }
