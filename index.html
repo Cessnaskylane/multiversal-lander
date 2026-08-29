@@ -169,6 +169,17 @@
       to { opacity: 1; }
     }
 
+
+    .s2-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      margin-top: 8vh;
+      flex: 0 0 auto;
+    }
     .stage {
       display: flex;
       flex-direction: column;
@@ -237,7 +248,7 @@
     }
     .tray-slot {
       width: 100%;
-      min-height: 88px;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -840,9 +851,15 @@
         min-height: 44px;
         padding: 14px 8px 14px 12px;
       }
-      #screen2,
       #screen4 {
         padding-bottom: max(108px, calc(env(safe-area-inset-bottom, 0px) + 88px));
+      }
+      #screen2 {
+        padding-bottom: max(28px, env(safe-area-inset-bottom, 0px));
+        justify-content: center;
+      }
+      .s2-stack {
+        margin-top: 6vh;
       }
     }
   </style>
@@ -862,6 +879,7 @@
     </div>
 
         <div id="screen2" aria-label="Personalize your agent">
+      <div class="s2-stack">
       <h1 class="screen-title">Your agent</h1>
       <div class="stage">
       <div class="portrait-wrap">
@@ -939,6 +957,7 @@
         <div class="nav-pair">
           <button type="button" class="world-btn" id="world-btn" aria-disabled="false">Continue</button>
         </div>
+      </div>
       </div>
       <div class="cam-overlay" id="cam-overlay" hidden>
         <video id="cam-video" playsinline muted></video>
