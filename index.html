@@ -820,6 +820,24 @@
       transform: translateY(-62px) scale(1.04);
       opacity: 0.42;
     }
+
+    #screen5 .s3-layer { display: none; }
+    #screen5 .s3-bg {
+      inset: auto;
+      left: -18%;
+      right: -18%;
+      bottom: -12%;
+      top: 20%;
+      overflow: hidden;
+      background: #000 url("assets/grid-f3-brand.png?v=1") center top / 135% no-repeat;
+    }
+    @media (max-width: 520px) {
+      #screen5 .s3-bg {
+        top: 18%;
+        background-size: 165%;
+        background-position: center 0;
+      }
+    }
     .s3-head {
       position: relative;
       z-index: 2;
@@ -1264,11 +1282,11 @@
           <span class="scenario-label"><strong>Barbie</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="elsa" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/elsa.png?v=3" alt="" />
+          <img class="scenario-art" src="assets/scenarios/elsa.png?v=4" alt="" />
           <span class="scenario-label"><strong>Elsa</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="elisabeth" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/elisabeth.png?v=3" alt="" />
+          <img class="scenario-art" src="assets/scenarios/elisabeth.png?v=4" alt="" />
           <span class="scenario-label"><strong>Elisabeth</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="bill" aria-pressed="false">
