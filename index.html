@@ -161,14 +161,6 @@
       display: grid;
       animation: screenIn 0.6s ease forwards;
     }
-    #screen2.tray-open {
-      place-content: start;
-      align-content: start;
-    }
-    #screen2.tray-open .portrait-wrap {
-      width: min(100%, 210px);
-      max-width: 210px;
-    }
     #screen2 > .controls {
       position: absolute;
       left: 0;
@@ -177,11 +169,6 @@
       z-index: 8;
       padding: 28px 0 max(16px, env(safe-area-inset-bottom, 0px));
       background: linear-gradient(to top, #000 42%, rgba(0,0,0,0));
-    }
-    #screen2.tray-open > .controls {
-      position: static;
-      background: none;
-      padding: 18px 0 10px;
     }
     #screen2 > .hint,
     #screen2 > .file-input {
@@ -205,9 +192,10 @@
       justify-content: flex-start;
       gap: 12px;
       width: min(100%, 920px);
-      margin: 0;
+      margin: 0 auto;
       padding: 16px;
       flex: 0 0 auto;
+      justify-self: center;
     }
     .stage {
       display: flex;
@@ -888,7 +876,7 @@
         letter-spacing: 0.06em;
       }
       #screen2.tray-open .personalize {
-        max-width: 210px;
+        max-width: 230px;
       }
       .side-input {
         font-size: 12px;
