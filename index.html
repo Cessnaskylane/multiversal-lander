@@ -712,8 +712,8 @@
       border: 1px solid var(--line);
       background: transparent;
       color: var(--line);
-      font: 500 12px/1.2 Syne, system-ui, sans-serif;
-      letter-spacing: 0.22em;
+      font: 500 16px/1.2 Syne, system-ui, sans-serif;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       cursor: pointer;
       padding: 22px 18px;
@@ -785,9 +785,9 @@
       position: relative;
       z-index: 2;
       margin: 0;
-      font-size: clamp(12px, 1.5vw, 14px);
+      font-size: clamp(15px, 1.8vw, 18px);
       font-weight: 400;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: rgba(244, 240, 246, 0.72);
       text-align: center;
@@ -1099,14 +1099,14 @@
     <div id="screen3" aria-label="Choose a layer" hidden>
       <div class="layer-pick">
         <button type="button" class="layer-box" id="pick-upload">Upload your own layer</button>
-        <button type="button" class="layer-box" id="pick-celeb">Celebrity layer</button>
-        <button type="button" class="layer-box" id="pick-skill">Skill layer</button>
+        <button type="button" class="layer-box" id="pick-celeb">Celebrity layers</button>
+        <button type="button" class="layer-box" id="pick-skill">Skill layers</button>
       </div>
     </div>
 
-    <div id="screen4" class="layer-screen" aria-label="Skill layer" hidden>
+    <div id="screen4" class="layer-screen" aria-label="Skill layers" hidden>
       <div class="s3-bg" aria-hidden="true"></div>
-      <p class="s3-head">Skill layer</p>
+      <p class="s3-head">Skill layers</p>
       <div class="scenario-grid" id="skill-grid" role="listbox" aria-label="Skill personalities">
         <button type="button" class="scenario" role="option" data-layer="companion" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/companion.png?v=5" alt="" />
@@ -1193,9 +1193,9 @@
       </div>
     </div>
 
-    <div id="screen5" class="layer-screen" aria-label="Celebrity layer" hidden>
+    <div id="screen5" class="layer-screen" aria-label="Celebrity layers" hidden>
       <div class="s3-bg" aria-hidden="true"></div>
-      <p class="s3-head">Celebrity layer</p>
+      <p class="s3-head">Celebrity layers</p>
       <div class="scenario-grid" id="celeb-grid" role="listbox" aria-label="Celebrity personalities">
         <button type="button" class="scenario" role="option" data-layer="scarlett" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/scarlett.png?v=1" alt="" />
