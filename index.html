@@ -177,7 +177,7 @@
       justify-content: center;
       gap: 12px;
       width: 100%;
-      margin-top: 8vh;
+      margin-top: 2vh;
       flex: 0 0 auto;
     }
     .stage {
@@ -859,7 +859,7 @@
         justify-content: center;
       }
       .s2-stack {
-        margin-top: 6vh;
+        margin-top: 1vh;
       }
     }
   </style>
@@ -1051,19 +1051,20 @@
 
       function replayIntro() {
         wordmark.classList.remove("animate", "visible");
-        if (promise) promise.classList.remove("animate", "visible");
+        if (promise) {
+          promise.classList.remove("animate", "visible");
+          promise.hidden = true;
+        }
         beam.classList.remove("play");
         void wordmark.offsetWidth;
         void beam.offsetWidth;
         if (reduceMotion) {
           wordmark.classList.add("visible");
-          if (promise) promise.classList.add("visible");
           beam.classList.add("play");
           return;
         }
         beam.classList.add("play");
         wordmark.classList.add("animate");
-        if (promise) promise.classList.add("animate");
       }
 
       function hideAllScreens() {
@@ -1098,6 +1099,10 @@
         screen1.setAttribute("aria-hidden", "true");
         wordmark.classList.remove("animate");
         wordmark.classList.add("visible");
+        if (promise) {
+          promise.classList.remove("animate", "visible");
+          promise.hidden = true;
+        }
         screen2.classList.add("active");
         advanced = true;
         setTimeout(function () {
