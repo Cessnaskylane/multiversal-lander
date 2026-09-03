@@ -930,6 +930,71 @@
     .layer-custom .chip-label {
       width: 100%;
     }
+
+    .verse-kicker {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 246, 0.42);
+      text-align: center;
+    }
+    .verse-screen .screen-title {
+      margin: 0;
+      letter-spacing: 0.28em;
+      color: var(--line);
+    }
+    .verse-stage {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .verse-screen .portrait-wrap {
+      width: min(42vw, 168px);
+      max-width: 168px;
+    }
+    .verse-agent {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--line);
+    }
+    .verse-acts {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 420px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+    .verse-act {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(232, 61, 154, 0.06);
+      color: var(--line);
+      margin: 0;
+      padding: 16px 10px;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+    }
+    .verse-act[aria-pressed="true"] {
+      background: rgba(232, 61, 154, 0.18);
+      box-shadow: 0 0 16px rgba(232, 61, 154, 0.3);
+    }
     .s3-foot {
       position: relative;
       z-index: 2;
@@ -1215,15 +1280,15 @@
           <span class="scenario-label"><strong>Operator</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="concierge" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/scholar.png?v=2" alt="" />
+          <img class="scenario-art" src="assets/scenarios/concierge.png?v=1" alt="" />
           <span class="scenario-label"><strong>Concierge</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="reviewer" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/director.png?v=2" alt="" />
+          <img class="scenario-art" src="assets/scenarios/reviewer.png?v=1" alt="" />
           <span class="scenario-label"><strong>Reviewer</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="chef" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/chef.png?v=2" alt="" />
+          <img class="scenario-art" src="assets/scenarios/chef.png?v=3" alt="" />
           <span class="scenario-label"><strong>Chef</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="security" aria-pressed="false">
@@ -1235,7 +1300,7 @@
           <span class="scenario-label"><strong>Planner</strong></span>
         </button>
         <button type="button" class="scenario" role="option" data-layer="coach" aria-pressed="false">
-          <img class="scenario-art" src="assets/scenarios/coach.png?v=1" alt="" />
+          <img class="scenario-art" src="assets/scenarios/coach.png?v=2" alt="" />
           <span class="scenario-label"><strong>Coach</strong></span>
         </button>
       </div>
@@ -1333,6 +1398,31 @@
         </div>
       </div>
     </div>
+
+    <div id="screen7" class="layer-screen verse-screen" aria-label="Verse" hidden>
+      <div class="s3-bg" aria-hidden="true">
+        <span class="s3-layer l1"></span>
+        <span class="s3-layer l2"></span>
+        <span class="s3-layer l3"></span>
+      </div>
+      <p class="verse-kicker">Verse</p>
+      <h1 class="screen-title" id="verse-name">Instagram</h1>
+      <div class="verse-stage">
+        <div class="portrait-wrap">
+          <div class="portrait">
+            <img id="verse-face" src="assets/scenarios/keanu.png?v=3" alt="" />
+          </div>
+        </div>
+        <p class="verse-agent" id="verse-agent">Keanu</p>
+      </div>
+      <div class="verse-acts" id="verse-acts" role="listbox" aria-label="What to do"></div>
+      <div class="s3-foot">
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-7" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="verse-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1343,6 +1433,7 @@
       var screen4 = document.getElementById("screen4");
       var screen5 = document.getElementById("screen5");
       var screen6 = document.getElementById("screen6");
+      var screen7 = document.getElementById("screen7");
       var wordmark = document.getElementById("wordmark");
       var promise = document.getElementById("promise");
       var beam = document.getElementById("beam");
@@ -1378,7 +1469,7 @@
       }
 
       function hideLayerScreens() {
-        [screen3, screen4, screen5, screen6].forEach(function (el) {
+        [screen3, screen4, screen5, screen6, screen7].forEach(function (el) {
           if (!el) return;
           el.classList.remove("active");
           el.hidden = true;
@@ -1598,23 +1689,154 @@
       function goToScreen5() { showScreen(screen5); }
       function goToScreen6() { showScreen(screen6); }
 
+      var lastLayerScreen = screen5;
+      var selectedAct = null;
+      var verseFace = document.getElementById("verse-face");
+      var verseName = document.getElementById("verse-name");
+      var verseAgent = document.getElementById("verse-agent");
+      var verseActs = document.getElementById("verse-acts");
+      var verseContinue = document.getElementById("verse-continue");
+
+      var wireLabel = {
+        domain: "www.",
+        mail: "Email",
+        tiktok: "TikTok",
+        x: "X",
+        instagram: "Instagram",
+        slack: "Slack",
+        linkedin: "Linked In",
+        inscription: "Inscription"
+      };
+      var wireActs = {
+        instagram: [
+          ["caption", "Draft a caption"],
+          ["comments", "Reply to comments"],
+          ["story", "Cut a story"],
+          ["dms", "Sort the DMs"]
+        ],
+        x: [
+          ["post", "Draft a post"],
+          ["thread", "Reply in a thread"],
+          ["quote", "Quote a take"],
+          ["mentions", "Scan mentions"]
+        ],
+        tiktok: [
+          ["hook", "Draft a hook"],
+          ["caption", "Cut a caption"],
+          ["comments", "Reply to comments"],
+          ["sound", "Suggest a sound"]
+        ],
+        mail: [
+          ["reply", "Draft a reply"],
+          ["inbox", "Sort the inbox"],
+          ["follow", "Write a follow-up"],
+          ["file", "File a thread"]
+        ],
+        slack: [
+          ["message", "Draft a message"],
+          ["summary", "Summarize a channel"],
+          ["thread", "Reply in a thread"],
+          ["standup", "Write a standup"]
+        ],
+        linkedin: [
+          ["post", "Draft a post"],
+          ["comment", "Reply to a comment"],
+          ["note", "Write a note"],
+          ["feed", "Scan the feed"]
+        ],
+        domain: [
+          ["page", "Draft a page"],
+          ["bio", "Write a bio"],
+          ["form", "Answer a form"],
+          ["check", "Check the site"]
+        ],
+        inscription: [
+          ["draft", "Draft an inscription"],
+          ["note", "Write a note"],
+          ["mint", "Watch a mint"],
+          ["hash", "File a hash"]
+        ]
+      };
+
+      function layerLabel() {
+        var pressed = document.querySelector(".scenario[aria-pressed='true']");
+        if (pressed) {
+          var strong = pressed.querySelector("strong");
+          if (strong) return strong.textContent;
+        }
+        if (selectedLayer === "upload") return "Yours";
+        return selectedLayer || "Agent";
+      }
+      function layerFaceSrc() {
+        var pressed = document.querySelector(".scenario[aria-pressed='true']");
+        if (pressed) {
+          var img = pressed.querySelector("img");
+          if (img && img.getAttribute("src")) return img.getAttribute("src");
+        }
+        return agentFace ? agentFace.getAttribute("src") : "";
+      }
+      function renderVerseActs() {
+        var acts = wireActs[selectedWire] || wireActs.instagram;
+        verseActs.innerHTML = "";
+        selectedAct = null;
+        verseContinue.disabled = true;
+        verseContinue.setAttribute("aria-disabled", "true");
+        acts.forEach(function (pair) {
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "verse-act";
+          btn.setAttribute("role", "option");
+          btn.setAttribute("data-act", pair[0]);
+          btn.setAttribute("aria-pressed", "false");
+          btn.textContent = pair[1];
+          btn.addEventListener("click", function () {
+            selectedAct = pair[0];
+            Array.prototype.forEach.call(verseActs.children, function (b) {
+              b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+            });
+            verseContinue.disabled = false;
+            verseContinue.setAttribute("aria-disabled", "false");
+          });
+          verseActs.appendChild(btn);
+        });
+      }
+      function goToScreen7() {
+        verseName.textContent = wireLabel[selectedWire] || selectedWire;
+        verseAgent.textContent = layerLabel();
+        var src = layerFaceSrc();
+        if (src) verseFace.src = src;
+        renderVerseActs();
+        showScreen(screen7);
+      }
       function finishLayer() {
         if (!selectedLayer && !personalityMd) return;
-        hint.textContent =
-          selectedModel +
-          (personalityMd ? " · file" : "") +
-          " · " + selectedWire +
-          (selectedLayer ? " · " + selectedLayer : "");
+        goToScreen7();
       }
 
       document.getElementById("back-4").addEventListener("click", goToScreen3);
       document.getElementById("back-5").addEventListener("click", goToScreen3);
       document.getElementById("back-6").addEventListener("click", goToScreen3);
+      document.getElementById("back-7").addEventListener("click", function () {
+        showScreen(lastLayerScreen || screen3);
+      });
+      verseContinue.addEventListener("click", function () {
+        if (!selectedAct) return;
+        hint.textContent = (verseAgent.textContent || "") + " · " + (verseName.textContent || "") + " · " + selectedAct;
+      });
 
       worldBtn.addEventListener("click", goToScreen3);
-      document.getElementById("pick-upload").addEventListener("click", goToScreen6);
-      document.getElementById("pick-celeb").addEventListener("click", goToScreen5);
-      document.getElementById("pick-skill").addEventListener("click", goToScreen4);
+      document.getElementById("pick-upload").addEventListener("click", function () {
+        lastLayerScreen = screen6;
+        goToScreen6();
+      });
+      document.getElementById("pick-celeb").addEventListener("click", function () {
+        lastLayerScreen = screen5;
+        goToScreen5();
+      });
+      document.getElementById("pick-skill").addEventListener("click", function () {
+        lastLayerScreen = screen4;
+        goToScreen4();
+      });
 
       scenarios.forEach(function (btn) {
         btn.addEventListener("click", function () {
