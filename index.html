@@ -995,6 +995,240 @@
       background: rgba(232, 61, 154, 0.18);
       box-shadow: 0 0 16px rgba(232, 61, 154, 0.3);
     }
+
+    .verse-app {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 420px);
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .verse-screen .screen-title {
+      flex: 0 0 auto;
+    }
+    .app {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .app .verse-acts {
+      width: 100%;
+      padding: 8px 12px 0;
+    }
+    .app-stage {
+      flex: 1 1 auto;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      margin: 0 12px;
+      border: 1px solid rgba(232, 61, 154, 0.5);
+      background: #050508;
+    }
+    .app-stage img.cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 12%;
+      display: block;
+    }
+    .app-meta {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      color: #f4f0f6;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.85);
+      pointer-events: none;
+    }
+    .app-user {
+      margin: 0 0 4px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .app-sub {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.35;
+      color: rgba(244, 240, 246, 0.88);
+    }
+    .app-sound {
+      margin: 8px 0 0;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--line);
+    }
+    .app-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      flex: 0 0 auto;
+      color: #f4f0f6;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .app-bar .dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      flex: 0 0 auto;
+    }
+    .app-bar .dot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 10%;
+      display: block;
+    }
+    .app-bar strong {
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+    .app-bar span {
+      color: rgba(244, 240, 246, 0.45);
+      letter-spacing: 0.08em;
+      text-transform: none;
+    }
+    .out-sheet {
+      position: absolute;
+      inset: auto 0 0 0;
+      max-height: 72%;
+      overflow-y: auto;
+      background: linear-gradient(to top, rgba(5,5,8,0.96) 70%, rgba(5,5,8,0.55));
+      padding: 16px 14px 18px;
+      color: #f4f0f6;
+    }
+    .out-sheet h2 {
+      margin: 0 0 10px;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--line);
+      font-weight: 500;
+    }
+    .out-post {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+      color: #f4f0f6;
+    }
+    .thread-row {
+      margin: 0 0 12px;
+    }
+    .thread-row .who {
+      margin: 0;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 246, 0.45);
+    }
+    .thread-row .inn {
+      margin: 2px 0 4px;
+      font-size: 13px;
+      color: rgba(244, 240, 246, 0.88);
+    }
+    .thread-row .out {
+      margin: 0;
+      padding-left: 10px;
+      border-left: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--line);
+    }
+    .inbox-bucket {
+      margin: 0 0 12px;
+    }
+    .inbox-bucket h3 {
+      margin: 0 0 6px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--line);
+      font-weight: 500;
+    }
+    .story-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+    }
+    .story-frame {
+      border: 1px solid var(--line);
+      aspect-ratio: 9 / 16;
+      display: flex;
+      align-items: flex-end;
+      padding: 8px;
+      background: rgba(232, 61, 154, 0.08);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--line);
+    }
+    .app-web .url {
+      margin: 0 12px 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(232, 61, 154, 0.35);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: rgba(244, 240, 246, 0.55);
+      flex: 0 0 auto;
+    }
+    .app-mail .mail-list,
+    .app-slack .sl-log,
+    .app-x .x-feed {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      margin: 0 12px;
+      border: 1px solid rgba(232, 61, 154, 0.5);
+      padding: 12px;
+      background: #050508;
+    }
+    .mail-item, .sl-msg, .x-tweet {
+      margin: 0 0 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(232, 61, 154, 0.18);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .mail-item:last-child, .sl-msg:last-child, .x-tweet:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+    .mail-item .from, .sl-msg .from, .x-tweet .from {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--line);
+      margin-bottom: 4px;
+    }
+    .app-ord .ord-id {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      margin: 0;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--line);
+    }
+    .out-status {
+      margin: 10px 0 0;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 246, 0.38);
+    }
     .s3-foot {
       position: relative;
       z-index: 2;
@@ -1405,21 +1639,29 @@
         <span class="s3-layer l2"></span>
         <span class="s3-layer l3"></span>
       </div>
-      <p class="verse-kicker">Verse</p>
-      <h1 class="screen-title" id="verse-name">Instagram</h1>
-      <div class="verse-stage">
-        <div class="portrait-wrap">
-          <div class="portrait">
-            <img id="verse-face" src="assets/scenarios/keanu.png?v=3" alt="" />
-          </div>
-        </div>
-        <p class="verse-agent" id="verse-agent">Keanu</p>
-      </div>
-      <div class="verse-acts" id="verse-acts" role="listbox" aria-label="What to do"></div>
+      <p class="verse-kicker" id="verse-kicker">Grok</p>
+      <h1 class="screen-title" id="verse-name">TikTok</h1>
+      <div class="verse-app" id="verse-app"></div>
       <div class="s3-foot">
         <div class="nav-pair">
           <button type="button" class="back-btn" id="back-7" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
-          <button type="button" class="world-btn" id="verse-continue" disabled aria-disabled="true">Continue <span class="arrow" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="screen8" class="layer-screen verse-screen" aria-label="Job" hidden>
+      <div class="s3-bg" aria-hidden="true">
+        <span class="s3-layer l1"></span>
+        <span class="s3-layer l2"></span>
+        <span class="s3-layer l3"></span>
+      </div>
+      <p class="verse-kicker" id="out-kicker">TikTok</p>
+      <h1 class="screen-title" id="out-name">Draft a hook</h1>
+      <div class="verse-app" id="out-app"></div>
+      <div class="s3-foot">
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-8" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+          <button type="button" class="world-btn" id="out-copy">Copy</button>
         </div>
       </div>
     </div>
@@ -1434,6 +1676,7 @@
       var screen5 = document.getElementById("screen5");
       var screen6 = document.getElementById("screen6");
       var screen7 = document.getElementById("screen7");
+      var screen8 = document.getElementById("screen8");
       var wordmark = document.getElementById("wordmark");
       var promise = document.getElementById("promise");
       var beam = document.getElementById("beam");
@@ -1469,7 +1712,7 @@
       }
 
       function hideLayerScreens() {
-        [screen3, screen4, screen5, screen6, screen7].forEach(function (el) {
+        [screen3, screen4, screen5, screen6, screen7, screen8].forEach(function (el) {
           if (!el) return;
           el.classList.remove("active");
           el.hidden = true;
@@ -1689,14 +1932,25 @@
       function goToScreen5() { showScreen(screen5); }
       function goToScreen6() { showScreen(screen6); }
 
+
       var lastLayerScreen = screen5;
       var selectedAct = null;
-      var verseFace = document.getElementById("verse-face");
       var verseName = document.getElementById("verse-name");
-      var verseAgent = document.getElementById("verse-agent");
-      var verseActs = document.getElementById("verse-acts");
-      var verseContinue = document.getElementById("verse-continue");
+      var verseKicker = document.getElementById("verse-kicker");
+      var verseApp = document.getElementById("verse-app");
+      var outName = document.getElementById("out-name");
+      var outKicker = document.getElementById("out-kicker");
+      var outApp = document.getElementById("out-app");
+      var outCopyBtn = document.getElementById("out-copy");
+      var verseCopy = "";
 
+      var modelLabel = {
+        grok: "Grok",
+        gpt: "GPT",
+        gemini: "Gemini",
+        claude: "Claude",
+        deepseek: "DeepSeek"
+      };
       var wireLabel = {
         domain: "www.",
         mail: "Email",
@@ -1758,6 +2012,227 @@
         ]
       };
 
+      var VOICE_BASE = {
+        hook: "Watch to the cut.",
+        caption: "Kept it short. The picture does the rest.",
+        post: "No announcement. Just the work.",
+        quote: "Noted. Here is the shorter version.",
+        replySoft: "That is the idea.",
+        replyAsk: "When it is ready. Not before.",
+        replyLove: "It was the light.",
+        story1: "now",
+        story2: "the cut",
+        story3: "good night",
+        sound: "Original · room tone",
+        dmYes: "Send the work. I will read it.",
+        dmNo: "Not this. Good luck with it.",
+        mail: "Read this twice. The answer is the second line.",
+        slack: "Here. We are fine. Details on request.",
+        bio: "A named voice. Prefers the short version.",
+        standup: "Yesterday: the work. Today: the work. Blockers: none.",
+        summary: "Twelve messages. One decision. The rest was weather.",
+        page: "A page. One idea. No extra doors.",
+        note: "Short note. The rest can wait.",
+        hash: "Filed. The hash is the record.",
+        check: "The site holds. Nothing loud is wrong.",
+        follow: "Following up once. Then I wait."
+      };
+      var VOICES = {
+        keanu: {
+          hook: "Stay until the city gets quiet.",
+          caption: "Left the lights on. Walked until they were not my problem. Good night.",
+          post: "Tuesday. No news. That is the post.",
+          quote: "I heard it. I will keep the useful part.",
+          replySoft: "That is the idea.",
+          replyAsk: "When it is ready. Not before.",
+          replyLove: "It was just the window.",
+          story1: "now",
+          story2: "the city does the talking",
+          story3: "good night",
+          sound: "Engine idle · original",
+          dmYes: "Send the work. I will read it.",
+          dmNo: "I do not do shoutouts. Good luck with the drop.",
+          mail: "Got this. The real question is in the next line.",
+          slack: "Here. Short version: we are fine.",
+          bio: "Actor. Motorcycles. Tries not to waste the light.",
+          standup: "Yesterday: the cut. Today: the cut. Blockers: none.",
+          page: "A quiet page. One photograph. One line.",
+          note: "Keep it. I will look tonight."
+        },
+        elsa: {
+          hook: "The air held. I let it.",
+          caption: "Cold is a kind of quiet.",
+          post: "The weather did the work. I stood still.",
+          quote: "I will not thaw for the noise.",
+          replySoft: "Then it is working.",
+          replyAsk: "When the ice says so.",
+          replyLove: "It is only weather.",
+          story1: "still",
+          story2: "the fjord",
+          story3: "good night",
+          sound: "Ice over water · original",
+          dmYes: "Write. I will read it.",
+          dmNo: "No. That is not my season.",
+          mail: "Noted. The answer is the shorter one.",
+          slack: "Here. The temperature held. So did I.",
+          bio: "Prefers the cold. Speaks once.",
+          standup: "Yesterday: the freeze. Today: the freeze. Blockers: thaw.",
+          page: "White field. One line. The rest is frost.",
+          note: "Filed under winter."
+        },
+        barbie: {
+          hook: "Pink is a decision.",
+          caption: "Pink is a decision. So is showing up.",
+          post: "I dressed for the argument. Then I skipped it.",
+          quote: "Cute. Now the real sentence.",
+          replySoft: "Correct.",
+          replyAsk: "Soon. In this color.",
+          replyLove: "Thank you. I know.",
+          story1: "look",
+          story2: "the set",
+          story3: "good night",
+          sound: "Studio pop · original",
+          dmYes: "Send the brief. Make it pink or make it good.",
+          dmNo: "Not a collab. A no.",
+          bio: "The doll who read the contract.",
+          page: "A landing page that does not apologize."
+        },
+        wednesday: {
+          hook: "Smile if you must. I will not.",
+          caption: "I came for the silence. It was late.",
+          post: "Joy is optional. Precision is not.",
+          quote: "Wrong. Here is the correction.",
+          replySoft: "Unfortunately, yes.",
+          replyAsk: "Never is a time.",
+          replyLove: "Do not.",
+          story1: "watch",
+          story2: "the dark",
+          story3: "good night",
+          sound: "Cello, dry · original",
+          dmNo: "No. And no.",
+          bio: "Allergic to group photos."
+        },
+        morgan: {
+          hook: "Listen. Then decide.",
+          caption: "The work speaks. I only read it aloud.",
+          post: "Nothing extra. That is the point.",
+          replySoft: "Yes.",
+          replyAsk: "In time.",
+          replyLove: "The light did that.",
+          sound: "Low room · original",
+          bio: "Voice first. Then the rest."
+        },
+        bill: {
+          hook: "Anyway.",
+          caption: "I showed up. That was the joke.",
+          post: "Still here. Unexpected, even to me.",
+          replySoft: "Sure.",
+          replyAsk: "After lunch. Maybe.",
+          replyLove: "Okay.",
+          sound: "Hotel piano · original",
+          bio: "Deadpan. On time when it matters."
+        },
+        elisabeth: {
+          hook: "The work continues.",
+          caption: "The work continues. The weather is incidental.",
+          post: "Duty first. The rest is furniture.",
+          replySoft: "Thank you.",
+          replyAsk: "In due course.",
+          replyLove: "Kind of you.",
+          sound: "Hall, empty · original",
+          bio: "Service. Then silence."
+        },
+        zendaya: {
+          hook: "Look once. Then look away.",
+          caption: "Clean line. No extra glitter.",
+          post: "I posted the work. Not the noise around it.",
+          replyAsk: "When the cut is right.",
+          sound: "Night walk · original",
+          bio: "Precise. Current. Done."
+        },
+        sabrina: {
+          hook: "One chorus. Then the dark.",
+          caption: "Sequins, then the quiet after.",
+          post: "The show ended. I kept the lights for a minute.",
+          sound: "Crowd, then none · original",
+          bio: "Pop, then the hallway."
+        },
+        timothee: {
+          hook: "A small voice in a large room.",
+          caption: "I left the sentence unfinished. It was better.",
+          post: "Soft on purpose.",
+          sound: "Page turn · original",
+          bio: "Reads more than he posts."
+        },
+        sydney: {
+          hook: "Night first.",
+          caption: "The city was louder. I was not.",
+          post: "Sharp, then home.",
+          sound: "Club, outside · original",
+          bio: "Night shift. Clean edges."
+        },
+        bluey: {
+          hook: "One more game.",
+          caption: "We played until the sun sat down. Then a bit more.",
+          post: "Keep it kind. That is the rule.",
+          replySoft: "Yep!",
+          replyAsk: "After snacks.",
+          replyLove: "Love you too.",
+          sound: "Backyard · original",
+          dmNo: "Mum says not today.",
+          bio: "Games. Sisters. Blue sky."
+        },
+        chef: {
+          caption: "Salt. Heat. That is the post.",
+          hook: "Taste first.",
+          post: "The plate is the argument.",
+          bio: "Cooks. Does not over-explain."
+        },
+        coach: {
+          caption: "Three sets. Water. That is the post.",
+          hook: "Again.",
+          post: "Form first. Then speed.",
+          standup: "Yesterday: legs. Today: lungs. Blockers: none."
+        },
+        concierge: {
+          caption: "Arranged. You do not need the how.",
+          hook: "This way.",
+          mail: "Booked. Confirmation in the second line."
+        },
+        reviewer: {
+          caption: "I watched it twice. Once was not enough to be fair.",
+          hook: "The cut that matters.",
+          post: "One note. Then I stop."
+        },
+        writer: {
+          caption: "One sentence. Then a door.",
+          hook: "Start later than you think.",
+          page: "A page with one job."
+        }
+      };
+
+      function voiceOf(key) {
+        var own = VOICES[key] || {};
+        var out = {};
+        Object.keys(VOICE_BASE).forEach(function (k) {
+          out[k] = own[k] || VOICE_BASE[k];
+        });
+        return out;
+      }
+      function esc(s) {
+        return String(s == null ? "" : s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/"/g, "&quot;");
+      }
+      function handleOf(name) {
+        var h = String(name || "agent").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        h = h.replace(/[^a-z0-9]+/g, "");
+        return "@" + (h || "agent");
+      }
+      function siteOf(name) {
+        return handleOf(name).slice(1) + ".multiversal.ai";
+      }
       function layerLabel() {
         var pressed = document.querySelector(".scenario[aria-pressed='true']");
         if (pressed) {
@@ -1767,6 +2242,9 @@
         if (selectedLayer === "upload") return "Yours";
         return selectedLayer || "Agent";
       }
+      function layerKey() {
+        return (selectedLayer || "agent").toLowerCase();
+      }
       function layerFaceSrc() {
         var pressed = document.querySelector(".scenario[aria-pressed='true']");
         if (pressed) {
@@ -1775,43 +2253,169 @@
         }
         return agentFace ? agentFace.getAttribute("src") : "";
       }
-      function renderVerseActs() {
+      function actLabelOf(act) {
         var acts = wireActs[selectedWire] || wireActs.instagram;
-        verseActs.innerHTML = "";
-        selectedAct = null;
-        verseContinue.disabled = true;
-        verseContinue.setAttribute("aria-disabled", "true");
+        for (var i = 0; i < acts.length; i++) {
+          if (acts[i][0] === act) return acts[i][1];
+        }
+        return act;
+      }
+      function actsHtml() {
+        var acts = wireActs[selectedWire] || wireActs.instagram;
+        var html = '<div class="verse-acts" role="listbox" aria-label="What to do">';
         acts.forEach(function (pair) {
-          var btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "verse-act";
-          btn.setAttribute("role", "option");
-          btn.setAttribute("data-act", pair[0]);
-          btn.setAttribute("aria-pressed", "false");
-          btn.textContent = pair[1];
+          html += '<button type="button" class="verse-act" data-act="' + esc(pair[0]) + '">' + esc(pair[1]) + "</button>";
+        });
+        return html + "</div>";
+      }
+      function bindActs(root) {
+        Array.prototype.forEach.call(root.querySelectorAll(".verse-act"), function (btn) {
           btn.addEventListener("click", function () {
-            selectedAct = pair[0];
-            Array.prototype.forEach.call(verseActs.children, function (b) {
-              b.setAttribute("aria-pressed", b === btn ? "true" : "false");
-            });
-            verseContinue.disabled = false;
-            verseContinue.setAttribute("aria-disabled", "false");
+            selectedAct = btn.getAttribute("data-act");
+            goToScreen8();
           });
-          verseActs.appendChild(btn);
         });
       }
-      function goToScreen7() {
-        verseName.textContent = wireLabel[selectedWire] || selectedWire;
-        verseAgent.textContent = layerLabel();
+
+      function incoming() {
+        return [
+          { who: "@lena", text: "this is so you", k: "replySoft" },
+          { who: "@miles", text: "when is the next one", k: "replyAsk" },
+          { who: "@june", text: "wait this photo", k: "replyLove" }
+        ];
+      }
+      function threadHtml(v) {
+        var rows = incoming().map(function (c) {
+          return '<div class="thread-row"><p class="who">' + esc(c.who) + '</p><p class="inn">' + esc(c.text) + '</p><p class="out">' + esc(v[c.k]) + "</p></div>";
+        }).join("");
+        return '<div class="out-sheet"><h2>Replies</h2>' + rows + '<p class="out-status">draft · not sent</p></div>';
+      }
+      function inboxHtml(v) {
+        var rows =
+          '<div class="inbox-bucket"><h3>Reply</h3><div class="thread-row"><p class="who">@sam</p><p class="inn">collab on a drop?</p><p class="out">' + esc(v.dmNo) + '</p></div></div>' +
+          '<div class="inbox-bucket"><h3>Later</h3><div class="thread-row"><p class="who">@press</p><p class="inn">twenty minutes next week?</p><p class="out">' + esc(v.dmYes) + '</p></div></div>' +
+          '<div class="inbox-bucket"><h3>Skip</h3><div class="thread-row"><p class="who">@grid</p><p class="inn">you won a giveaway</p></div></div>';
+        return '<div class="out-sheet"><h2>Sorted</h2>' + rows + '<p class="out-status">draft · not sent</p></div>';
+      }
+      function storyHtml(v) {
+        return '<div class="out-sheet"><h2>Story</h2><div class="story-row"><div class="story-frame">' + esc(v.story1) + '</div><div class="story-frame">' + esc(v.story2) + '</div><div class="story-frame">' + esc(v.story3) + '</div></div><p class="out-status">draft · not sent</p></div>';
+      }
+      function postSheet(title, body) {
+        return '<div class="out-sheet"><h2>' + esc(title) + '</h2><p class="out-post">' + esc(body) + '</p><p class="out-status">draft · not sent</p></div>';
+      }
+
+      function copyForAct(act, v) {
+        if (act === "caption" || act === "hook") return v[act] || v.caption;
+        if (act === "post" || act === "quote" || act === "message" || act === "reply" || act === "follow" || act === "note" || act === "draft" || act === "page" || act === "bio" || act === "check" || act === "hash" || act === "standup" || act === "summary") {
+          return v[act] || v.post;
+        }
+        if (act === "sound") return v.sound;
+        if (act === "comments" || act === "comment" || act === "thread" || act === "form") {
+          return incoming().map(function (c) { return c.who + ": " + c.text + "\n" + v[c.k]; }).join("\n\n");
+        }
+        if (act === "dms" || act === "inbox" || act === "feed" || act === "file" || act === "mentions" || act === "mint") {
+          return "Reply\n@sam: collab on a drop?\n" + v.dmNo + "\n\nLater\n@press: twenty minutes next week?\n" + v.dmYes + "\n\nSkip\n@grid: you won a giveaway";
+        }
+        if (act === "story") return [v.story1, v.story2, v.story3].join(" · ");
+        return v.caption;
+      }
+
+      function overlayFor(act, v) {
+        if (act === "comments" || act === "comment" || act === "thread" || act === "form") return threadHtml(v);
+        if (act === "dms" || act === "inbox" || act === "feed" || act === "file" || act === "mentions" || act === "mint") return inboxHtml(v);
+        if (act === "story") return storyHtml(v);
+        if (act === "sound") return postSheet("Sound", v.sound);
+        if (act === "hook") return postSheet("Hook", v.hook);
+        if (act === "caption") return postSheet("Caption", v.caption);
+        if (act === "bio") return postSheet("Bio", v.bio);
+        if (act === "page") return postSheet("Page", v.page);
+        if (act === "check") return postSheet("Check", v.check);
+        if (act === "hash") return postSheet("Hash", v.hash);
+        if (act === "standup") return postSheet("Standup", v.standup);
+        if (act === "summary") return postSheet("Summary", v.summary);
+        if (act === "mail" || act === "reply") return postSheet("Reply", v.mail);
+        if (act === "follow") return postSheet("Follow-up", v.follow);
+        if (act === "note" || act === "draft") return postSheet("Note", v.note);
+        if (act === "quote") return postSheet("Quote", v.quote);
+        if (act === "message") return postSheet("Message", v.slack);
+        if (act === "post") return postSheet("Post", v.post);
+        return postSheet("Draft", v.caption);
+      }
+
+      function faceStage(src, extra, overlay) {
+        return '<div class="app-stage"><img class="cover" alt="" src="' + esc(src) + '">' + (extra || "") + (overlay || "") + "</div>";
+      }
+
+      function paintApp(root, act) {
+        var name = layerLabel();
         var src = layerFaceSrc();
-        if (src) verseFace.src = src;
-        renderVerseActs();
+        var handle = handleOf(name);
+        var v = voiceOf(layerKey());
+        var wire = selectedWire;
+        var overlay = act ? overlayFor(act, v) : "";
+        var html = "";
+        if (wire === "tiktok") {
+          html = '<div class="app app-tt">' +
+            faceStage(src, '<div class="app-meta"><p class="app-user">' + esc(handle) + '</p><p class="app-sub">' + esc(act ? "" : "tap a job") + '</p><p class="app-sound">' + esc(act === "sound" ? v.sound : ("original sound · " + name.toLowerCase())) + "</p></div>", overlay) +
+            (act ? "" : actsHtml()) + "</div>";
+        } else if (wire === "instagram") {
+          html = '<div class="app app-ig"><div class="app-bar"><span class="dot"><img alt="" src="' + esc(src) + '"></span><strong>' + esc(handle) + '</strong></div>' +
+            faceStage(src, act ? "" : '<div class="app-meta"><p class="app-sub">tap a job</p></div>', overlay) +
+            (act ? "" : actsHtml()) + "</div>";
+        } else if (wire === "x") {
+          html = '<div class="app app-x"><div class="app-bar"><span class="dot"><img alt="" src="' + esc(src) + '"></span><strong>' + esc(handle) + '</strong><span> · ' + esc(name) + "</span></div>" +
+            '<div class="x-feed">' + (act ? overlay : ('<div class="x-tweet"><span class="from">' + esc(handle) + '</span>tap a job. the draft lands here.</div>')) + "</div>" +
+            (act ? "" : actsHtml()) + "</div>";
+        } else if (wire === "mail") {
+          html = '<div class="app app-mail"><div class="app-bar"><strong>Inbox</strong><span> · ' + esc(name) + "</span></div>" +
+            '<div class="mail-list">' + (act ? overlay : ('<div class="mail-item"><span class="from">@press</span>twenty minutes next week?</div><div class="mail-item"><span class="from">@sam</span>collab on a drop?</div><div class="mail-item"><span class="from">@grid</span>you won a giveaway</div>')) + "</div>" +
+            (act ? "" : actsHtml()) + "</div>";
+        } else if (wire === "slack") {
+          html = '<div class="app app-slack"><div class="app-bar"><strong>#multiversal</strong><span> · ' + esc(name) + "</span></div>" +
+            '<div class="sl-log">' + (act ? overlay : ('<div class="sl-msg"><span class="from">' + esc(handle) + '</span>here. tap a job.</div>')) + "</div>" +
+            (act ? "" : actsHtml()) + "</div>";
+        } else if (wire === "linkedin") {
+          html = '<div class="app app-li"><div class="app-bar"><span class="dot"><img alt="" src="' + esc(src) + '"></span><strong>' + esc(name) + '</strong><span> · layer</span></div>' +
+            faceStage(src, act ? "" : '<div class="app-meta"><p class="app-sub">start a post</p></div>', overlay) +
+            (act ? "" : actsHtml()) + "</div>";
+        } else if (wire === "inscription") {
+          html = '<div class="app app-ord">' +
+            faceStage(src, '<p class="ord-id">inscription · ' + esc(handle) + "</p>" + (act ? "" : '<div class="app-meta"><p class="app-sub">tap a job</p></div>'), overlay) +
+            (act ? "" : actsHtml()) + "</div>";
+        } else {
+          html = '<div class="app app-web"><p class="url">' + esc(siteOf(name)) + "</p>" +
+            faceStage(src, act ? "" : '<div class="app-meta"><p class="app-user">' + esc(name) + '</p><p class="app-sub">tap a job</p></div>', overlay) +
+            (act ? "" : actsHtml()) + "</div>";
+        }
+        root.innerHTML = html;
+        if (!act) bindActs(root);
+        if (act) verseCopy = copyForAct(act, v);
+        else verseCopy = "";
+      }
+
+      function goToScreen7() {
+        var model = modelLabel[selectedModel] || selectedModel;
+        var door = wireLabel[selectedWire] || selectedWire;
+        verseKicker.textContent = model;
+        verseName.textContent = door;
+        screen7.setAttribute("data-skin", selectedWire || "domain");
+        paintApp(verseApp, null);
         showScreen(screen7);
+      }
+      function goToScreen8() {
+        if (!selectedAct) return;
+        var door = wireLabel[selectedWire] || selectedWire;
+        outKicker.textContent = door;
+        outName.textContent = actLabelOf(selectedAct);
+        screen8.setAttribute("data-skin", selectedWire || "domain");
+        paintApp(outApp, selectedAct);
+        showScreen(screen8);
       }
       function finishLayer() {
         if (!selectedLayer && !personalityMd) return;
         goToScreen7();
       }
+
 
       document.getElementById("back-4").addEventListener("click", goToScreen3);
       document.getElementById("back-5").addEventListener("click", goToScreen3);
@@ -1819,9 +2423,19 @@
       document.getElementById("back-7").addEventListener("click", function () {
         showScreen(lastLayerScreen || screen3);
       });
-      verseContinue.addEventListener("click", function () {
-        if (!selectedAct) return;
-        hint.textContent = (verseAgent.textContent || "") + " · " + (verseName.textContent || "") + " · " + selectedAct;
+      document.getElementById("back-8").addEventListener("click", goToScreen7);
+      outCopyBtn.addEventListener("click", function () {
+        if (!verseCopy) return;
+        var restore = outCopyBtn.textContent;
+        function done() {
+          outCopyBtn.textContent = "Copied";
+          setTimeout(function () { outCopyBtn.textContent = restore; }, 1200);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(verseCopy).then(done).catch(done);
+        } else {
+          done();
+        }
       });
 
       worldBtn.addEventListener("click", goToScreen3);
