@@ -1292,8 +1292,8 @@
         padding: 0;
       }
       .portrait-wrap {
-        width: min(100%, 230px);
-        max-width: 230px;
+        width: min(100%, 200px);
+        max-width: 200px;
       }
       .chip {
         padding: 7px 10px;
@@ -1311,6 +1311,30 @@
       #screen2.tray-open .personalize {
         max-width: 230px;
       }
+      /* When a tray is open, shrink the face so chips clear Continue */
+      #screen2.tray-open {
+        place-content: start;
+        place-items: center;
+        padding-top: max(56px, calc(env(safe-area-inset-top, 0px) + 40px));
+        padding-bottom: max(120px, calc(env(safe-area-inset-bottom, 0px) + 100px));
+      }
+      #screen2.tray-open .s2-stack {
+        margin-top: 0;
+        gap: 8px;
+      }
+      #screen2.tray-open .stage {
+        gap: 10px;
+      }
+      #screen2.tray-open .portrait-wrap {
+        width: min(100%, 148px);
+        max-width: 148px;
+      }
+      #screen2.tray-open .screen-title {
+        margin-bottom: 0;
+      }
+      #screen2.tray-open .tray-slot {
+        z-index: 9;
+      }
       .tray-slot {
         width: min(calc(100vw - 24px), 360px);
       }
@@ -1324,8 +1348,8 @@
         max-height: min(46dvh, 400px);
       }
       .portrait-wrap {
-        width: min(100%, 230px);
-        max-width: 230px;
+        width: min(100%, 200px);
+        max-width: 200px;
       }
       .hint {
         display: none;
@@ -1343,8 +1367,10 @@
         padding-bottom: max(108px, calc(env(safe-area-inset-bottom, 0px) + 88px));
       }
       #screen2 {
-        padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
+        padding: 8px 12px max(100px, calc(env(safe-area-inset-bottom, 0px) + 84px));
         place-items: center;
+        place-content: start;
+        align-content: start;
       }
       .s2-stack {
         margin: 0;
@@ -1682,7 +1708,7 @@
         <span class="s3-layer l3"></span>
       </div>
       <p class="verse-kicker" id="out-kicker">TikTok</p>
-      <h1 class="screen-title" id="out-name">Draft a hook</h1>
+      <h1 class="screen-title" id="out-name">Script a video</h1>
       <div class="verse-app" id="out-app"></div>
       <div class="s3-foot">
         <div class="nav-pair">
@@ -1989,52 +2015,52 @@
       };
       var wireActs = {
         instagram: [
-          ["caption", "Draft a caption"],
+          ["caption", "Write a caption"],
           ["comments", "Reply to comments"],
-          ["story", "Cut a story"],
+          ["story", "Make a story"],
           ["dms", "Sort the DMs"]
         ],
         x: [
-          ["post", "Draft a post"],
+          ["post", "Write a post"],
           ["thread", "Reply in a thread"],
-          ["quote", "Quote a take"],
-          ["mentions", "Scan mentions"]
+          ["quote", "Quote a post"],
+          ["mentions", "Check mentions"]
         ],
         tiktok: [
-          ["hook", "Draft a hook"],
-          ["caption", "Cut a caption"],
+          ["hook", "Script a video"],
+          ["caption", "Write a caption"],
           ["comments", "Reply to comments"],
-          ["sound", "Suggest a sound"]
+          ["sound", "Pick a sound"]
         ],
         mail: [
-          ["reply", "Draft a reply"],
+          ["reply", "Write a reply"],
           ["inbox", "Sort the inbox"],
           ["follow", "Write a follow-up"],
-          ["file", "File a thread"]
+          ["file", "Archive a thread"]
         ],
         slack: [
-          ["message", "Draft a message"],
+          ["message", "Write a message"],
           ["summary", "Summarize a channel"],
           ["thread", "Reply in a thread"],
           ["standup", "Write a standup"]
         ],
         linkedin: [
-          ["post", "Draft a post"],
+          ["post", "Write a post"],
           ["comment", "Reply to a comment"],
-          ["note", "Write a note"],
+          ["note", "Write a connection note"],
           ["feed", "Scan the feed"]
         ],
         domain: [
-          ["page", "Draft a page"],
+          ["page", "Write a page"],
           ["bio", "Write a bio"],
-          ["form", "Answer a form"],
+          ["form", "Answer a contact"],
           ["check", "Check the site"]
         ],
         inscription: [
-          ["draft", "Draft an inscription"],
+          ["draft", "Write an inscription"],
           ["note", "Write a note"],
           ["mint", "Watch a mint"],
-          ["hash", "File a hash"]
+          ["hash", "Save the hash"]
         ]
       };
 
@@ -2347,11 +2373,12 @@
       }
 
       function overlayFor(act, v) {
-        if (act === "comments" || act === "comment" || act === "thread" || act === "form") return threadHtml(v);
+        if (act === "comments" || act === "comment" || act === "thread") return threadHtml(v);
+        if (act === "form") return postSheet("Contact", v.mail);
         if (act === "dms" || act === "inbox" || act === "feed" || act === "file" || act === "mentions" || act === "mint") return inboxHtml(v);
         if (act === "story") return storyHtml(v);
         if (act === "sound") return postSheet("Sound", v.sound);
-        if (act === "hook") return postSheet("Hook", v.hook);
+        if (act === "hook") return postSheet("Script", v.hook);
         if (act === "caption") return postSheet("Caption", v.caption);
         if (act === "bio") return postSheet("Bio", v.bio);
         if (act === "page") return postSheet("Page", v.page);
