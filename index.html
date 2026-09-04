@@ -866,7 +866,7 @@
     .scenario {
       appearance: none;
       position: relative;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(232, 61, 154, 0.38);
       background: #0a0a0e;
       color: var(--text);
       border-radius: 0;
@@ -880,13 +880,30 @@
       height: auto;
       min-height: 0;
       align-self: start;
+      box-shadow: none;
       transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
-    .scenario:hover {
+    .scenario:hover,
+    .scenario:focus-visible {
       border-color: var(--line);
+      box-shadow:
+        0 0 0 1px rgba(232, 61, 154, 0.55),
+        0 0 22px rgba(232, 61, 154, 0.45);
+      outline: none;
+      z-index: 2;
     }
     .scenario[aria-pressed="true"] {
       border-color: var(--line);
+      box-shadow:
+        0 0 0 2px rgba(232, 61, 154, 0.95),
+        0 0 28px rgba(232, 61, 154, 0.65);
+      z-index: 3;
+    }
+    .scenario[aria-pressed="true"]:hover,
+    .scenario[aria-pressed="true"]:focus-visible {
+      box-shadow:
+        0 0 0 2px rgba(232, 61, 154, 0.95),
+        0 0 34px rgba(232, 61, 154, 0.8);
     }
     .scenario-art {
       position: absolute;
