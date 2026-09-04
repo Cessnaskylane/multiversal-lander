@@ -1311,8 +1311,22 @@
       #screen2.tray-open .personalize {
         max-width: 230px;
       }
+      /* Keep tray in the centered column (not absolute — that floated the face high) */
       .tray-slot {
-        width: min(calc(100vw - 24px), 360px);
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        z-index: 7;
+      }
+      /* Smaller face when tray is open — still centered in the stack */
+      #screen2.tray-open .portrait-wrap {
+        width: min(100%, 160px);
+        max-width: 160px;
+      }
+      #screen2.tray-open {
+        padding-bottom: max(110px, calc(env(safe-area-inset-bottom, 0px) + 92px));
       }
       .side-input {
         font-size: 12px;
@@ -1345,6 +1359,7 @@
       #screen2 {
         padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
         place-items: center;
+        place-content: center;
       }
       .s2-stack {
         margin: 0;
