@@ -1292,8 +1292,8 @@
         padding: 0;
       }
       .portrait-wrap {
-        width: min(100%, 200px);
-        max-width: 200px;
+        width: min(100%, 230px);
+        max-width: 230px;
       }
       .chip {
         padding: 7px 10px;
@@ -1311,30 +1311,6 @@
       #screen2.tray-open .personalize {
         max-width: 230px;
       }
-      /* When a tray is open, shrink the face so chips clear Continue */
-      #screen2.tray-open {
-        place-content: start;
-        place-items: center;
-        padding-top: max(56px, calc(env(safe-area-inset-top, 0px) + 40px));
-        padding-bottom: max(120px, calc(env(safe-area-inset-bottom, 0px) + 100px));
-      }
-      #screen2.tray-open .s2-stack {
-        margin-top: 0;
-        gap: 8px;
-      }
-      #screen2.tray-open .stage {
-        gap: 10px;
-      }
-      #screen2.tray-open .portrait-wrap {
-        width: min(100%, 148px);
-        max-width: 148px;
-      }
-      #screen2.tray-open .screen-title {
-        margin-bottom: 0;
-      }
-      #screen2.tray-open .tray-slot {
-        z-index: 9;
-      }
       .tray-slot {
         width: min(calc(100vw - 24px), 360px);
       }
@@ -1348,8 +1324,8 @@
         max-height: min(46dvh, 400px);
       }
       .portrait-wrap {
-        width: min(100%, 200px);
-        max-width: 200px;
+        width: min(100%, 230px);
+        max-width: 230px;
       }
       .hint {
         display: none;
@@ -1367,16 +1343,15 @@
         padding-bottom: max(108px, calc(env(safe-area-inset-bottom, 0px) + 88px));
       }
       #screen2 {
-        padding: 8px 12px max(100px, calc(env(safe-area-inset-bottom, 0px) + 84px));
+        padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
         place-items: center;
-        place-content: start;
-        align-content: start;
       }
       .s2-stack {
         margin: 0;
         width: min(100%, 280px);
       }
     }
+
   </style>
 </head>
 <body>
