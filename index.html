@@ -44,7 +44,11 @@
       opacity: 0;
       pointer-events: none;
     }
-    .mark.visible { opacity: 1; }
+    .mark.visible {
+      opacity: 1;
+      pointer-events: auto;
+      cursor: pointer;
+    }
     .mark.animate { animation: fadeMark 1.1s ease 0.85s forwards; }
     .mark .accent {
       color: var(--line);
@@ -1334,7 +1338,7 @@
 </head>
 <body>
   <div class="frame">
-    <p class="mark" id="wordmark"><span class="accent">Multi</span>versal <span class="accent">.ai</span></p>
+    <p class="mark" id="wordmark" role="link" tabindex="0" aria-label="Back to start" title="multiversal.ai"><span class="accent">Multi</span>versal <span class="accent">.ai</span></p>
     <p class="promise" id="promise">A named voice you put on Grok.</p>
 
     <div id="screen1" aria-label="Door">
@@ -1446,6 +1450,11 @@
         <button type="button" class="layer-box" id="pick-upload">Upload layer</button>
         <button type="button" class="layer-box" id="pick-celeb">Celebrity layers</button>
         <button type="button" class="layer-box" id="pick-skill">Skill layers</button>
+      </div>
+      <div class="s3-foot" style="position:absolute;left:0;right:0;bottom:max(20px, env(safe-area-inset-bottom, 0px));">
+        <div class="nav-pair">
+          <button type="button" class="back-btn" id="back-3" aria-label="Back"><span class="arrow" aria-hidden="true"></span> Back</button>
+        </div>
       </div>
     </div>
 
@@ -2417,7 +2426,19 @@
       }
 
 
+      document.getElementById("back-3").addEventListener("click", goToScreen2);
       document.getElementById("back-4").addEventListener("click", goToScreen3);
+      wordmark.addEventListener("click", function () {
+        if (!wordmark.classList.contains("visible")) return;
+        goToScreen1();
+      });
+      wordmark.addEventListener("keydown", function (e) {
+        if (!wordmark.classList.contains("visible")) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          goToScreen1();
+        }
+      });
       document.getElementById("back-5").addEventListener("click", goToScreen3);
       document.getElementById("back-6").addEventListener("click", goToScreen3);
       document.getElementById("back-7").addEventListener("click", function () {
