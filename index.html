@@ -1704,7 +1704,7 @@
         <span class="s3-layer l3"></span>
       </div>
       <p class="verse-kicker" id="out-kicker">TikTok</p>
-      <h1 class="screen-title" id="out-name">Script a video</h1>
+      <h1 class="screen-title" id="out-name">Post a video</h1>
       <div class="verse-app" id="out-app"></div>
       <div class="s3-foot">
         <div class="nav-pair">
@@ -2013,43 +2013,43 @@
         instagram: [
           ["caption", "Write a caption"],
           ["comments", "Reply to comments"],
-          ["story", "Make a story"],
-          ["dms", "Sort the DMs"]
+          ["story", "Post a story"],
+          ["dms", "Check DMs"]
         ],
         x: [
-          ["post", "Write a post"],
-          ["thread", "Reply in a thread"],
-          ["quote", "Quote a post"],
+          ["post", "Post"],
+          ["thread", "Reply"],
+          ["quote", "Quote"],
           ["mentions", "Check mentions"]
         ],
         tiktok: [
-          ["hook", "Script a video"],
+          ["hook", "Post a video"],
           ["caption", "Write a caption"],
           ["comments", "Reply to comments"],
-          ["sound", "Pick a sound"]
+          ["sound", "Add a sound"]
         ],
         mail: [
-          ["reply", "Write a reply"],
-          ["inbox", "Sort the inbox"],
-          ["follow", "Write a follow-up"],
-          ["file", "Archive a thread"]
+          ["reply", "Reply"],
+          ["inbox", "Sort inbox"],
+          ["follow", "Follow up"],
+          ["file", "Archive"]
         ],
         slack: [
-          ["message", "Write a message"],
-          ["summary", "Summarize a channel"],
-          ["thread", "Reply in a thread"],
-          ["standup", "Write a standup"]
+          ["message", "Send a message"],
+          ["summary", "Summarize channel"],
+          ["thread", "Reply in thread"],
+          ["standup", "Write standup"]
         ],
         linkedin: [
-          ["post", "Write a post"],
-          ["comment", "Reply to a comment"],
-          ["note", "Write a connection note"],
-          ["feed", "Scan the feed"]
+          ["post", "Post"],
+          ["comment", "Comment"],
+          ["note", "Send a note"],
+          ["feed", "Check feed"]
         ],
         domain: [
           ["page", "Write a page"],
           ["bio", "Write a bio"],
-          ["form", "Answer a contact"],
+          ["form", "Reply to a message"],
           ["check", "Check the site"]
         ],
         inscription: [
@@ -2374,7 +2374,7 @@
         if (act === "dms" || act === "inbox" || act === "feed" || act === "file" || act === "mentions" || act === "mint") return inboxHtml(v);
         if (act === "story") return storyHtml(v);
         if (act === "sound") return postSheet("Sound", v.sound);
-        if (act === "hook") return postSheet("Script", v.hook);
+        if (act === "hook") return postSheet("Video", v.hook);
         if (act === "caption") return postSheet("Caption", v.caption);
         if (act === "bio") return postSheet("Bio", v.bio);
         if (act === "page") return postSheet("Page", v.page);
