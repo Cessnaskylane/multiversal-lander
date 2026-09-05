@@ -670,26 +670,13 @@
 
     #screen2 .screen-title, #screen2b .screen-title {
       width: min(100%, 420px);
-      margin: 0 auto;
+      margin: 0 auto 6px;
       text-align: center;
     }
-    /* Same space: YOUR AGENT → box top, and box bottom → CHOOSE … */
-    #screen2 .s2-stack,
-    #screen2b .s2-stack {
-      gap: 16px;
-    }
+    /* Only move CHOOSE … down: gap under box = gap above box (title → top border) */
     #screen2 .stage,
     #screen2b .stage {
-      gap: 16px;
-    }
-    #screen2 .personalize.has-inline,
-    #screen2b .personalize.has-inline {
-      margin-top: 0;
-      gap: 0;
-    }
-    #screen2 .inline-tray .chip-label,
-    #screen2b .inline-tray .chip-label {
-      margin: 0;
+      gap: 18px; /* matches title margin-bottom 6px + .s2-stack gap 12px */
     }
     .nav-pair {
       display: inline-flex;
