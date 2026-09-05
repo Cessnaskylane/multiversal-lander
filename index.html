@@ -357,20 +357,27 @@
     #screen2b .stage {
       width: min(100%, 560px);
     }
+    /* Anchor Model/Verses to the bottom-center of the face */
+    .personalize.has-inline {
+      position: relative;
+      width: 100%;
+      max-width: 280px; /* same width as .portrait-wrap */
+      margin: 0 auto;
+      align-items: stretch;
+    }
     .inline-tray {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
+      width: min(calc(100vw - 24px), 560px);
+      max-width: min(calc(100vw - 24px), 560px);
+      margin: 0;
       padding-top: 0;
-    }
-    .personalize.has-inline {
-      max-width: 100%;
-      width: 100%;
-      align-items: center;
+      box-sizing: border-box;
     }
     .inline-tray .chip-row {
       display: flex;
@@ -1427,12 +1434,12 @@
         letter-spacing: 0.06em;
       }
       .personalize.has-inline {
-        max-width: 100%;
+        max-width: 230px; /* match mobile .portrait-wrap */
         width: 100%;
       }
       .inline-tray {
-        width: 100%;
-        max-width: 100%;
+        width: min(calc(100vw - 24px), 280px);
+        max-width: min(calc(100vw - 24px), 280px);
       }
       #screen2 .s2-stack,
       #screen2b .s2-stack,
