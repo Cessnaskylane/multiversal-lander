@@ -357,6 +357,70 @@
       border-color: var(--line);
     }
 
+    /* Soft filled pills — each model its own pink→blue (mock B) */
+    .chip[data-model] {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .chip[data-model="grok"] {
+      color: #ff7eb9;
+      border-color: #e83d9a;
+      background: rgba(232, 61, 154, 0.12);
+    }
+    .chip[data-model="gpt"] {
+      color: #e0a0ff;
+      border-color: #c44fd4;
+      background: rgba(196, 79, 212, 0.12);
+    }
+    .chip[data-model="claude"] {
+      color: #d4b0ff;
+      border-color: #9b6bff;
+      background: rgba(155, 107, 255, 0.12);
+    }
+    .chip[data-model="gemini"] {
+      color: #b4c0ff;
+      border-color: #6b7cff;
+      background: rgba(107, 124, 255, 0.12);
+    }
+    .chip[data-model="deepseek"] {
+      color: #9ecbff;
+      border-color: #4aa3ff;
+      background: rgba(74, 163, 255, 0.12);
+    }
+    .chip[data-model][aria-pressed="true"] {
+      box-shadow: 0 0 16px rgba(232, 61, 154, 0.35);
+      background: rgba(232, 61, 154, 0.22);
+    }
+    .chip[data-model="grok"][aria-pressed="true"] {
+      color: #ff7eb9;
+      border-color: #e83d9a;
+      background: rgba(232, 61, 154, 0.22);
+      box-shadow: 0 0 16px rgba(232, 61, 154, 0.4);
+    }
+    .chip[data-model="gpt"][aria-pressed="true"] {
+      color: #e0a0ff;
+      border-color: #c44fd4;
+      background: rgba(196, 79, 212, 0.22);
+      box-shadow: 0 0 16px rgba(196, 79, 212, 0.4);
+    }
+    .chip[data-model="claude"][aria-pressed="true"] {
+      color: #d4b0ff;
+      border-color: #9b6bff;
+      background: rgba(155, 107, 255, 0.22);
+      box-shadow: 0 0 16px rgba(155, 107, 255, 0.4);
+    }
+    .chip[data-model="gemini"][aria-pressed="true"] {
+      color: #b4c0ff;
+      border-color: #6b7cff;
+      background: rgba(107, 124, 255, 0.22);
+      box-shadow: 0 0 16px rgba(107, 124, 255, 0.4);
+    }
+    .chip[data-model="deepseek"][aria-pressed="true"] {
+      color: #9ecbff;
+      border-color: #4aa3ff;
+      background: rgba(74, 163, 255, 0.22);
+      box-shadow: 0 0 16px rgba(74, 163, 255, 0.4);
+    }
+
     /* Inline chips under the face — same chip size as the open tray panels */
     /* Wider stack on model/verses so chips do not spill right of a 420px column */
     #screen2 .s2-stack,
