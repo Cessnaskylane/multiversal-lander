@@ -30,6 +30,53 @@
       height: 100dvh;
       background: var(--bg);
     }
+
+    /* Soft classic bokeh — all screens, desktop + mobile */
+    .bokeh-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .bokeh-haze {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(109, 40, 217, 0.15), transparent 50%);
+      filter: blur(30px);
+    }
+    .bokeh-bg .bokeh {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .bokeh-bg .b1 {
+      width: 48px; height: 48px; background: #e83d9a;
+      top: 12%; left: 18%; filter: blur(14px); opacity: 0.22;
+    }
+    .bokeh-bg .b2 {
+      width: 28px; height: 28px; background: #c44fd4;
+      top: 22%; right: 22%; filter: blur(12px); opacity: 0.18;
+    }
+    .bokeh-bg .b3 {
+      width: 64px; height: 64px; background: #4338ca;
+      bottom: 18%; left: 12%; filter: blur(18px); opacity: 0.2;
+    }
+    .bokeh-bg .b4 {
+      width: 36px; height: 36px; background: #1d4ed8;
+      bottom: 28%; right: 16%; filter: blur(14px); opacity: 0.22;
+    }
+    .bokeh-bg .b5 {
+      width: 22px; height: 22px; background: #e83d9a;
+      top: 48%; left: 70%; filter: blur(10px); opacity: 0.15;
+    }
+    .bokeh-bg .b6 {
+      width: 40px; height: 40px; background: #9b2bcb;
+      top: 68%; left: 48%; filter: blur(16px); opacity: 0.14;
+    }
+    .bokeh-bg .b7 {
+      width: 18px; height: 18px; background: #4aa3ff;
+      top: 8%; left: 55%; filter: blur(9px); opacity: 0.16;
+    }
     .mark {
       position: absolute;
       z-index: 40;
@@ -165,7 +212,7 @@
       place-items: center;
       place-content: center;
       opacity: 0;
-      background: #000;
+      background: transparent;
       padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
       overflow-x: clip;
       overflow-y: auto;
@@ -519,7 +566,7 @@
       place-items: center;
       place-content: center;
       opacity: 0;
-      background: #000;
+      background: transparent;
       padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
       overflow-x: clip;
       overflow-y: auto;
@@ -963,7 +1010,7 @@
       display: none;
       place-items: center;
       place-content: center;
-      background: #000;
+      background: transparent;
       padding: 16px;
     }
     #screen3.active {
@@ -1018,7 +1065,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      background: #000;
+      background: transparent;
       padding:
         max(72px, calc(env(safe-area-inset-top, 0px) + 56px))
         20px
@@ -1049,7 +1096,7 @@
       inset: -8%;
       pointer-events: none;
       overflow: hidden;
-      background: #000;
+      background: transparent;
     }
     .s3-layer {
       position: absolute;
@@ -1658,6 +1705,16 @@
 </head>
 <body>
   <div class="frame">
+    <div class="bokeh-bg" aria-hidden="true">
+      <div class="bokeh-haze"></div>
+      <div class="bokeh b1"></div>
+      <div class="bokeh b2"></div>
+      <div class="bokeh b3"></div>
+      <div class="bokeh b4"></div>
+      <div class="bokeh b5"></div>
+      <div class="bokeh b6"></div>
+      <div class="bokeh b7"></div>
+    </div>
     <p class="mark" id="wordmark" role="link" tabindex="0" aria-label="Back to start" title="multiversal.ai"><span class="m">M</span><span class="u">U</span><span class="l">L</span><span class="t">T</span><span class="i">I</span>versal <span class="accent dot">.ai</span></p>
     <a class="mail-link" id="header-mail" href="mailto:hello@multiversal.ai">hello@multiversal.ai</a>
     <p class="promise" id="promise">A named voice you put on Grok.</p>
