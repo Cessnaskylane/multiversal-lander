@@ -402,6 +402,44 @@
       padding: 8px 11px;
       letter-spacing: 0.08em;
     }
+    .inline-tray .chip-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      align-items: stretch;
+    }
+    #screen2b .inline-tray .chip-label {
+      flex: none;
+      width: 100%;
+      text-align: center;
+      margin: 0 0 2px;
+    }
+    #screen2b .chip-line {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+      width: 100%;
+      justify-content: stretch;
+    }
+    #screen2b .chip-line .chip {
+      width: 100%;
+      flex: none;
+      min-width: 0;
+      padding: 8px 4px;
+      letter-spacing: 0.06em;
+    }
+    @media (max-width: 520px) {
+      #screen2b .chip-line {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+      }
+      #screen2b .chip-line .chip {
+        padding: 9px 4px;
+        font-size: 10px;
+        letter-spacing: 0.04em;
+      }
+    }
     #screen2b {
       position: absolute;
       inset: 0;
@@ -1607,16 +1645,24 @@
 
       <div class="personalize has-inline">
         <div class="inline-tray" id="panel-doors">
-          <div class="chip-row" role="group" aria-label="Choose verses">
-            <p class="chip-label">Choose verses</p>
-            <button type="button" class="chip" data-wire="domain" aria-pressed="true">www.</button>
-            <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
-            <button type="button" class="chip" data-wire="tiktok" aria-pressed="false">TikTok</button>
-            <button type="button" class="chip" data-wire="x" aria-pressed="false">X</button>
-            <button type="button" class="chip" data-wire="instagram" aria-pressed="false">Instagram</button>
-            <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
-            <button type="button" class="chip" data-wire="linkedin" aria-pressed="false">Linked In</button>
-            <button type="button" class="chip" data-wire="inscription" aria-pressed="false">Blockchain inscription</button>
+          <p class="chip-label">Choose verses</p>
+          <div class="chip-lines" role="group" aria-label="Choose verses">
+            <div class="chip-row chip-line" role="group" aria-label="Verses row 1">
+              <button type="button" class="chip" data-wire="domain" aria-pressed="true">www.</button>
+              <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
+              <button type="button" class="chip" data-wire="tiktok" aria-pressed="false">TikTok</button>
+              <button type="button" class="chip" data-wire="x" aria-pressed="false">X</button>
+              <button type="button" class="chip" data-wire="instagram" aria-pressed="false">Instagram</button>
+              <button type="button" class="chip" data-wire="youtube" aria-pressed="false">YouTube</button>
+            </div>
+            <div class="chip-row chip-line" role="group" aria-label="Verses row 2">
+              <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
+              <button type="button" class="chip" data-wire="linkedin" aria-pressed="false">Linked In</button>
+              <button type="button" class="chip" data-wire="facebook" aria-pressed="false">Facebook</button>
+              <button type="button" class="chip" data-wire="discord" aria-pressed="false">Discord</button>
+              <button type="button" class="chip" data-wire="reddit" aria-pressed="false">Reddit</button>
+              <button type="button" class="chip" data-wire="threads" aria-pressed="false">Threads</button>
+            </div>
           </div>
         </div>
       </div>
@@ -2055,8 +2101,13 @@
         tiktok: "TikTok",
         x: "X",
         instagram: "Instagram",
+        youtube: "YouTube",
         slack: "Slack",
         linkedin: "Linked In",
+        facebook: "Facebook",
+        discord: "Discord",
+        reddit: "Reddit",
+        threads: "Threads",
         inscription: "Inscription"
       };
       var wireActs = {
@@ -2107,6 +2158,36 @@
           ["note", "Write a note"],
           ["mint", "Watch a mint"],
           ["hash", "Save the hash"]
+        ],
+        youtube: [
+          ["title", "Write a title"],
+          ["desc", "Write a description"],
+          ["comment", "Reply to a comment"],
+          ["script", "Draft a script"]
+        ],
+        facebook: [
+          ["post", "Write a post"],
+          ["comment", "Reply to a comment"],
+          ["story", "Post a story"],
+          ["message", "Reply to a message"]
+        ],
+        discord: [
+          ["message", "Send a message"],
+          ["summary", "Summarize a channel"],
+          ["reply", "Reply in thread"],
+          ["announce", "Write an announcement"]
+        ],
+        reddit: [
+          ["post", "Write a post"],
+          ["comment", "Reply to a comment"],
+          ["title", "Write a title"],
+          ["reply", "Reply to a thread"]
+        ],
+        threads: [
+          ["post", "Post"],
+          ["reply", "Reply"],
+          ["thread", "Continue a thread"],
+          ["mentions", "Check replies"]
         ]
       };
 
