@@ -1250,37 +1250,7 @@
     .upload-stage .md-btn {
       min-width: 220px;
     }
-    .s3-bg {
-      position: absolute;
-      inset: -8%;
-      pointer-events: none;
-      overflow: hidden;
-      background: transparent;
-    }
-    .s3-layer {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      background-repeat: no-repeat;
-      background-position: center 38%;
-      background-size: 118%;
-    }
-    .s3-layer.l1 {
-      background-image: url("assets/grid-layer-darkblue.png?v=1");
-      transform: translateY(28px) scale(0.88);
-      opacity: 0.58;
-    }
-    .s3-layer.l2 {
-      background-image: url("assets/grid-layer-pink.png?v=2");
-      transform: translateY(-18px) scale(0.96);
-      opacity: 0.52;
-    }
-    .s3-layer.l3 {
-      background-image: url("assets/grid-layer-darkpurple.png?v=1");
-      transform: translateY(-62px) scale(1.04);
-      opacity: 0.5;
-    }
+
     .s3-head {
       position: relative;
       z-index: 2;
@@ -1733,9 +1703,6 @@
       #celeb-grid {
         gap: 5px;
       }
-      .s3-layer {
-        background-position: center 32%;
-      }
     }
 
     @media (max-width: 720px) {
@@ -1981,12 +1948,7 @@
     </div>
 
     <div id="screen4" class="layer-screen" aria-label="Skill layers" hidden>
-            <div class="s3-bg" aria-hidden="true">
-        <span class="s3-layer l1"></span>
-        <span class="s3-layer l2"></span>
-        <span class="s3-layer l3"></span>
-      </div>
-      <p class="s3-head">Skill layers</p>
+<p class="s3-head">Skill layers</p>
       <div class="scenario-grid" id="skill-grid" role="listbox" aria-label="Skill personalities">
         <button type="button" class="scenario" role="option" data-layer="support" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/companion.png?v=5" alt="" />
@@ -2078,12 +2040,7 @@
     </div>
 
     <div id="screen5" class="layer-screen" aria-label="Celebrity layers" hidden>
-            <div class="s3-bg" aria-hidden="true">
-        <span class="s3-layer l1"></span>
-        <span class="s3-layer l2"></span>
-        <span class="s3-layer l3"></span>
-      </div>
-      <p class="s3-head">Celebrity layers</p>
+<p class="s3-head">Celebrity layers</p>
       <div class="scenario-grid" id="celeb-grid" role="listbox" aria-label="Celebrity personalities">
         <button type="button" class="scenario" role="option" data-layer="keanu" aria-pressed="false">
           <img class="scenario-art" src="assets/scenarios/keanu.png?v=3" alt="" />
@@ -2144,12 +2101,7 @@
     </div>
 
     <div id="screen6" class="layer-screen" aria-label="Upload layer" hidden>
-            <div class="s3-bg" aria-hidden="true">
-        <span class="s3-layer l1"></span>
-        <span class="s3-layer l2"></span>
-        <span class="s3-layer l3"></span>
-      </div>
-      <p class="s3-head">Upload layer</p>
+<p class="s3-head">Upload layer</p>
       <div class="upload-stage">
         <p class="chip-label">Brain file</p>
         <button type="button" class="md-btn" id="add-md" aria-label="Add a brain file">Add .md or file</button>
@@ -2165,12 +2117,7 @@
     </div>
 
     <div id="screen7" class="layer-screen verse-screen" aria-label="Verse" hidden>
-      <div class="s3-bg" aria-hidden="true">
-        <span class="s3-layer l1"></span>
-        <span class="s3-layer l2"></span>
-        <span class="s3-layer l3"></span>
-      </div>
-      <p class="verse-kicker" id="verse-kicker">Grok</p>
+<p class="verse-kicker" id="verse-kicker">Grok</p>
       <h1 class="screen-title" id="verse-name">TikTok</h1>
       <div class="verse-app" id="verse-app"></div>
       <div class="s3-foot">
@@ -2181,12 +2128,7 @@
     </div>
 
     <div id="screen8" class="layer-screen verse-screen" aria-label="Job" hidden>
-      <div class="s3-bg" aria-hidden="true">
-        <span class="s3-layer l1"></span>
-        <span class="s3-layer l2"></span>
-        <span class="s3-layer l3"></span>
-      </div>
-      <p class="verse-kicker" id="out-kicker">TikTok</p>
+<p class="verse-kicker" id="out-kicker">TikTok</p>
       <h1 class="screen-title" id="out-name">Post a video</h1>
       <div class="verse-app" id="out-app"></div>
       <div class="s3-foot">
