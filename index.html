@@ -37,7 +37,7 @@
       left: max(28px, env(safe-area-inset-left, 0px));
       margin: 0;
       font-size: clamp(13px, 1.6vw, 18px);
-      font-weight: 700; /* Syne Bold — logo idea #6 */
+      font-weight: 700; /* Syne Bold + Royal deep Multi (#7) */
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: #f4f0f6;
@@ -50,10 +50,17 @@
       cursor: pointer;
     }
     .mark.animate { animation: fadeMark 1.1s ease 0.85s forwards; }
+    /* Logo #7 Royal deep — M pink, U L T I purple → blue */
+    .mark .m { color: #e83d9a; }
+    .mark .u { color: #9b2bcb; }
+    .mark .l { color: #6d28d9; }
+    .mark .t { color: #4338ca; }
+    .mark .i { color: #1d4ed8; }
     .mark .accent {
       color: var(--line);
       opacity: 1;
     }
+    .mark .accent.dot,
     .mark .accent:last-child {
       letter-spacing: 0.1em;
       text-transform: none;
@@ -1587,7 +1594,7 @@
 </head>
 <body>
   <div class="frame">
-    <p class="mark" id="wordmark" role="link" tabindex="0" aria-label="Back to start" title="multiversal.ai"><span class="accent">Multi</span>versal <span class="accent">.ai</span></p>
+    <p class="mark" id="wordmark" role="link" tabindex="0" aria-label="Back to start" title="multiversal.ai"><span class="m">M</span><span class="u">U</span><span class="l">L</span><span class="t">T</span><span class="i">I</span>versal <span class="accent dot">.ai</span></p>
     <a class="mail-link" id="header-mail" href="mailto:hello@multiversal.ai">hello@multiversal.ai</a>
     <p class="promise" id="promise">A named voice you put on Grok.</p>
 
