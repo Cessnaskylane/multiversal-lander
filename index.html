@@ -163,10 +163,10 @@
       z-index: 15;
       display: none;
       place-items: center;
-      place-content: center;
+      place-content: start; /* keep title+box fixed; chips grow downward */
       opacity: 0;
       background: #000;
-      padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      padding: max(72px, calc(env(safe-area-inset-top, 0px) + 56px)) 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
       overflow-x: clip;
       overflow-y: auto;
     }
@@ -420,7 +420,8 @@
       flex: none;
       width: 100%;
       text-align: center;
-      margin: 0 0 2px;
+      margin: 0;
+      line-height: 1;
     }
     #screen2b .chip-line {
       display: grid;
@@ -453,10 +454,10 @@
       z-index: 15;
       display: none;
       place-items: center;
-      place-content: center;
+      place-content: start; /* match page 2 — title+box stay put */
       opacity: 0;
       background: #000;
-      padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      padding: max(72px, calc(env(safe-area-inset-top, 0px) + 56px)) 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
       overflow-x: clip;
       overflow-y: auto;
     }
@@ -717,31 +718,44 @@
       width: min(100%, 420px);
       margin: 0 auto;
       text-align: center;
-      line-height: 1; /* no empty line-box under YOUR AGENT */
+      line-height: 1; /* measure from font bottom */
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 500;
+      letter-spacing: 0.32em;
     }
-    /* Equal air from the box BORDERS: same margin above and below .portrait-wrap */
+    /* Title + box locked the same on model and verses; chips hang below */
     #screen2 .s2-stack,
     #screen2b .s2-stack {
       gap: 0;
+      padding: 0;
+      margin: 0 auto;
+      justify-content: flex-start;
     }
     #screen2 .stage,
     #screen2b .stage {
       gap: 0;
     }
+    /* Equal gap: YOUR AGENT font → box top, and box bottom → CHOOSE font */
     #screen2 .portrait-wrap,
     #screen2b .portrait-wrap {
+      width: min(100%, 280px);
+      max-width: 280px;
       margin-top: 20px;
       margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
     }
     #screen2 .personalize.has-inline,
     #screen2b .personalize.has-inline {
       margin-top: 0;
+      margin-bottom: 0;
       gap: 0;
     }
     #screen2 .inline-tray .chip-label,
     #screen2b .inline-tray .chip-label {
       margin: 0;
-      line-height: 1;
+      padding: 0;
+      line-height: 1; /* measure to font top of CHOOSE … */
     }
     .nav-pair {
       display: inline-flex;
@@ -1519,10 +1533,18 @@
       #screen2b .stage {
         width: min(100%, 280px);
       }
+      #screen2,
       #screen2b {
-        padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
+        padding: max(56px, calc(env(safe-area-inset-top, 0px) + 44px)) 12px max(20px, env(safe-area-inset-bottom, 0px));
         place-items: center;
-        place-content: center;
+        place-content: start;
+      }
+      #screen2 .portrait-wrap,
+      #screen2b .portrait-wrap {
+        width: min(100%, 230px);
+        max-width: 230px;
+        margin-top: 16px;
+        margin-bottom: 16px;
       }
 
       #screen2.tray-open .personalize {
@@ -1579,11 +1601,7 @@
       .layer-screen {
         padding-bottom: max(108px, calc(env(safe-area-inset-bottom, 0px) + 88px));
       }
-      #screen2 {
-        padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
-        place-items: center;
-        place-content: center;
-      }
+
       .s2-stack {
         margin: 0;
         width: min(100%, 280px);
