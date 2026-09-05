@@ -350,36 +350,48 @@
     }
 
     /* Inline chips under the face — same chip size as the open tray panels */
+    /* Wider stack on model/verses so chips do not spill right of a 420px column */
+    #screen2 .s2-stack,
+    #screen2b .s2-stack,
+    #screen2 .stage,
+    #screen2b .stage {
+      width: min(100%, 560px);
+    }
     .inline-tray {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 8px;
-      width: min(calc(100vw - 24px), 560px);
-      max-width: min(calc(100vw - 24px), 560px);
+      width: 100%;
+      max-width: 100%;
       margin: 0 auto;
       padding-top: 0;
     }
     .personalize.has-inline {
-      max-width: min(calc(100vw - 24px), 560px);
-      width: min(calc(100vw - 24px), 560px);
+      max-width: 100%;
+      width: 100%;
+      align-items: center;
     }
     .inline-tray .chip-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      justify-content: stretch;
+      justify-content: center;
+      align-items: center;
       width: 100%;
     }
     .inline-tray .chip-label {
-      grid-column: 1 / -1;
+      flex: 0 0 100%;
       text-align: center;
-      width: auto;
+      width: 100%;
+      margin: 0 0 2px;
     }
     .inline-tray .chip {
-      width: 100%;
+      width: auto;
+      flex: 0 0 auto;
       min-width: 0;
       text-align: center;
-      padding: 8px 6px;
+      padding: 8px 11px;
       letter-spacing: 0.08em;
     }
     #screen2b {
@@ -1376,21 +1388,27 @@
       }
 
       .inline-tray .chip-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 6px;
+        justify-content: center;
       }
       .inline-tray .chip {
-        padding: 9px 6px;
+        padding: 9px 10px;
         font-size: 10px;
         letter-spacing: 0.06em;
       }
       .personalize.has-inline {
-        max-width: min(100%, 280px);
+        max-width: 100%;
         width: 100%;
       }
       .inline-tray {
         width: 100%;
         max-width: 100%;
+      }
+      #screen2 .s2-stack,
+      #screen2b .s2-stack,
+      #screen2 .stage,
+      #screen2b .stage {
+        width: min(100%, 280px);
       }
       #screen2b {
         padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
@@ -1513,7 +1531,7 @@
       <p class="hint" id="hint"></p>
     </div>
 
-        <div id="screen2b" aria-label="First door" hidden>
+        <div id="screen2b" aria-label="Verses" hidden>
       <div class="s2-stack">
       <h1 class="screen-title">Your agent</h1>
       <div class="stage">
@@ -1525,8 +1543,8 @@
 
       <div class="personalize has-inline">
         <div class="inline-tray" id="panel-doors">
-          <div class="chip-row" role="group" aria-label="First door">
-            <p class="chip-label">First door</p>
+          <div class="chip-row" role="group" aria-label="Verses">
+            <p class="chip-label">Verses</p>
             <button type="button" class="chip" data-wire="domain" aria-pressed="true">www.</button>
             <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
             <button type="button" class="chip" data-wire="tiktok" aria-pressed="false">TikTok</button>
