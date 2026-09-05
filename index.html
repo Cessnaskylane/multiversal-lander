@@ -31,7 +31,7 @@
       background: var(--bg);
     }
 
-    /* Soft classic bokeh — all screens, desktop + mobile */
+    /* Soft classic bokeh — all screens, desktop + mobile (stronger so it reads) */
     .bokeh-bg {
       position: absolute;
       inset: 0;
@@ -41,41 +41,44 @@
     }
     .bokeh-haze {
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 20%, rgba(109, 40, 217, 0.15), transparent 50%);
-      filter: blur(30px);
+      inset: -10%;
+      background:
+        radial-gradient(ellipse at 72% 18%, rgba(109, 40, 217, 0.32), transparent 52%),
+        radial-gradient(ellipse at 18% 78%, rgba(232, 61, 154, 0.18), transparent 48%),
+        radial-gradient(ellipse at 88% 62%, rgba(29, 78, 216, 0.2), transparent 50%);
+      filter: blur(36px);
     }
     .bokeh-bg .bokeh {
       position: absolute;
       border-radius: 50%;
     }
     .bokeh-bg .b1 {
-      width: 48px; height: 48px; background: #e83d9a;
-      top: 12%; left: 18%; filter: blur(14px); opacity: 0.22;
+      width: 120px; height: 120px; background: #e83d9a;
+      top: 8%; left: 10%; filter: blur(28px); opacity: 0.38;
     }
     .bokeh-bg .b2 {
-      width: 28px; height: 28px; background: #c44fd4;
-      top: 22%; right: 22%; filter: blur(12px); opacity: 0.18;
+      width: 72px; height: 72px; background: #c44fd4;
+      top: 18%; right: 14%; filter: blur(22px); opacity: 0.32;
     }
     .bokeh-bg .b3 {
-      width: 64px; height: 64px; background: #4338ca;
-      bottom: 18%; left: 12%; filter: blur(18px); opacity: 0.2;
+      width: 160px; height: 160px; background: #4338ca;
+      bottom: 10%; left: 6%; filter: blur(36px); opacity: 0.34;
     }
     .bokeh-bg .b4 {
-      width: 36px; height: 36px; background: #1d4ed8;
-      bottom: 28%; right: 16%; filter: blur(14px); opacity: 0.22;
+      width: 96px; height: 96px; background: #1d4ed8;
+      bottom: 22%; right: 10%; filter: blur(26px); opacity: 0.36;
     }
     .bokeh-bg .b5 {
-      width: 22px; height: 22px; background: #e83d9a;
-      top: 48%; left: 70%; filter: blur(10px); opacity: 0.15;
+      width: 56px; height: 56px; background: #ff7eb9;
+      top: 44%; left: 68%; filter: blur(18px); opacity: 0.28;
     }
     .bokeh-bg .b6 {
-      width: 40px; height: 40px; background: #9b2bcb;
-      top: 68%; left: 48%; filter: blur(16px); opacity: 0.14;
+      width: 110px; height: 110px; background: #9b2bcb;
+      top: 62%; left: 42%; filter: blur(30px); opacity: 0.26;
     }
     .bokeh-bg .b7 {
-      width: 18px; height: 18px; background: #4aa3ff;
-      top: 8%; left: 55%; filter: blur(9px); opacity: 0.16;
+      width: 44px; height: 44px; background: #4aa3ff;
+      top: 6%; left: 52%; filter: blur(14px); opacity: 0.3;
     }
     .mark {
       position: absolute;
@@ -466,6 +469,146 @@
       border-color: #4aa3ff;
       background: rgba(74, 163, 255, 0.22);
       box-shadow: 0 0 16px rgba(74, 163, 255, 0.4);
+    }
+
+    /* Soft filled pills — verses page, same design as model chips (size unchanged) */
+    .chip[data-wire] {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .chip[data-wire="domain"] {
+      color: #ff7eb9;
+      border-color: #e83d9a;
+      background: rgba(232, 61, 154, 0.12);
+    }
+    .chip[data-wire="mail"] {
+      color: #f2a0d4;
+      border-color: #e05ab8;
+      background: rgba(224, 90, 184, 0.12);
+    }
+    .chip[data-wire="tiktok"] {
+      color: #e0a0ff;
+      border-color: #c44fd4;
+      background: rgba(196, 79, 212, 0.12);
+    }
+    .chip[data-wire="x"] {
+      color: #d8b4ff;
+      border-color: #b07aff;
+      background: rgba(176, 122, 255, 0.12);
+    }
+    .chip[data-wire="instagram"] {
+      color: #d4b0ff;
+      border-color: #9b6bff;
+      background: rgba(155, 107, 255, 0.12);
+    }
+    .chip[data-wire="youtube"] {
+      color: #c4bcff;
+      border-color: #8478ff;
+      background: rgba(132, 120, 255, 0.12);
+    }
+    .chip[data-wire="slack"] {
+      color: #b4c0ff;
+      border-color: #6b7cff;
+      background: rgba(107, 124, 255, 0.12);
+    }
+    .chip[data-wire="linkedin"] {
+      color: #a8c8ff;
+      border-color: #5a9cff;
+      background: rgba(90, 156, 255, 0.12);
+    }
+    .chip[data-wire="facebook"] {
+      color: #9ecbff;
+      border-color: #4aa3ff;
+      background: rgba(74, 163, 255, 0.12);
+    }
+    .chip[data-wire="discord"] {
+      color: #8ec4ff;
+      border-color: #3d94f0;
+      background: rgba(61, 148, 240, 0.12);
+    }
+    .chip[data-wire="reddit"] {
+      color: #7eb8ff;
+      border-color: #3580e8;
+      background: rgba(53, 128, 232, 0.12);
+    }
+    .chip[data-wire="bitcoin"] {
+      color: #6eb0ff;
+      border-color: #2d70e0;
+      background: rgba(45, 112, 224, 0.12);
+    }
+    .chip[data-wire][aria-pressed="true"] {
+      box-shadow: 0 0 16px rgba(232, 61, 154, 0.35);
+    }
+    .chip[data-wire="domain"][aria-pressed="true"] {
+      color: #ff7eb9;
+      border-color: #e83d9a;
+      background: rgba(232, 61, 154, 0.22);
+      box-shadow: 0 0 16px rgba(232, 61, 154, 0.4);
+    }
+    .chip[data-wire="mail"][aria-pressed="true"] {
+      color: #f2a0d4;
+      border-color: #e05ab8;
+      background: rgba(224, 90, 184, 0.22);
+      box-shadow: 0 0 16px rgba(224, 90, 184, 0.4);
+    }
+    .chip[data-wire="tiktok"][aria-pressed="true"] {
+      color: #e0a0ff;
+      border-color: #c44fd4;
+      background: rgba(196, 79, 212, 0.22);
+      box-shadow: 0 0 16px rgba(196, 79, 212, 0.4);
+    }
+    .chip[data-wire="x"][aria-pressed="true"] {
+      color: #d8b4ff;
+      border-color: #b07aff;
+      background: rgba(176, 122, 255, 0.22);
+      box-shadow: 0 0 16px rgba(176, 122, 255, 0.4);
+    }
+    .chip[data-wire="instagram"][aria-pressed="true"] {
+      color: #d4b0ff;
+      border-color: #9b6bff;
+      background: rgba(155, 107, 255, 0.22);
+      box-shadow: 0 0 16px rgba(155, 107, 255, 0.4);
+    }
+    .chip[data-wire="youtube"][aria-pressed="true"] {
+      color: #c4bcff;
+      border-color: #8478ff;
+      background: rgba(132, 120, 255, 0.22);
+      box-shadow: 0 0 16px rgba(132, 120, 255, 0.4);
+    }
+    .chip[data-wire="slack"][aria-pressed="true"] {
+      color: #b4c0ff;
+      border-color: #6b7cff;
+      background: rgba(107, 124, 255, 0.22);
+      box-shadow: 0 0 16px rgba(107, 124, 255, 0.4);
+    }
+    .chip[data-wire="linkedin"][aria-pressed="true"] {
+      color: #a8c8ff;
+      border-color: #5a9cff;
+      background: rgba(90, 156, 255, 0.22);
+      box-shadow: 0 0 16px rgba(90, 156, 255, 0.4);
+    }
+    .chip[data-wire="facebook"][aria-pressed="true"] {
+      color: #9ecbff;
+      border-color: #4aa3ff;
+      background: rgba(74, 163, 255, 0.22);
+      box-shadow: 0 0 16px rgba(74, 163, 255, 0.4);
+    }
+    .chip[data-wire="discord"][aria-pressed="true"] {
+      color: #8ec4ff;
+      border-color: #3d94f0;
+      background: rgba(61, 148, 240, 0.22);
+      box-shadow: 0 0 16px rgba(61, 148, 240, 0.4);
+    }
+    .chip[data-wire="reddit"][aria-pressed="true"] {
+      color: #7eb8ff;
+      border-color: #3580e8;
+      background: rgba(53, 128, 232, 0.22);
+      box-shadow: 0 0 16px rgba(53, 128, 232, 0.4);
+    }
+    .chip[data-wire="bitcoin"][aria-pressed="true"] {
+      color: #6eb0ff;
+      border-color: #2d70e0;
+      background: rgba(45, 112, 224, 0.22);
+      box-shadow: 0 0 16px rgba(45, 112, 224, 0.4);
     }
 
     /* Inline chips under the face — same chip size as the open tray panels */
@@ -1789,7 +1932,7 @@
               <button type="button" class="chip" data-wire="facebook" aria-pressed="false">Facebook</button>
               <button type="button" class="chip" data-wire="discord" aria-pressed="false">Discord</button>
               <button type="button" class="chip" data-wire="reddit" aria-pressed="false">Reddit</button>
-              <button type="button" class="chip" data-wire="bitcoin" aria-pressed="false">Bitcoin</button>
+              <button type="button" class="chip" data-wire="bitcoin" aria-pressed="false">₿</button>
             </div>
           </div>
         </div>
@@ -2235,7 +2378,7 @@
         facebook: "Facebook",
         discord: "Discord",
         reddit: "Reddit",
-        bitcoin: "Bitcoin",
+        bitcoin: "₿",
         inscription: "Inscription"
       };
       var wireActs = {
