@@ -493,9 +493,12 @@
     }
     .chip[aria-pressed="true"] {
       border-color: var(--line);
-      background: rgba(232, 61, 154, 0.18);
-      color: var(--line);
-      box-shadow: 0 0 18px rgba(232, 61, 154, 0.25);
+      background: rgba(232, 61, 154, 0.36);
+      color: #ffb0d8;
+      box-shadow:
+        0 0 0 1px rgba(255, 180, 220, 0.55),
+        0 0 14px rgba(232, 61, 154, 0.75),
+        0 0 28px rgba(232, 61, 154, 0.4);
     }
     .chip:hover {
       border-color: var(--line);
@@ -531,38 +534,52 @@
       background: rgba(74, 163, 255, 0.12);
     }
     .chip[data-model][aria-pressed="true"] {
-      box-shadow: 0 0 16px rgba(232, 61, 154, 0.35);
-      background: rgba(232, 61, 154, 0.22);
+      border-width: 1.5px;
     }
     .chip[data-model="grok"][aria-pressed="true"] {
-      color: #ff7eb9;
-      border-color: #e83d9a;
-      background: rgba(232, 61, 154, 0.22);
-      box-shadow: 0 0 16px rgba(232, 61, 154, 0.4);
+      color: #ffd0e8;
+      border-color: #ff7eb9;
+      background: rgba(232, 61, 154, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(255, 180, 220, 0.7),
+        0 0 12px rgba(232, 61, 154, 0.85),
+        0 0 26px rgba(232, 61, 154, 0.45);
     }
     .chip[data-model="gpt"][aria-pressed="true"] {
-      color: #e0a0ff;
-      border-color: #c44fd4;
-      background: rgba(196, 79, 212, 0.22);
-      box-shadow: 0 0 16px rgba(196, 79, 212, 0.4);
+      color: #f3d4ff;
+      border-color: #e0a0ff;
+      background: rgba(196, 79, 212, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(224, 160, 255, 0.7),
+        0 0 12px rgba(196, 79, 212, 0.85),
+        0 0 26px rgba(196, 79, 212, 0.45);
     }
     .chip[data-model="claude"][aria-pressed="true"] {
-      color: #d4b0ff;
-      border-color: #9b6bff;
-      background: rgba(155, 107, 255, 0.22);
-      box-shadow: 0 0 16px rgba(155, 107, 255, 0.4);
+      color: #ebe0ff;
+      border-color: #d4b0ff;
+      background: rgba(155, 107, 255, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(212, 176, 255, 0.7),
+        0 0 12px rgba(155, 107, 255, 0.85),
+        0 0 26px rgba(155, 107, 255, 0.45);
     }
     .chip[data-model="gemini"][aria-pressed="true"] {
-      color: #b4c0ff;
-      border-color: #6b7cff;
-      background: rgba(107, 124, 255, 0.22);
-      box-shadow: 0 0 16px rgba(107, 124, 255, 0.4);
+      color: #dce4ff;
+      border-color: #b4c0ff;
+      background: rgba(107, 124, 255, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(180, 192, 255, 0.7),
+        0 0 12px rgba(107, 124, 255, 0.85),
+        0 0 26px rgba(107, 124, 255, 0.45);
     }
     .chip[data-model="deepseek"][aria-pressed="true"] {
-      color: #9ecbff;
-      border-color: #4aa3ff;
-      background: rgba(74, 163, 255, 0.22);
-      box-shadow: 0 0 16px rgba(74, 163, 255, 0.4);
+      color: #d6ecff;
+      border-color: #9ecbff;
+      background: rgba(74, 163, 255, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(158, 203, 255, 0.7),
+        0 0 12px rgba(74, 163, 255, 0.85),
+        0 0 26px rgba(74, 163, 255, 0.45);
     }
 
     /* Soft filled pills — verses: same design, unique colors (not a row spectrum) */
@@ -632,80 +649,132 @@
       letter-spacing: 0;
       line-height: 1;
     }
+    .chip[data-wire][aria-pressed="true"] {
+      border-width: 1.5px;
+    }
     .chip[data-wire="domain"][aria-pressed="true"] {
-      color: #ff7eb9;
-      border-color: #e83d9a;
-      background: rgba(232, 61, 154, 0.22);
-      box-shadow: 0 0 16px rgba(232, 61, 154, 0.4);
+      color: #ffd0e8;
+      border-color: #ff7eb9;
+      background: rgba(232, 61, 154, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(255, 180, 220, 0.7),
+        0 0 12px rgba(232, 61, 154, 0.85),
+        0 0 26px rgba(232, 61, 154, 0.45);
     }
     .chip[data-wire="mail"][aria-pressed="true"] {
-      color: #5eead4;
-      border-color: #14b8a6;
-      background: rgba(20, 184, 166, 0.22);
-      box-shadow: 0 0 16px rgba(20, 184, 166, 0.4);
+      color: #c5fff6;
+      border-color: #5eead4;
+      background: rgba(20, 184, 166, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(94, 234, 212, 0.7),
+        0 0 12px rgba(20, 184, 166, 0.85),
+        0 0 26px rgba(20, 184, 166, 0.45);
     }
     .chip[data-wire="tiktok"][aria-pressed="true"] {
-      color: #fbbf24;
-      border-color: #f59e0b;
-      background: rgba(245, 158, 11, 0.22);
-      box-shadow: 0 0 16px rgba(245, 158, 11, 0.4);
+      color: #ffe6a3;
+      border-color: #fbbf24;
+      background: rgba(245, 158, 11, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(251, 191, 36, 0.7),
+        0 0 12px rgba(245, 158, 11, 0.85),
+        0 0 26px rgba(245, 158, 11, 0.45);
     }
     .chip[data-wire="x"][aria-pressed="true"] {
-      color: #f4f4f5;
-      border-color: #a1a1aa;
-      background: rgba(82, 82, 91, 0.55);
-      box-shadow: 0 0 16px rgba(161, 161, 170, 0.35);
+      color: #ffffff;
+      border-color: #e4e4e7;
+      background: rgba(113, 113, 122, 0.72);
+      box-shadow:
+        0 0 0 1px rgba(244, 244, 245, 0.75),
+        0 0 12px rgba(212, 212, 216, 0.7),
+        0 0 26px rgba(161, 161, 170, 0.4);
     }
     .chip[data-wire="instagram"][aria-pressed="true"] {
-      color: #fb7185;
-      border-color: #f43f5e;
-      background: rgba(244, 63, 94, 0.22);
-      box-shadow: 0 0 16px rgba(244, 63, 94, 0.4);
+      color: #ffd0d8;
+      border-color: #fb7185;
+      background: rgba(244, 63, 94, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(251, 113, 133, 0.7),
+        0 0 12px rgba(244, 63, 94, 0.85),
+        0 0 26px rgba(244, 63, 94, 0.45);
     }
     .chip[data-wire="youtube"][aria-pressed="true"] {
-      color: #7dd3fc;
-      border-color: #0ea5e9;
-      background: rgba(14, 165, 233, 0.22);
-      box-shadow: 0 0 16px rgba(14, 165, 233, 0.4);
+      color: #d6f0ff;
+      border-color: #7dd3fc;
+      background: rgba(14, 165, 233, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(125, 211, 252, 0.7),
+        0 0 12px rgba(14, 165, 233, 0.85),
+        0 0 26px rgba(14, 165, 233, 0.45);
     }
     .chip[data-wire="slack"][aria-pressed="true"] {
-      color: #bef264;
-      border-color: #84cc16;
-      background: rgba(132, 204, 22, 0.22);
-      box-shadow: 0 0 16px rgba(132, 204, 22, 0.4);
+      color: #e8ffb8;
+      border-color: #bef264;
+      background: rgba(132, 204, 22, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(190, 242, 100, 0.7),
+        0 0 12px rgba(132, 204, 22, 0.85),
+        0 0 26px rgba(132, 204, 22, 0.45);
     }
     .chip[data-wire="linkedin"][aria-pressed="true"] {
-      color: #f9a8d4;
-      border-color: #ec4899;
-      background: rgba(236, 72, 153, 0.22);
-      box-shadow: 0 0 16px rgba(236, 72, 153, 0.4);
+      color: #ffe0f0;
+      border-color: #f9a8d4;
+      background: rgba(236, 72, 153, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(249, 168, 212, 0.7),
+        0 0 12px rgba(236, 72, 153, 0.85),
+        0 0 26px rgba(236, 72, 153, 0.45);
     }
     .chip[data-wire="facebook"][aria-pressed="true"] {
-      color: #a5b4fc;
-      border-color: #6366f1;
-      background: rgba(99, 102, 241, 0.22);
-      box-shadow: 0 0 16px rgba(99, 102, 241, 0.4);
+      color: #dde4ff;
+      border-color: #a5b4fc;
+      background: rgba(99, 102, 241, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(165, 180, 252, 0.7),
+        0 0 12px rgba(99, 102, 241, 0.85),
+        0 0 26px rgba(99, 102, 241, 0.45);
     }
     .chip[data-wire="discord"][aria-pressed="true"] {
-      color: #fdba74;
-      border-color: #f97316;
-      background: rgba(249, 115, 22, 0.22);
-      box-shadow: 0 0 16px rgba(249, 115, 22, 0.4);
+      color: #ffe0c2;
+      border-color: #fdba74;
+      background: rgba(249, 115, 22, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(253, 186, 116, 0.7),
+        0 0 12px rgba(249, 115, 22, 0.85),
+        0 0 26px rgba(249, 115, 22, 0.45);
     }
     .chip[data-wire="reddit"][aria-pressed="true"] {
-      color: #ff8a7a;
-      border-color: #ff4500;
-      background: rgba(255, 69, 0, 0.22);
-      box-shadow: 0 0 16px rgba(255, 69, 0, 0.4);
+      color: #ffd0c8;
+      border-color: #ff6a40;
+      background: rgba(255, 69, 0, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(255, 138, 122, 0.75),
+        0 0 12px rgba(255, 69, 0, 0.85),
+        0 0 26px rgba(255, 69, 0, 0.45);
     }
     .chip[data-wire="bitcoin"][aria-pressed="true"] {
-      color: #ffb060;
-      border-color: #ff5a00;
-      background: rgba(255, 90, 0, 0.28);
-      box-shadow: 0 0 16px rgba(255, 90, 0, 0.5);
+      color: #ffd4a0;
+      border-color: #ff7a28;
+      background: rgba(255, 90, 0, 0.45);
+      box-shadow:
+        0 0 0 1px rgba(255, 176, 96, 0.8),
+        0 0 12px rgba(255, 90, 0, 0.9),
+        0 0 26px rgba(255, 90, 0, 0.5);
       font-size: 1.35em;
       letter-spacing: 0;
       line-height: 1;
+    }
+
+
+    /* Selected chips pop harder on small screens */
+    @media (max-width: 520px) {
+      .chip[data-model][aria-pressed="true"],
+      .chip[data-wire][aria-pressed="true"] {
+        border-width: 2px;
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.45),
+          0 0 18px currentColor,
+          0 0 34px currentColor;
+      }
     }
 
     /* Inline chips under the face — same chip size as the open tray panels */
