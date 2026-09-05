@@ -644,8 +644,11 @@
       color: #ff9a3c;
       border-color: #ff5a00;
       background: rgba(255, 90, 0, 0.18);
-      font-size: 1.35em;
-      letter-spacing: 0;
+    }
+    .chip[data-wire="bitcoin"] .btc-glyph {
+      display: inline-block;
+      transform: scale(1.15);
+      transform-origin: center;
       line-height: 1;
     }
     .chip[data-wire][aria-pressed="true"] {
@@ -750,9 +753,6 @@
       box-shadow:
         inset 0 0 0 1px rgba(255, 122, 40, 0.45),
         inset 0 0 14px rgba(255, 122, 40, 0.38);
-      font-size: 1.35em;
-      letter-spacing: 0;
-      line-height: 1;
     }
 
 
@@ -1571,9 +1571,6 @@
       font-size: 10px;
       letter-spacing: 0.06em;
     }
-    .verse-rail .chip[data-wire="bitcoin"] {
-      font-size: 1.2em;
-    }
     .verse-layout .verse-app {
       flex: 1 1 auto;
       min-width: 0;
@@ -2121,7 +2118,7 @@
               <button type="button" class="chip" data-wire="facebook" aria-pressed="false">Facebook</button>
               <button type="button" class="chip" data-wire="discord" aria-pressed="false">Discord</button>
               <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
-              <button type="button" class="chip" data-wire="bitcoin" aria-pressed="false">₿</button>
+              <button type="button" class="chip" data-wire="bitcoin" aria-pressed="false"><span class="btc-glyph" aria-hidden="true">₿</span></button>
             </div>
           </div>
         </div>
@@ -2510,7 +2507,7 @@
           var label = wireLabel[w] || w;
           var pressed = w === selectedWire ? "true" : "false";
           return '<button type="button" class="chip" data-wire="' + esc(w) + '" aria-pressed="' + pressed + '">' +
-            (w === "bitcoin" ? "₿" : esc(label)) + "</button>";
+            (w === "bitcoin" ? '<span class="btc-glyph" aria-hidden="true">₿</span>' : esc(label)) + "</button>";
         }).join("");
         Array.prototype.forEach.call(verseRail.querySelectorAll("[data-wire]"), function (btn) {
           btn.addEventListener("click", function () {
