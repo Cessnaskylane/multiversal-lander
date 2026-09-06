@@ -196,36 +196,36 @@
       50% { transform: translate(-5%, 3%) scale(1.06); opacity: 0.88; }
     }
     .bokeh-haze {
-      animation: bokehHaze 22s ease-in-out infinite;
+      animation: bokehHaze 26.4s ease-in-out infinite;
     }
-    .bokeh-bg .b1 { animation: bokehDriftA 16s ease-in-out infinite; }
-    .bokeh-bg .b2 { animation: bokehDriftB 13s ease-in-out infinite; animation-delay: -2s; }
-    .bokeh-bg .b3 { animation: bokehDriftC 19s ease-in-out infinite; animation-delay: -5s; }
-    .bokeh-bg .b4 { animation: bokehDriftA 15s ease-in-out infinite; animation-delay: -7s; }
-    .bokeh-bg .b5 { animation: bokehDriftD 11s ease-in-out infinite; animation-delay: -1s; }
-    .bokeh-bg .b6 { animation: bokehDriftB 17s ease-in-out infinite; animation-delay: -6s; }
-    .bokeh-bg .b7 { animation: bokehDriftC 10s ease-in-out infinite; animation-delay: -3s; }
-    .bokeh-bg .b8 { animation: bokehDriftD 14s ease-in-out infinite; animation-delay: -8s; }
-    .bokeh-bg .b9 { animation: bokehDriftA 16s ease-in-out infinite; animation-delay: -4s; }
-    .bokeh-bg .b10 { animation: bokehDriftB 12s ease-in-out infinite; animation-delay: -5s; }
-    .bokeh-bg .b11 { animation: bokehDriftC 14s ease-in-out infinite; animation-delay: -2s; }
-    .bokeh-bg .b12 { animation: bokehDriftD 11s ease-in-out infinite; animation-delay: -6s; }
-    .bokeh-bg .b13 { animation: bokehDriftA 18s ease-in-out infinite; animation-delay: -9s; }
-    .bokeh-bg .b14 { animation: bokehDriftB 13s ease-in-out infinite; animation-delay: -3s; }
-    .bokeh-bg .b15 { animation: bokehDriftC 15s ease-in-out infinite; animation-delay: -7s; }
-    .bokeh-bg .b16 { animation: bokehDriftD 10s ease-in-out infinite; animation-delay: -1s; }
-    .bokeh-bg .b17 { animation: bokehDriftA 17s ease-in-out infinite; animation-delay: -8s; }
-    .bokeh-bg .b18 { animation: bokehDriftB 12s ease-in-out infinite; animation-delay: -4s; }
+    .bokeh-bg .b1 { animation: bokehDriftA 19.2s ease-in-out infinite; }
+    .bokeh-bg .b2 { animation: bokehDriftB 15.6s ease-in-out infinite; animation-delay: -2s; }
+    .bokeh-bg .b3 { animation: bokehDriftC 22.8s ease-in-out infinite; animation-delay: -5s; }
+    .bokeh-bg .b4 { animation: bokehDriftA 21.6s ease-in-out infinite; animation-delay: -7s; }
+    .bokeh-bg .b5 { animation: bokehDriftD 13.2s ease-in-out infinite; animation-delay: -1s; }
+    .bokeh-bg .b6 { animation: bokehDriftB 20.4s ease-in-out infinite; animation-delay: -6s; }
+    .bokeh-bg .b7 { animation: bokehDriftC 12s ease-in-out infinite; animation-delay: -3s; }
+    .bokeh-bg .b8 { animation: bokehDriftD 16.8s ease-in-out infinite; animation-delay: -8s; }
+    .bokeh-bg .b9 { animation: bokehDriftA 19.2s ease-in-out infinite; animation-delay: -4s; }
+    .bokeh-bg .b10 { animation: bokehDriftB 14.4s ease-in-out infinite; animation-delay: -5s; }
+    .bokeh-bg .b11 { animation: bokehDriftC 16.8s ease-in-out infinite; animation-delay: -2s; }
+    .bokeh-bg .b12 { animation: bokehDriftD 13.2s ease-in-out infinite; animation-delay: -6s; }
+    .bokeh-bg .b13 { animation: bokehDriftA 21.6s ease-in-out infinite; animation-delay: -9s; }
+    .bokeh-bg .b14 { animation: bokehDriftB 15.6s ease-in-out infinite; animation-delay: -3s; }
+    .bokeh-bg .b15 { animation: bokehDriftC 18s ease-in-out infinite; animation-delay: -7s; }
+    .bokeh-bg .b16 { animation: bokehDriftD 12s ease-in-out infinite; animation-delay: -1s; }
+    .bokeh-bg .b17 { animation: bokehDriftA 20.4s ease-in-out infinite; animation-delay: -8s; }
+    .bokeh-bg .b18 { animation: bokehDriftB 14.4s ease-in-out infinite; animation-delay: -4s; }
     .bokeh-accent .b-mid-left {
-      animation: bokehDriftC 14s ease-in-out infinite;
+      animation: bokehDriftC 16.8s ease-in-out infinite;
       animation-delay: -2s;
     }
     .bokeh-accent .b-mid-right {
-      animation: bokehDriftA 15s ease-in-out infinite;
+      animation: bokehDriftA 21.6s ease-in-out infinite;
       animation-delay: -5s;
     }
     .bokeh-accent .b-low-left {
-      animation: bokehDriftB 13s ease-in-out infinite;
+      animation: bokehDriftB 15.6s ease-in-out infinite;
       animation-delay: -3s;
     }
     @media (prefers-reduced-motion: reduce) {
@@ -334,8 +334,14 @@
       margin-top: 20px;
       margin-bottom: 20px;
       background: transparent;
-      overflow: visible;
-      border-color: transparent;
+      overflow: hidden;
+      /* Same 1px pink border box as page 2 — stroke draws on that edge */
+      border: 1px solid transparent;
+    }
+    #screen1 .door-spacer {
+      visibility: hidden;
+      pointer-events: none;
+      user-select: none;
     }
     .door-svg {
       display: block;
@@ -351,7 +357,8 @@
     .door-outline {
       fill: none;
       stroke: var(--line);
-      stroke-width: 2;
+      /* ~1 CSS px on the 300×400 viewBox ≈ page-2 1px border */
+      stroke-width: 2.2;
       stroke-linejoin: miter;
       stroke-linecap: square;
       vector-effect: non-scaling-stroke;
@@ -614,51 +621,33 @@
       background: rgba(77, 107, 254, 0.16);
     }
     .chip[data-model][aria-pressed="true"] {
-      border-width: 1.5px;
+      border-width: 2px;
       border-color: #e83d9a;
-      box-shadow:
-        inset 0 0 0 1px rgba(232, 61, 154, 0.55),
-        inset 0 0 14px rgba(232, 61, 154, 0.38);
     }
     .chip[data-model="grok"][aria-pressed="true"] {
       color: #ffffff;
       border-color: #e83d9a;
       background: rgba(255, 255, 255, 0.16);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.35),
-        inset 0 0 14px rgba(255, 255, 255, 0.22);
     }
     .chip[data-model="gpt"][aria-pressed="true"] {
       color: #a7f3d0;
       border-color: #e83d9a;
       background: rgba(16, 163, 127, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(52, 211, 153, 0.5),
-        inset 0 0 14px rgba(16, 163, 127, 0.45);
     }
     .chip[data-model="claude"][aria-pressed="true"] {
       color: #ffd5c4;
       border-color: #e83d9a;
       background: rgba(217, 119, 87, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(232, 149, 117, 0.5),
-        inset 0 0 14px rgba(217, 119, 87, 0.45);
     }
     .chip[data-model="gemini"][aria-pressed="true"] {
       color: #d2e3fc;
       border-color: #e83d9a;
       background: rgba(66, 133, 244, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(138, 180, 248, 0.5),
-        inset 0 0 14px rgba(66, 133, 244, 0.45);
     }
     .chip[data-model="deepseek"][aria-pressed="true"] {
       color: #d6e0ff;
       border-color: #e83d9a;
       background: rgba(77, 107, 254, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(142, 168, 255, 0.5),
-        inset 0 0 14px rgba(77, 107, 254, 0.45);
     }
 
     /* Soft filled pills — verses: same design, unique colors (not a row spectrum) */
@@ -732,114 +721,80 @@
       line-height: 1;
     }
     .chip[data-wire][aria-pressed="true"] {
-      border-width: 1.5px;
+      border-width: 2px;
       border-color: #e83d9a;
-      box-shadow:
-        inset 0 0 0 1px rgba(232, 61, 154, 0.55),
-        inset 0 0 14px rgba(232, 61, 154, 0.38);
     }
     .chip[data-wire="domain"][aria-pressed="true"] {
       color: #ffd0e8;
       border-color: #e83d9a;
       background: rgba(232, 61, 154, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 126, 185, 0.5),
-        inset 0 0 14px rgba(232, 61, 154, 0.45);
     }
     .chip[data-wire="mail"][aria-pressed="true"] {
       color: #d6f4ff;
       border-color: #e83d9a;
       background: rgba(90, 200, 250, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(125, 220, 255, 0.5),
-        inset 0 0 14px rgba(90, 200, 250, 0.45);
     }
     .chip[data-wire="tiktok"][aria-pressed="true"] {
       color: #ffd0dc;
       border-color: #e83d9a;
       background: rgba(254, 44, 85, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 77, 115, 0.5),
-        inset 0 0 14px rgba(254, 44, 85, 0.45);
     }
     .chip[data-wire="x"][aria-pressed="true"] {
       color: #ffffff;
       border-color: #e83d9a;
       background: rgba(255, 255, 255, 0.16);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.4),
-        inset 0 0 14px rgba(255, 255, 255, 0.28);
     }
     .chip[data-wire="instagram"][aria-pressed="true"] {
       color: #ffd0e0;
       border-color: #e83d9a;
       background: rgba(225, 48, 108, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 77, 141, 0.5),
-        inset 0 0 14px rgba(225, 48, 108, 0.45);
     }
     .chip[data-wire="youtube"][aria-pressed="true"] {
       color: #ff6b6b;
       border-color: #e83d9a;
       background: rgba(255, 0, 0, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 0, 0, 0.55),
-        inset 0 0 14px rgba(255, 0, 0, 0.45);
     }
     .chip[data-wire="slack"][aria-pressed="true"] {
       color: #f3e8ff;
       border-color: #e83d9a;
       background: rgba(168, 85, 247, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(192, 132, 252, 0.5),
-        inset 0 0 14px rgba(168, 85, 247, 0.45);
     }
     .chip[data-wire="linkedin"][aria-pressed="true"] {
       color: #e0f2fe;
       border-color: #e83d9a;
       background: rgba(10, 102, 194, 0.34);
-      box-shadow:
-        inset 0 0 0 1px rgba(59, 158, 255, 0.5),
-        inset 0 0 14px rgba(10, 102, 194, 0.45);
     }
     .chip[data-wire="facebook"][aria-pressed="true"] {
       color: #dceaff;
       border-color: #e83d9a;
       background: rgba(24, 119, 242, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(77, 159, 255, 0.5),
-        inset 0 0 14px rgba(24, 119, 242, 0.45);
     }
     .chip[data-wire="discord"][aria-pressed="true"] {
       color: #e0e7ff;
       border-color: #e83d9a;
       background: rgba(88, 101, 242, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(114, 137, 218, 0.5),
-        inset 0 0 14px rgba(88, 101, 242, 0.45);
     }
     .chip[data-wire="reddit"][aria-pressed="true"] {
       color: #ffd0c8;
       border-color: #e83d9a;
       background: rgba(255, 69, 0, 0.28);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 106, 64, 0.45),
-        inset 0 0 14px rgba(255, 106, 64, 0.38);
     }
     .chip[data-wire="bitcoin"][aria-pressed="true"] {
       color: #ffe0b0;
       border-color: #e83d9a;
       background: rgba(247, 147, 26, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 176, 32, 0.5),
-        inset 0 0 14px rgba(247, 147, 26, 0.45);
     }
 
 
-    /* Selected model/verse: Multiversal pink outline */
+    /* Selected model/verse: pink outline fully covers brand outline */
     .chip[data-model][aria-pressed="true"],
     .chip[data-wire][aria-pressed="true"] {
+      border-width: 2px;
       border-color: #e83d9a;
+      box-shadow:
+        inset 0 0 0 1px #e83d9a,
+        0 0 0 1px #e83d9a,
+        inset 0 0 14px rgba(232, 61, 154, 0.35);
     }
 
     /* Selected chips: contained glow, a touch clearer on small screens */
@@ -847,9 +802,6 @@
       .chip[data-model][aria-pressed="true"],
       .chip[data-wire][aria-pressed="true"] {
         border-width: 1.5px;
-        box-shadow:
-          inset 0 0 0 1px rgba(255, 255, 255, 0.28),
-          inset 0 0 16px rgba(255, 255, 255, 0.12);
       }
     }
 
@@ -2224,10 +2176,22 @@
         <h1 class="screen-title door-title-spacer" aria-hidden="true">Your agent</h1>
         <div class="stage">
           <div class="portrait-wrap door-frame">
-            <svg class="door-svg" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
-              <rect class="door-outline" x="1" y="1" width="298" height="398" pathLength="1400" />
+            <svg class="door-svg" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <rect class="door-outline" x="0.75" y="0.75" width="298.5" height="398.5" pathLength="1400" />
               <circle class="door-knob" cx="278" cy="210" r="5" />
             </svg>
+          </div>
+          <div class="personalize has-inline door-spacer" aria-hidden="true">
+            <div class="inline-tray">
+              <div class="chip-row">
+                <p class="chip-label">Choose model</p>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">Grok</button>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">GPT</button>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">Claude</button>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">Gemini</button>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">DeepSeek</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
