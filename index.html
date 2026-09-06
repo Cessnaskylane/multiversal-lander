@@ -1259,6 +1259,31 @@
       margin: 0;
       line-height: 1;
     }
+    /* Same chip-slot height on page 2 + 3 so centered stack keeps the box/title still */
+    #screen1 .door-spacer,
+    #screen2 .personalize.has-inline,
+    #screen2b .personalize.has-inline {
+      min-height: 124px;
+      justify-content: flex-start;
+    }
+    @media (max-width: 520px) {
+      #screen1 .door-spacer,
+      #screen2 .personalize.has-inline,
+      #screen2b .personalize.has-inline {
+        min-height: 162px; /* verse row 2 wraps */
+      }
+    }
+    /* Reserve hint line so showing/hiding the nudge does not jump the stack */
+    #screen2 .model-pick-hint,
+    #screen2b .model-pick-hint {
+      min-height: 1.2em;
+    }
+    #screen2 .model-pick-hint[hidden],
+    #screen2b .model-pick-hint[hidden] {
+      display: block !important;
+      visibility: hidden;
+      pointer-events: none;
+    }
     .nav-pair {
       display: inline-flex;
       align-items: center;
