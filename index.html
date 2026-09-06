@@ -621,7 +621,7 @@
       background: rgba(77, 107, 254, 0.16);
     }
     .chip[data-model][aria-pressed="true"] {
-      border-width: 2px;
+      border-width: 1px;
       border-color: #e83d9a;
     }
     .chip[data-model="grok"][aria-pressed="true"] {
@@ -721,7 +721,7 @@
       line-height: 1;
     }
     .chip[data-wire][aria-pressed="true"] {
-      border-width: 2px;
+      border-width: 1px;
       border-color: #e83d9a;
     }
     .chip[data-wire="domain"][aria-pressed="true"] {
@@ -786,22 +786,25 @@
     }
 
 
-    /* Selected model/verse: pink outline fully covers brand outline */
+    /* Selected model/verse: thin pink outline + glow (covers brand border) */
     .chip[data-model][aria-pressed="true"],
     .chip[data-wire][aria-pressed="true"] {
-      border-width: 2px;
+      border-width: 1px;
       border-color: #e83d9a;
       box-shadow:
-        inset 0 0 0 1px #e83d9a,
-        0 0 0 1px #e83d9a,
-        inset 0 0 14px rgba(232, 61, 154, 0.35);
+        0 0 10px rgba(232, 61, 154, 0.55),
+        0 0 22px rgba(232, 61, 154, 0.35),
+        inset 0 0 10px rgba(232, 61, 154, 0.28);
     }
 
-    /* Selected chips: contained glow, a touch clearer on small screens */
     @media (max-width: 520px) {
       .chip[data-model][aria-pressed="true"],
       .chip[data-wire][aria-pressed="true"] {
-        border-width: 1.5px;
+        border-width: 1px;
+        box-shadow:
+          0 0 8px rgba(232, 61, 154, 0.5),
+          0 0 18px rgba(232, 61, 154, 0.32),
+          inset 0 0 8px rgba(232, 61, 154, 0.25);
       }
     }
 
