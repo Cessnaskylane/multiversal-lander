@@ -509,9 +509,9 @@
       background: rgba(255, 255, 255, 0.03);
     }
     .chip[data-model="grok"] {
-      color: #ff7eb9;
-      border-color: #e83d9a;
-      background: rgba(232, 61, 154, 0.12);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.08);
     }
     .chip[data-model="gpt"] {
       color: #e0a0ff;
@@ -541,12 +541,12 @@
     
     }
     .chip[data-model="grok"][aria-pressed="true"] {
-      color: #ffd0e8;
-      border-color: #ff7eb9;
-      background: rgba(232, 61, 154, 0.28);
+      color: #ffffff;
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.16);
       box-shadow:
-        inset 0 0 0 1px rgba(255, 126, 185, 0.45),
-        inset 0 0 14px rgba(255, 126, 185, 0.38);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+        inset 0 0 14px rgba(255, 255, 255, 0.22);
     }
     .chip[data-model="gpt"][aria-pressed="true"] {
       color: #f3d4ff;
@@ -586,7 +586,7 @@
       background: rgba(255, 255, 255, 0.03);
     }
     .chip[data-wire="domain"] {
-      color: #ff7eb9;
+      color: #ffffff;
       border-color: #e83d9a;
       background: rgba(232, 61, 154, 0.12);
     }
@@ -660,7 +660,7 @@
     }
     .chip[data-wire="domain"][aria-pressed="true"] {
       color: #ffd0e8;
-      border-color: #ff7eb9;
+      border-color: #ffffff;
       background: rgba(232, 61, 154, 0.28);
       box-shadow:
         inset 0 0 0 1px rgba(255, 126, 185, 0.45),
@@ -1087,11 +1087,40 @@
     #screen2 .world-btn, #screen2b .world-btn {
       padding: 12px 16px;
     }
-    .mail-link {
+    .header-actions {
       position: absolute;
       z-index: 40;
       top: max(28px, env(safe-area-inset-top, 0px));
       right: max(28px, env(safe-area-inset-right, 0px));
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
+      max-width: min(72vw, 420px);
+    }
+    .mark.visible ~ .header-actions,
+    .frame:has(.mark.visible) .header-actions {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .account-link {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      margin: 0;
+      padding: 0;
+      font: inherit;
+      font-size: clamp(11px, 1.4vw, 14px);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(244, 240, 246, 0.42);
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .mail-link {
       margin: 0;
       font-size: clamp(11px, 1.4vw, 14px);
       font-weight: 400;
@@ -1099,29 +1128,31 @@
       color: rgba(244, 240, 246, 0.42);
       text-decoration: none;
       text-align: right;
-      opacity: 0;
-      pointer-events: none;
-      max-width: min(48vw, 280px);
+      max-width: min(42vw, 240px);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .mark.visible ~ .mail-link,
-    .frame:has(.mark.visible) .mail-link {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .account-link:hover,
+    .account-link:focus,
     .mail-link:hover,
     .mail-link:focus {
       color: var(--line);
     }
     @media (max-width: 520px) {
-      .mail-link {
+      .header-actions {
         top: max(18px, env(safe-area-inset-top, 0px));
         right: max(14px, env(safe-area-inset-right, 0px));
+        gap: 10px;
+        max-width: 58vw;
+      }
+      .account-link,
+      .mail-link {
         font-size: 10px;
         letter-spacing: 0.04em;
-        max-width: 46vw;
+      }
+      .mail-link {
+        max-width: 34vw;
       }
       .mark {
         top: max(18px, env(safe-area-inset-top, 0px));
@@ -2055,7 +2086,10 @@
       <div class="bokeh b11"></div>
     </div>
     <p class="mark" id="wordmark" role="link" tabindex="0" aria-label="Back to start" title="multiversal.ai"><span class="m">M</span><span class="u">U</span><span class="l">L</span><span class="t">T</span><span class="i">I</span>versal <span class="accent dot">.ai</span></p>
-    <a class="mail-link" id="header-mail" href="mailto:hello@multiversal.ai">hello@multiversal.ai</a>
+    <div class="header-actions" id="header-actions">
+      <button type="button" class="account-link" id="header-account">My account</button>
+      <a class="mail-link" id="header-mail" href="mailto:hello@multiversal.ai">hello@multiversal.ai</a>
+    </div>
     <p class="promise" id="promise">A named voice you put on Grok.</p>
 
     <div id="screen1" aria-label="Door">
