@@ -12,8 +12,6 @@
       --bg: #050508;
       --text: #ece8ef;
       --line: #e83d9a;
-      /* Shared top inset for door / model / verses so the box never jumps */
-      --agent-stack-top: max(56px, calc(50svh - 268px));
     }
     * { box-sizing: border-box; }
     html, body {
@@ -303,9 +301,9 @@
       z-index: 10;
       display: grid;
       place-items: center;
-      /* Top-align with page 2/3 — taller verse chips must not lift the box */
-      place-content: start;
-      padding: var(--agent-stack-top) 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      place-content: center;
+      /* Match #screen2 padding so the door lands on the page-2 box */
+      padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
       overflow-x: clip;
       overflow-y: auto;
     }
@@ -396,10 +394,10 @@
       z-index: 15;
       display: none;
       place-items: center;
-      place-content: start;
+      place-content: center;
       opacity: 0;
       background: transparent;
-      padding: var(--agent-stack-top) 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
       overflow-x: clip;
       overflow-y: auto;
     }
@@ -915,10 +913,10 @@
       z-index: 15;
       display: none;
       place-items: center;
-      place-content: start;
+      place-content: center;
       opacity: 0;
       background: transparent;
-      padding: var(--agent-stack-top) 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
       overflow-x: clip;
       overflow-y: auto;
     }
@@ -1260,19 +1258,6 @@
     #screen2b .inline-tray .chip-label {
       margin: 0;
       line-height: 1;
-    }
-    /* Reserve verses-height under the face on door + model pages */
-    #screen1 .door-spacer,
-    #screen2 .personalize.has-inline,
-    #screen2b .personalize.has-inline {
-      min-height: 108px;
-    }
-    @media (max-width: 520px) {
-      #screen1 .door-spacer,
-      #screen2 .personalize.has-inline,
-      #screen2b .personalize.has-inline {
-        min-height: 138px; /* verse row wraps to 2 lines on small */
-      }
     }
     .nav-pair {
       display: inline-flex;
@@ -2090,12 +2075,12 @@
         width: min(100%, 280px);
       }
       #screen1 {
-        padding: var(--agent-stack-top) 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+        padding: 8px 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
       }
       #screen2b {
-        padding: var(--agent-stack-top) 12px max(20px, env(safe-area-inset-bottom, 0px));
+        padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
         place-items: center;
-        place-content: start;
+        place-content: center;
       }
 
       #screen2.tray-open .personalize {
@@ -2153,9 +2138,9 @@
         padding-bottom: max(108px, calc(env(safe-area-inset-bottom, 0px) + 88px));
       }
       #screen2 {
-        padding: var(--agent-stack-top) 12px max(20px, env(safe-area-inset-bottom, 0px));
+        padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
         place-items: center;
-        place-content: start;
+        place-content: center;
       }
       .s2-stack {
         margin: 0;
@@ -2213,23 +2198,13 @@
           </div>
           <div class="personalize has-inline door-spacer" aria-hidden="true">
             <div class="inline-tray">
-              <p class="chip-label">Choose verses</p>
-              <div class="chip-lines">
-                <div class="chip-row chip-line chip-line-5">
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">X</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">TikTok</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">Instagram</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">YouTube</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">Facebook</button>
-                </div>
-                <div class="chip-row chip-line chip-line-6">
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">www.</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">Email</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">Discord</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">Linked In</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">Slack</button>
-                  <button type="button" class="chip" tabindex="-1" aria-hidden="true">₿</button>
-                </div>
+              <div class="chip-row">
+                <p class="chip-label">Choose model</p>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">Grok</button>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">GPT</button>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">Claude</button>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">Gemini</button>
+                <button type="button" class="chip" tabindex="-1" aria-hidden="true">DeepSeek</button>
               </div>
             </div>
           </div>
