@@ -299,10 +299,13 @@
       position: absolute;
       inset: 0;
       z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
+      place-content: center;
+      /* Match #screen2 padding so the door lands on the page-2 box */
+      padding: 0 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      overflow-x: clip;
+      overflow-y: auto;
     }
     #screen1.hidden {
       pointer-events: none;
@@ -310,21 +313,36 @@
       transition: opacity 0.55s ease;
     }
     .door {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      display: block;
+      width: 100%;
       pointer-events: none;
       opacity: 0;
     }
     .door.play {
       opacity: 1;
     }
+    .door-stack {
+      gap: 0;
+    }
+    .door-title-spacer {
+      visibility: hidden;
+      pointer-events: none;
+      user-select: none;
+    }
+    #screen1 .portrait-wrap.door-frame {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      background: transparent;
+      overflow: visible;
+      border-color: transparent;
+    }
     .door-svg {
       display: block;
-      width: min(36vw, 180px);
-      height: min(72vh, 560px);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
       overflow: visible;
       filter:
         drop-shadow(0 0 10px rgba(232, 61, 154, 0.9))
@@ -333,11 +351,12 @@
     .door-outline {
       fill: none;
       stroke: var(--line);
-      stroke-width: 1.25;
+      stroke-width: 2;
       stroke-linejoin: miter;
       stroke-linecap: square;
-      stroke-dasharray: 720;
-      stroke-dashoffset: 720;
+      vector-effect: non-scaling-stroke;
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
     }
     .door-knob {
       fill: var(--line);
@@ -2088,6 +2107,9 @@
       #screen2b .stage {
         width: min(100%, 280px);
       }
+      #screen1 {
+        padding: 8px 12px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      }
       #screen2b {
         padding: 8px 12px max(20px, env(safe-area-inset-bottom, 0px));
         place-items: center;
@@ -2198,11 +2220,16 @@
     <p class="promise" id="promise">A named voice you put on Grok.</p>
 
     <div id="screen1" aria-label="Door">
-      <div class="door" id="beam" aria-hidden="true">
-        <svg class="door-svg" viewBox="0 0 100 200" aria-hidden="true">
-          <rect class="door-outline" x="18" y="12" width="64" height="176" pathLength="720" />
-          <circle class="door-knob" cx="70" cy="112" r="2.2" />
-        </svg>
+      <div class="door s2-stack door-stack" id="beam" aria-hidden="true">
+        <h1 class="screen-title door-title-spacer" aria-hidden="true">Your agent</h1>
+        <div class="stage">
+          <div class="portrait-wrap door-frame">
+            <svg class="door-svg" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
+              <rect class="door-outline" x="1" y="1" width="298" height="398" pathLength="1400" />
+              <circle class="door-knob" cx="278" cy="210" r="5" />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
 
