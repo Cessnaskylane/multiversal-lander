@@ -2268,7 +2268,7 @@
               <button type="button" class="chip" data-wire="facebook" aria-pressed="false">Facebook</button>
             </div>
             <div class="chip-row chip-line chip-line-6" role="group" aria-label="Verses row 2">
-              <button type="button" class="chip" data-wire="domain" aria-pressed="true">www.</button>
+              <button type="button" class="chip" data-wire="domain" aria-pressed="false">www.</button>
               <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
               <button type="button" class="chip" data-wire="discord" aria-pressed="false">Discord</button>
               <button type="button" class="chip" data-wire="linkedin" aria-pressed="false">Linked In</button>
@@ -2277,6 +2277,7 @@
             </div>
           </div>
         </div>
+          <p class="model-pick-hint" id="verse-pick-hint" hidden>please choose verses</p>
       </div>
       </div>
 
@@ -2553,8 +2554,8 @@
       var agentFace = document.getElementById("agent-face");
       var agentFaceDoors = document.getElementById("agent-face-doors");
       var selectedModel = null;
-      var selectedWires = ["domain"];
-      var selectedWire = "domain";
+      var selectedWires = [];
+      var selectedWire = null;
       var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var introMs = reduceMotion ? 200 : 2100;
       var advanced = false;
@@ -2612,6 +2613,7 @@
         advanced = false;
         starting = false;
         if (typeof resetModelSelection === "function") resetModelSelection();
+        if (typeof resetVerseSelection === "function") resetVerseSelection();
         wordmark.classList.remove("animate", "visible");
         beam.classList.remove("play");
         void wordmark.offsetWidth;
@@ -2700,10 +2702,24 @@
         });
       }
 
+      var versePickHint = document.getElementById("verse-pick-hint");
+      function clearVersePickHint() {
+        if (versePickHint) versePickHint.hidden = true;
+      }
+      function showVersePickHint() {
+        if (versePickHint) versePickHint.hidden = false;
+      }
+      function resetVerseSelection() {
+        selectedWires = [];
+        selectedWire = null;
+        syncWireChipPressed();
+        clearVersePickHint();
+        updateDoorsBtn();
+      }
       function updateDoorsBtn() {
-        var ok = selectedWires.length > 0;
-        doorsBtn.disabled = !ok;
-        doorsBtn.setAttribute("aria-disabled", ok ? "false" : "true");
+        // Keep Continue tappable; empty selection shows a hint instead of disabling.
+        doorsBtn.disabled = false;
+        doorsBtn.setAttribute("aria-disabled", "false");
       }
 
       function paintVerseRail() {
@@ -2731,14 +2747,14 @@
           var w = btn.getAttribute("data-wire");
           var i = selectedWires.indexOf(w);
           if (i >= 0) {
-            if (selectedWires.length <= 1) return;
             selectedWires.splice(i, 1);
-            if (selectedWire === w) selectedWire = selectedWires[0];
+            if (selectedWire === w) selectedWire = selectedWires[0] || null;
           } else {
             selectedWires.push(w);
             selectedWire = w;
           }
           syncWireChipPressed();
+          if (selectedWires.length) clearVersePickHint();
           updateDoorsBtn();
         });
       });
@@ -3342,7 +3358,14 @@
         clearModelPickHint();
         goToScreen2b();
       });
-      document.getElementById("doors-btn").addEventListener("click", goToScreen3);
+      document.getElementById("doors-btn").addEventListener("click", function () {
+        if (!selectedWires.length) {
+          showVersePickHint();
+          return;
+        }
+        clearVersePickHint();
+        goToScreen3();
+      });
       document.getElementById("pick-upload").addEventListener("click", function () {
         lastLayerScreen = screen6;
         goToScreen6();
