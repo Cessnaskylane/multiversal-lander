@@ -1399,6 +1399,18 @@
       min-height: 14px;
       text-align: center;
     }
+    .model-pick-hint {
+      margin: 10px 0 0;
+      width: 100%;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(244, 240, 246, 0.55);
+    }
+    .model-pick-hint[hidden] {
+      display: none !important;
+    }
 
 
     
@@ -2239,12 +2251,13 @@
         <div class="inline-tray" id="panel-model">
           <div class="chip-row" role="group" aria-label="Choose model">
             <p class="chip-label">Choose model</p>
-            <button type="button" class="chip" data-model="grok" aria-pressed="true">Grok</button>
+            <button type="button" class="chip" data-model="grok" aria-pressed="false">Grok</button>
             <button type="button" class="chip" data-model="gpt" aria-pressed="false">GPT</button>
             <button type="button" class="chip" data-model="claude" aria-pressed="false">Claude</button>
             <button type="button" class="chip" data-model="gemini" aria-pressed="false">Gemini</button>
             <button type="button" class="chip" data-model="deepseek" aria-pressed="false">DeepSeek</button>
           </div>
+          <p class="model-pick-hint" id="model-pick-hint" hidden>please select a model</p>
         </div>
       </div>
       </div>
@@ -2564,7 +2577,7 @@
       var hint = document.getElementById("hint");
       var agentFace = document.getElementById("agent-face");
       var agentFaceDoors = document.getElementById("agent-face-doors");
-      var selectedModel = "grok";
+      var selectedModel = null;
       var selectedWires = ["domain"];
       var selectedWire = "domain";
       var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -2623,6 +2636,7 @@
         screen1.removeAttribute("aria-hidden");
         advanced = false;
         starting = false;
+        if (typeof resetModelSelection === "function") resetModelSelection();
         wordmark.classList.remove("animate", "visible");
         beam.classList.remove("play");
         void wordmark.offsetWidth;
@@ -2680,10 +2694,23 @@
       }
 
       var modelChips = Array.prototype.slice.call(document.querySelectorAll("[data-model]"));
+      var modelPickHint = document.getElementById("model-pick-hint");
+      function clearModelPickHint() {
+        if (modelPickHint) modelPickHint.hidden = true;
+      }
+      function showModelPickHint() {
+        if (modelPickHint) modelPickHint.hidden = false;
+      }
+      function resetModelSelection() {
+        selectedModel = null;
+        modelChips.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+        clearModelPickHint();
+      }
       modelChips.forEach(function (btn) {
         btn.addEventListener("click", function () {
           selectedModel = btn.getAttribute("data-model");
           setExclusivePressed(modelChips, btn);
+          clearModelPickHint();
         });
       });
 
@@ -3332,7 +3359,14 @@
         }
       });
 
-      worldBtn.addEventListener("click", goToScreen2b);
+      worldBtn.addEventListener("click", function () {
+        if (!selectedModel) {
+          showModelPickHint();
+          return;
+        }
+        clearModelPickHint();
+        goToScreen2b();
+      });
       document.getElementById("doors-btn").addEventListener("click", goToScreen3);
       document.getElementById("pick-upload").addEventListener("click", function () {
         lastLayerScreen = screen6;
