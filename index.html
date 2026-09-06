@@ -1089,7 +1089,7 @@
     }
     .header-actions {
       position: absolute;
-      z-index: 40;
+      z-index: 60;
       top: max(28px, env(safe-area-inset-top, 0px));
       right: max(28px, env(safe-area-inset-right, 0px));
       display: flex;
@@ -1099,6 +1099,10 @@
       opacity: 0;
       pointer-events: none;
       max-width: min(78vw, 460px);
+    }
+    .header-actions.visible {
+      opacity: 1;
+      pointer-events: auto;
     }
     .header-face {
       flex: 0 0 auto;
@@ -1135,6 +1139,7 @@
     }
     .mail-link {
       margin: 0;
+      padding: 6px 2px;
       font-size: clamp(11px, 1.4vw, 14px);
       font-weight: 400;
       letter-spacing: 0.06em;
@@ -1145,6 +1150,9 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      cursor: pointer;
+      pointer-events: auto;
+      -webkit-tap-highlight-color: transparent;
     }
     .account-link:hover,
     .account-link:focus,
@@ -2104,7 +2112,7 @@
     </div>
     <p class="mark" id="wordmark" role="link" tabindex="0" aria-label="Back to start" title="multiversal.ai"><span class="m">M</span><span class="u">U</span><span class="l">L</span><span class="t">T</span><span class="i">I</span>versal <span class="accent dot">.ai</span></p>
     <div class="header-actions" id="header-actions">
-      <a class="mail-link" id="header-mail" href="mailto:hello@multiversal.ai">hello@multiversal.ai</a>
+      <a class="mail-link" id="header-mail" href="mailto:hello@multiversal.ai" title="Email hello@multiversal.ai">hello@multiversal.ai</a>
       <img class="header-face" id="header-face" src="assets/header-face.png?v=3" alt="" width="28" height="28" />
       <button type="button" class="account-link" id="header-account">My account</button>
     </div>
@@ -2432,6 +2440,26 @@
       var screen7 = document.getElementById("screen7");
       var screen8 = document.getElementById("screen8");
       var wordmark = document.getElementById("wordmark");
+      var headerActions = document.getElementById("header-actions");
+      var headerMail = document.getElementById("header-mail");
+      function syncHeaderActions() {
+        if (!headerActions || !wordmark) return;
+        if (wordmark.classList.contains("visible")) headerActions.classList.add("visible");
+        else headerActions.classList.remove("visible");
+      }
+      if (headerMail) {
+        headerMail.addEventListener("click", function (e) {
+          // Keep native mailto; also force navigation for stubborn mobile browsers
+          var href = headerMail.getAttribute("href") || "mailto:hello@multiversal.ai";
+          try { window.location.href = href; } catch (err) {}
+        });
+      }
+
+      if (wordmark && typeof MutationObserver !== "undefined") {
+        new MutationObserver(syncHeaderActions).observe(wordmark, { attributes: true, attributeFilter: ["class"] });
+        syncHeaderActions();
+      }
+
       var promise = document.getElementById("promise");
       var beam = document.getElementById("beam");
       var worldBtn = document.getElementById("world-btn");
