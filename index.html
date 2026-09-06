@@ -3019,14 +3019,7 @@
         var wire = selectedWire;
         var overlay = act ? overlayFor(act, v) : "";
         // Every door uses the TikTok-style frame: full face, handle at the bottom, no bars or lists.
-        var meta = '<div class="app-meta"><p class="app-user">' + esc(handle) + "</p>";
-        if (!act) meta += '<p class="app-sub">tap a job</p>';
-        if (wire === "tiktok") {
-          meta += '<p class="app-sound">' + esc(act === "sound" ? v.sound : ("original sound · " + name.toLowerCase())) + "</p>";
-        } else if (wire === "domain" || wire === "www") {
-          meta += '<p class="app-sound">' + esc(siteOf(name)) + "</p>";
-        }
-        meta += "</div>";
+        var meta = '<div class="app-meta"><p class="app-user">' + esc(handle) + "</p></div>";
         var html = '<div class="app app-tt">' +
           faceStage(src, meta, overlay) +
           (act ? "" : actsHtml()) + "</div>";
