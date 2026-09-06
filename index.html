@@ -1094,11 +1094,24 @@
       right: max(28px, env(safe-area-inset-right, 0px));
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       margin: 0;
       opacity: 0;
       pointer-events: none;
-      max-width: min(72vw, 420px);
+      max-width: min(78vw, 460px);
+    }
+    .header-face {
+      flex: 0 0 auto;
+      width: 27px;
+      height: 36px;
+      object-fit: contain;
+      object-position: center top;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 0;
+      background: #07070a;
+      pointer-events: none;
+      user-select: none;
     }
     .mark.visible ~ .header-actions,
     .frame:has(.mark.visible) .header-actions {
@@ -1143,8 +1156,12 @@
       .header-actions {
         top: max(18px, env(safe-area-inset-top, 0px));
         right: max(14px, env(safe-area-inset-right, 0px));
-        gap: 10px;
-        max-width: 58vw;
+        gap: 8px;
+        max-width: 68vw;
+      }
+      .header-face {
+        width: 22px;
+        height: 29px;
       }
       .account-link,
       .mail-link {
@@ -2087,8 +2104,9 @@
     </div>
     <p class="mark" id="wordmark" role="link" tabindex="0" aria-label="Back to start" title="multiversal.ai"><span class="m">M</span><span class="u">U</span><span class="l">L</span><span class="t">T</span><span class="i">I</span>versal <span class="accent dot">.ai</span></p>
     <div class="header-actions" id="header-actions">
-      <button type="button" class="account-link" id="header-account">My account</button>
       <a class="mail-link" id="header-mail" href="mailto:hello@multiversal.ai">hello@multiversal.ai</a>
+      <img class="header-face" id="header-face" src="assets/header-face.png?v=1" alt="" width="27" height="36" />
+      <button type="button" class="account-link" id="header-account">My account</button>
     </div>
     <p class="promise" id="promise">A named voice you put on Grok.</p>
 
