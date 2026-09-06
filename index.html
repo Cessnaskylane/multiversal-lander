@@ -3018,40 +3018,18 @@
         var v = voiceOf(layerKey());
         var wire = selectedWire;
         var overlay = act ? overlayFor(act, v) : "";
-        var html = "";
+        // Every door uses the TikTok-style frame: full face, handle at the bottom, no bars or lists.
+        var meta = '<div class="app-meta"><p class="app-user">' + esc(handle) + "</p>";
+        if (!act) meta += '<p class="app-sub">tap a job</p>';
         if (wire === "tiktok") {
-          html = '<div class="app app-tt">' +
-            faceStage(src, '<div class="app-meta"><p class="app-user">' + esc(handle) + '</p><p class="app-sub">' + esc(act ? "" : "tap a job") + '</p><p class="app-sound">' + esc(act === "sound" ? v.sound : ("original sound · " + name.toLowerCase())) + "</p></div>", overlay) +
-            (act ? "" : actsHtml()) + "</div>";
-        } else if (wire === "instagram") {
-          html = '<div class="app app-ig"><div class="app-bar"><span class="dot"><img alt="" src="' + esc(src) + '"></span><strong>' + esc(handle) + '</strong></div>' +
-            faceStage(src, act ? "" : '<div class="app-meta"><p class="app-sub">tap a job</p></div>', overlay) +
-            (act ? "" : actsHtml()) + "</div>";
-        } else if (wire === "x") {
-          html = '<div class="app app-x"><div class="app-bar"><span class="dot"><img alt="" src="' + esc(src) + '"></span><strong>' + esc(handle) + '</strong><span> · ' + esc(name) + "</span></div>" +
-            '<div class="x-feed">' + (act ? overlay : ('<div class="x-tweet"><span class="from">' + esc(handle) + '</span>tap a job. the draft lands here.</div>')) + "</div>" +
-            (act ? "" : actsHtml()) + "</div>";
-        } else if (wire === "mail") {
-          html = '<div class="app app-mail"><div class="app-bar"><strong>Inbox</strong><span> · ' + esc(name) + "</span></div>" +
-            '<div class="mail-list">' + (act ? overlay : ('<div class="mail-item"><span class="from">@press</span>twenty minutes next week?</div><div class="mail-item"><span class="from">@sam</span>collab on a drop?</div><div class="mail-item"><span class="from">@grid</span>you won a giveaway</div>')) + "</div>" +
-            (act ? "" : actsHtml()) + "</div>";
-        } else if (wire === "slack") {
-          html = '<div class="app app-slack"><div class="app-bar"><strong>#multiversal</strong><span> · ' + esc(name) + "</span></div>" +
-            '<div class="sl-log">' + (act ? overlay : ('<div class="sl-msg"><span class="from">' + esc(handle) + '</span>here. tap a job.</div>')) + "</div>" +
-            (act ? "" : actsHtml()) + "</div>";
-        } else if (wire === "linkedin") {
-          html = '<div class="app app-li"><div class="app-bar"><span class="dot"><img alt="" src="' + esc(src) + '"></span><strong>' + esc(name) + '</strong><span> · layer</span></div>' +
-            faceStage(src, act ? "" : '<div class="app-meta"><p class="app-sub">start a post</p></div>', overlay) +
-            (act ? "" : actsHtml()) + "</div>";
-        } else if (wire === "inscription") {
-          html = '<div class="app app-ord">' +
-            faceStage(src, '<p class="ord-id">inscription · ' + esc(handle) + "</p>" + (act ? "" : '<div class="app-meta"><p class="app-sub">tap a job</p></div>'), overlay) +
-            (act ? "" : actsHtml()) + "</div>";
-        } else {
-          html = '<div class="app app-web"><p class="url">' + esc(siteOf(name)) + "</p>" +
-            faceStage(src, act ? "" : '<div class="app-meta"><p class="app-user">' + esc(name) + '</p><p class="app-sub">tap a job</p></div>', overlay) +
-            (act ? "" : actsHtml()) + "</div>";
+          meta += '<p class="app-sound">' + esc(act === "sound" ? v.sound : ("original sound · " + name.toLowerCase())) + "</p>";
+        } else if (wire === "domain" || wire === "www") {
+          meta += '<p class="app-sound">' + esc(siteOf(name)) + "</p>";
         }
+        meta += "</div>";
+        var html = '<div class="app app-tt">' +
+          faceStage(src, meta, overlay) +
+          (act ? "" : actsHtml()) + "</div>";
         root.innerHTML = html;
         if (!act) bindActs(root);
         if (act) verseCopy = copyForAct(act, v);
