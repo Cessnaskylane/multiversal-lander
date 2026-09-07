@@ -893,18 +893,22 @@
       letter-spacing: 0.06em;
     }
     @media (max-width: 520px) {
-      #screen2b .chip-line-5 {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 5px;
-      }
+      /* Flex-wrap instead of cramped 5-col grid — labels stay inside chips */
+      #screen2b .chip-line-5,
       #screen2b .chip-line-6 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 6px;
       }
       #screen2b .chip-line .chip {
-        padding: 9px 4px;
+        width: auto;
+        flex: 0 0 auto;
+        padding: 8px 9px;
         font-size: 10px;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
     #screen2b {
@@ -2054,7 +2058,7 @@
         width: min(100%, 280px);
       }
       .personalize {
-        max-width: 230px;
+        max-width: min(100%, 300px);
         width: 100%;
         padding: 0;
       }
@@ -2081,17 +2085,35 @@
         justify-content: center;
       }
       .inline-tray .chip {
-        padding: 9px 10px;
+        padding: 8px 9px;
         font-size: 10px;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        overflow: hidden;
       }
       .personalize.has-inline {
-        max-width: 230px; /* match mobile .portrait-wrap */
+        max-width: min(100%, 300px); /* wider than face so chip labels fit */
         width: 100%;
       }
       .inline-tray {
-        width: min(calc(100vw - 24px), 280px);
-        max-width: min(calc(100vw - 24px), 280px);
+        width: min(calc(100vw - 24px), 340px);
+        max-width: min(calc(100vw - 24px), 340px);
+      }
+      #screen2b .chip-line-5,
+      #screen2b .chip-line-6 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+      }
+      #screen2b .chip-line .chip {
+        width: auto;
+        flex: 0 0 auto;
+        padding: 8px 9px;
+        font-size: 10px;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+        overflow: hidden;
       }
       #screen2 .s2-stack,
       #screen2b .s2-stack,
@@ -2296,7 +2318,7 @@
               <button type="button" class="chip" data-wire="domain" aria-pressed="false">www.</button>
               <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
               <button type="button" class="chip" data-wire="discord" aria-pressed="false">Discord</button>
-              <button type="button" class="chip" data-wire="linkedin" aria-pressed="false">Linked In</button>
+              <button type="button" class="chip" data-wire="linkedin" aria-pressed="false">LinkedIn</button>
               <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
               <button type="button" class="chip" data-wire="bitcoin" aria-pressed="false"><span class="btc-glyph" aria-hidden="true">₿</span></button>
             </div>
