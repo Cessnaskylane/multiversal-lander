@@ -893,22 +893,18 @@
       letter-spacing: 0.06em;
     }
     @media (max-width: 520px) {
-      /* Flex-wrap instead of cramped 5-col grid — labels stay inside chips */
-      #screen2b .chip-line-5,
+      #screen2b .chip-line-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 5px;
+      }
       #screen2b .chip-line-6 {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 6px;
       }
       #screen2b .chip-line .chip {
-        width: auto;
-        flex: 0 0 auto;
-        padding: 8px 9px;
+        padding: 9px 4px;
         font-size: 10px;
-        letter-spacing: 0.03em;
-        white-space: nowrap;
-        overflow: hidden;
+        letter-spacing: 0.04em;
       }
     }
     #screen2b {
@@ -2058,7 +2054,7 @@
         width: min(100%, 280px);
       }
       .personalize {
-        max-width: min(100%, 300px);
+        max-width: 230px;
         width: 100%;
         padding: 0;
       }
@@ -2085,35 +2081,17 @@
         justify-content: center;
       }
       .inline-tray .chip {
-        padding: 8px 9px;
+        padding: 9px 10px;
         font-size: 10px;
-        letter-spacing: 0.04em;
-        white-space: nowrap;
-        overflow: hidden;
+        letter-spacing: 0.06em;
       }
       .personalize.has-inline {
-        max-width: min(100%, 300px); /* wider than face so chip labels fit */
+        max-width: 230px; /* match mobile .portrait-wrap */
         width: 100%;
       }
       .inline-tray {
-        width: min(calc(100vw - 24px), 340px);
-        max-width: min(calc(100vw - 24px), 340px);
-      }
-      #screen2b .chip-line-5,
-      #screen2b .chip-line-6 {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px;
-      }
-      #screen2b .chip-line .chip {
-        width: auto;
-        flex: 0 0 auto;
-        padding: 8px 9px;
-        font-size: 10px;
-        letter-spacing: 0.03em;
-        white-space: nowrap;
-        overflow: hidden;
+        width: min(calc(100vw - 24px), 280px);
+        max-width: min(calc(100vw - 24px), 280px);
       }
       #screen2 .s2-stack,
       #screen2b .s2-stack,
