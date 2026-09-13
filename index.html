@@ -354,6 +354,56 @@
     pointer-events: none;
   }
 
+
+  /* Albert comment bubble — left of portrait on model page */
+  #screen-model .frame-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: flex-end;
+    padding-left: 28px;
+  }
+  #screen-model .albert-bubble {
+    flex: 0 1 200px;
+    max-width: 210px;
+    position: relative;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 16px 16px 4px 16px;
+    padding: 14px 16px 14px;
+    box-shadow: 0 12px 32px rgba(70,90,110,.08);
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.55;
+    letter-spacing: .01em;
+  }
+  #screen-model .albert-bubble::after {
+    content: "";
+    position: absolute;
+    right: -7px;
+    top: 28px;
+    width: 14px;
+    height: 14px;
+    background: rgba(255,255,255,.72);
+    border-right: 1px solid rgba(255,255,255,.9);
+    border-top: 1px solid rgba(255,255,255,.9);
+    transform: rotate(45deg);
+  }
+  #screen-model .albert-bubble a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(61,155,255,.35);
+  }
+  #screen-model .albert-bubble a:hover {
+    border-bottom-color: var(--accent);
+  }
+  #screen-model .frost-frame {
+    flex: 0 1 auto;
+  }
+
   /* ========== 03 VERSES — Editorial frost chips ========== */
   #screen-verses.active {
     display: grid;
@@ -743,6 +793,9 @@
       </div>
     </div>
     <div class="frame-wrap">
+      <aside class="albert-bubble" aria-label="Albert intro">
+        Hi, I'm Albert, your default mind. I exist in multiple verses, including at <a href="https://www.alberteinstein.ai" target="_blank" rel="noopener">www.AlbertEinstein.ai</a>.
+      </aside>
       <div class="frost-frame">
         <img id="agent-face" src="assets/agent-face.webp" alt="Einstein">
       </div>
