@@ -241,8 +241,8 @@
   }
   #screen-door .door-loader {
     width: min(240px, 46vw);
-    height: 2px;
-    background: rgba(122,134,146,.18);
+    height: 3px;
+    background: rgba(122,134,146,.28);
     border-radius: 2px;
     overflow: hidden;
     position: relative;
@@ -250,17 +250,20 @@
   #screen-door .door-loader > span {
     position: absolute;
     top: 0; left: 0; bottom: 0;
-    width: 0%;
+    width: 100%;
     background: #3D9BFF;
     border-radius: 0;
     box-shadow: none;
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
   }
   #screen-door .door-loader.loading > span {
     animation: doorLoad 1.8s cubic-bezier(.4,0,.2,1) forwards;
   }
   @keyframes doorLoad {
-    from { width: 0%; }
-    to { width: 100%; }
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
   }
   #screen-door .door-ai {
     font-size: 10px;
@@ -474,87 +477,28 @@
   }
   .scenario-label strong { font-weight: 400; }
 
-  /* ========== 06 CELEBS — Vertical ribbon (03) ========== */
+  /* ========== 06 CELEBS — 2-up grid (old layout) ========== */
   #screen-celebs.active {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    padding: 0;
-  }
-  #screen-celebs .ribbon {
-    background: rgba(255,255,255,.48);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-right: 1px solid rgba(255,255,255,.7);
-    padding: 88px 28px 88px;
     display: flex;
     flex-direction: column;
-    box-shadow: 12px 0 60px rgba(80,100,120,.06);
-    min-height: 0;
+    padding: 88px 40px 88px;
   }
-  #screen-celebs .ribbon .s-head {
-    text-align: left;
-    margin-bottom: 18px;
+  #celeb-grid {
+    width: min(100%, 520px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 auto;
+    max-height: calc(100vh - 180px);
   }
-  #screen-celebs .celeb-list {
-    list-style: none;
-    flex: 1 1 auto;
-    overflow-y: auto;
-    padding-right: 6px;
-    scrollbar-width: thin;
-  }
-  #screen-celebs .celeb-list button {
-    appearance: none;
-    width: 100%;
-    text-align: left;
-    border: none;
-    background: transparent;
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    opacity: .5;
-    padding: 9px 8px;
-    border-radius: 2px;
-    font-weight: 300;
-    transition: opacity .2s, background .2s;
-  }
-  #screen-celebs .celeb-list button:hover { opacity: .8; }
-  #screen-celebs .celeb-list button[aria-pressed="true"] {
-    opacity: 1;
-    background: rgba(255,255,255,.55);
-    box-shadow: inset 0 0 0 1px var(--hair-dark);
-  }
-  #screen-celebs .ribbon-foot {
-    flex: 0 0 auto;
-    padding-top: 16px;
-  }
-  #screen-celebs .field {
-    position: relative;
-    background: linear-gradient(160deg, #E4E9EE, #D0D7E0);
-  }
-  #screen-celebs .field img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
+  #celeb-grid .scenario-art {
     object-fit: cover;
     object-position: center top;
-    opacity: .92;
-    filter: saturate(.6) brightness(1.04);
   }
-  #screen-celebs .field::after {
-    content: "";
-    position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(228,233,238,.55), transparent 35%);
-    pointer-events: none;
-  }
-  #screen-celebs .field-name {
-    position: absolute;
-    bottom: 40px; left: 40px;
-    z-index: 2;
-    font-family: "Instrument Serif", serif;
-    font-size: 36px;
-    color: var(--ink);
-    letter-spacing: -.02em;
-    text-shadow: 0 2px 20px rgba(255,255,255,.6);
+  @media (max-width: 520px) {
+    #celeb-grid {
+      width: 100%;
+      gap: 8px;
+    }
   }
 
   /* Also keep a compact grid fallback for skills layout notes */
@@ -750,8 +694,6 @@
     #screen-model.active,
     #screen-verses.active { grid-template-columns: 1fr; }
     .frame-wrap { display: none; }
-    #screen-celebs.active { grid-template-columns: 1fr; }
-    #screen-celebs .field { min-height: 220px; }
   }
 </style>
 </head>
@@ -899,38 +841,32 @@
     </div>
   </section>
 
-  <!-- 06 CELEBS — Vertical ribbon -->
+  <!-- 06 CELEBS — 2-up grid -->
   <section class="screen" id="screen-celebs" aria-label="Celebrity layers" data-shot="06-celebs" hidden>
-    <aside class="ribbon">
-      <p class="s-head">Celebrity layers</p>
-      <div class="celeb-list" id="celeb-list" role="listbox" aria-label="Celebrity personalities">
-        <button type="button" role="option" data-layer="einstein" data-face="assets/scenarios/einstein.webp" aria-pressed="false">Einstein</button>
-        <button type="button" role="option" data-layer="joan" data-face="assets/scenarios/joan.webp" aria-pressed="false">Joan</button>
-        <button type="button" role="option" data-layer="keanu" data-face="assets/scenarios/keanu.webp" aria-pressed="false">Keanu</button>
-        <button type="button" role="option" data-layer="barbie" data-face="assets/scenarios/barbie.webp" aria-pressed="false">Barbie</button>
-        <button type="button" role="option" data-layer="beethoven" data-face="assets/scenarios/beethoven.webp" aria-pressed="false">Beethoven</button>
-        <button type="button" role="option" data-layer="elsa" data-face="assets/scenarios/elsa.webp" aria-pressed="false">Elsa</button>
-        <button type="button" role="option" data-layer="zendaya" data-face="assets/scenarios/zendaya.webp" aria-pressed="false">Zendaya</button>
-        <button type="button" role="option" data-layer="timothee" data-face="assets/scenarios/timothee.webp" aria-pressed="false">Timothée</button>
-        <button type="button" role="option" data-layer="bluey" data-face="assets/scenarios/bluey.webp" aria-pressed="false">Bluey</button>
-        <button type="button" role="option" data-layer="sabrina" data-face="assets/scenarios/sabrina.webp" aria-pressed="false">Sabrina</button>
-        <button type="button" role="option" data-layer="zeus" data-face="assets/scenarios/zeus.webp" aria-pressed="false">Zeus</button>
-        <button type="button" role="option" data-layer="morgan" data-face="assets/scenarios/freeman.webp" aria-pressed="false">Morgan</button>
-        <button type="button" role="option" data-layer="sydney" data-face="assets/scenarios/sydney.webp" aria-pressed="false">Sydney</button>
-        <button type="button" role="option" data-layer="wednesday" data-face="assets/scenarios/wednesday.webp" aria-pressed="false">Wednesday</button>
-        <button type="button" role="option" data-layer="bill" data-face="assets/scenarios/murray.webp" aria-pressed="false">Bill</button>
-        <button type="button" role="option" data-layer="plato" data-face="assets/scenarios/plato.webp" aria-pressed="false">Plato</button>
+    <p class="s-head">Celebrity layers</p>
+    <div class="scenario-grid" id="celeb-grid" role="listbox" aria-label="Celebrity personalities">
+      <button type="button" class="scenario" role="option" data-layer="einstein" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/einstein.webp" alt=""><span class="scenario-label"><strong>Einstein</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="joan" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/joan.webp" alt=""><span class="scenario-label"><strong>Joan</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="keanu" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/keanu.webp" alt=""><span class="scenario-label"><strong>Keanu</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="barbie" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/barbie.webp" alt=""><span class="scenario-label"><strong>Barbie</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="beethoven" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/beethoven.webp" alt=""><span class="scenario-label"><strong>Beethoven</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="elsa" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/elsa.webp" alt=""><span class="scenario-label"><strong>Elsa</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="zendaya" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/zendaya.webp" alt=""><span class="scenario-label"><strong>Zendaya</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="timothee" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/timothee.webp" alt=""><span class="scenario-label"><strong>Timothée</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="bluey" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/bluey.webp" alt=""><span class="scenario-label"><strong>Bluey</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="sabrina" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/sabrina.webp" alt=""><span class="scenario-label"><strong>Sabrina</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="zeus" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/zeus.webp" alt=""><span class="scenario-label"><strong>Zeus</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="morgan" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/freeman.webp" alt=""><span class="scenario-label"><strong>Morgan</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="sydney" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/sydney.webp" alt=""><span class="scenario-label"><strong>Sydney</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="wednesday" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/wednesday.webp" alt=""><span class="scenario-label"><strong>Wednesday</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="bill" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/murray.webp" alt=""><span class="scenario-label"><strong>Bill</strong></span></button>
+      <button type="button" class="scenario" role="option" data-layer="plato" aria-pressed="false"><img class="scenario-art" src="assets/scenarios/plato.webp" alt=""><span class="scenario-label"><strong>Plato</strong></span></button>
+    </div>
+    <div class="foot">
+      <div class="nav-pair">
+        <button type="button" class="back-btn" id="back-celebs">← Back</button>
+        <button type="button" class="world-btn" id="celeb-continue" disabled aria-disabled="true">Continue</button>
       </div>
-      <div class="ribbon-foot">
-        <div class="nav-pair" style="justify-content:flex-start">
-          <button type="button" class="back-btn" id="back-celebs">← Back</button>
-          <button type="button" class="world-btn" id="celeb-continue" disabled aria-disabled="true">Continue</button>
-        </div>
-      </div>
-    </aside>
-    <div class="field">
-      <img id="celeb-field-img" src="assets/scenarios/einstein.webp" alt="">
-      <div class="field-name" id="celeb-field-name">Einstein</div>
     </div>
   </section>
 
@@ -1058,7 +994,7 @@
 
   function layerLabel() {
     if (selectedLayer === "upload") return "Yours";
-    var pressed = document.querySelector("#celeb-list button[aria-pressed='true'], #skill-grid .scenario[aria-pressed='true']");
+    var pressed = document.querySelector("#celeb-grid .scenario[aria-pressed='true'], #skill-grid .scenario[aria-pressed='true']");
     if (pressed) {
       var strong = pressed.querySelector("strong");
       return strong ? strong.textContent : pressed.textContent.trim();
@@ -1067,8 +1003,8 @@
   }
 
   function layerFace() {
-    var pressed = document.querySelector("#celeb-list button[aria-pressed='true']");
-    if (pressed && pressed.getAttribute("data-face")) return pressed.getAttribute("data-face");
+    var pressed = document.querySelector("#celeb-grid .scenario[aria-pressed='true'] img");
+    if (pressed) return pressed.getAttribute("src");
     var skill = document.querySelector("#skill-grid .scenario[aria-pressed='true'] img");
     if (skill) return skill.getAttribute("src");
     return agentFaceSrc;
@@ -1150,9 +1086,11 @@
     var loader = openDoor.querySelector(".door-loader");
     var fill = loader.querySelector("span");
     var done = false;
+    var timer = null;
     function go() {
       if (done) return;
       done = true;
+      if (timer) clearTimeout(timer);
       loader.classList.remove("loading");
       show("model");
     }
@@ -1161,14 +1099,19 @@
       loader.classList.remove("loading");
       void loader.offsetWidth;
       loader.classList.add("loading");
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(go, 1900);
     }
     fill.addEventListener("animationend", function (e) {
-      if (e.animationName === "doorLoad") go();
+      var name = e.animationName || "";
+      if (name === "doorLoad" || name.indexOf("doorLoad") !== -1) go();
     });
     openDoor.addEventListener("click", go);
     openDoor.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
     });
+    if (document.readyState === "complete") startLoad();
+    else window.addEventListener("load", startLoad);
     startLoad();
   })();
 
@@ -1238,7 +1181,7 @@
       Array.prototype.forEach.call(document.querySelectorAll("#skill-grid .scenario"), function (b) {
         b.setAttribute("aria-pressed", b === btn ? "true" : "false");
       });
-      Array.prototype.forEach.call(document.querySelectorAll("#celeb-list button"), function (b) {
+      Array.prototype.forEach.call(document.querySelectorAll("#celeb-grid .scenario"), function (b) {
         b.setAttribute("aria-pressed", "false");
       });
       var cont = document.getElementById("skill-continue");
@@ -1253,21 +1196,15 @@
   document.getElementById("back-skills").addEventListener("click", function () { show("layer"); });
 
   // Celebs ribbon
-  Array.prototype.forEach.call(document.querySelectorAll("#celeb-list button"), function (btn) {
+  Array.prototype.forEach.call(document.querySelectorAll("#celeb-grid .scenario"), function (btn) {
     btn.addEventListener("click", function () {
       selectedLayer = btn.getAttribute("data-layer");
       personalityMd = null;
-      Array.prototype.forEach.call(document.querySelectorAll("#celeb-list button"), function (b) {
+      Array.prototype.forEach.call(document.querySelectorAll("#celeb-grid .scenario"), function (b) {
         b.setAttribute("aria-pressed", b === btn ? "true" : "false");
       });
-      Array.prototype.forEach.call(document.querySelectorAll("#skill-grid .scenario"), function (b) {
-        b.setAttribute("aria-pressed", "false");
-      });
-      document.getElementById("celeb-field-img").src = btn.getAttribute("data-face");
-      document.getElementById("celeb-field-name").textContent = btn.textContent.trim();
-      var cont = document.getElementById("celeb-continue");
-      cont.disabled = false;
-      cont.setAttribute("aria-disabled", "false");
+      document.getElementById("celeb-continue").disabled = false;
+      document.getElementById("celeb-continue").setAttribute("aria-disabled", "false");
     });
   });
   document.getElementById("celeb-continue").addEventListener("click", function () {
@@ -1330,7 +1267,7 @@
       if (btn && btn.getAttribute("aria-pressed") !== "true") btn.click();
     },
     selectCeleb: function (id) {
-      var btn = document.querySelector('#celeb-list button[data-layer="' + id + '"]');
+      var btn = document.querySelector('#celeb-grid .scenario[data-layer="' + id + '"]');
       if (btn) btn.click();
     },
     selectSkill: function (id) {
