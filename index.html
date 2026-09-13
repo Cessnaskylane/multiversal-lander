@@ -61,6 +61,68 @@
   }
   .mark.visible { opacity: 1; }
   .mark .dot { letter-spacing: .2em; opacity: .55; }
+
+  /* Soft flowing blue behind MULTIVERSAL · ai */
+  .mark {
+    isolation: isolate;
+  }
+  .mark::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 280px;
+    height: 64px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
+    background:
+      radial-gradient(ellipse 70% 55% at 30% 50%, rgba(61,155,255,.28), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(61,155,255,.18), transparent 72%);
+    filter: blur(14px);
+    opacity: 0;
+    transition: opacity .5s ease;
+    animation: markFlow 9s ease-in-out infinite;
+  }
+  .mark.visible::before { opacity: 1; }
+  @keyframes markFlow {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1) translateX(0);
+      filter: blur(14px);
+    }
+    33% {
+      transform: translate(-50%, -50%) scale(1.08) translateX(10px);
+      filter: blur(16px);
+    }
+    66% {
+      transform: translate(-50%, -50%) scale(.96) translateX(-12px);
+      filter: blur(12px);
+    }
+  }
+
+  #screen-door .center::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    width: min(420px, 70vw);
+    height: 120px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
+    background:
+      radial-gradient(ellipse 65% 50% at 35% 45%, rgba(61,155,255,.32), transparent 68%),
+      radial-gradient(ellipse 55% 45% at 68% 55%, rgba(61,155,255,.2), transparent 70%);
+    filter: blur(18px);
+    animation: markFlow 9s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mark::before,
+    #screen-door .center::before { animation: none; }
+  }
+
   .header-actions {
     position: absolute;
     top: 26px;
@@ -229,6 +291,7 @@
     gap: 18px;
     padding: 0;
     cursor: pointer;
+    isolation: isolate;
   }
   #screen-door .door-mark {
     font-size: 12px;
