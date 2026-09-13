@@ -355,30 +355,31 @@
   }
 
 
-  /* Albert comment bubble — left of portrait on model page */
+
+  /* Albert comment bubble — floats left of portrait; page 2 layout unchanged */
   #screen-model .frame-wrap {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    justify-content: flex-end;
-    padding-left: 28px;
+    position: relative;
   }
   #screen-model .albert-bubble {
-    flex: 0 1 200px;
-    max-width: 210px;
-    position: relative;
+    position: absolute;
+    right: calc(50% + 210px + 18px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    z-index: 3;
     background: rgba(255,255,255,.72);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,.9);
     border-radius: 16px 16px 4px 16px;
-    padding: 14px 16px 14px;
+    padding: 14px 16px;
     box-shadow: 0 12px 32px rgba(70,90,110,.08);
     color: var(--ink-soft);
     font-size: 12px;
     font-weight: 300;
     line-height: 1.55;
     letter-spacing: .01em;
+    pointer-events: auto;
   }
   #screen-model .albert-bubble::after {
     content: "";
@@ -400,8 +401,12 @@
   #screen-model .albert-bubble a:hover {
     border-bottom-color: var(--accent);
   }
-  #screen-model .frost-frame {
-    flex: 0 1 auto;
+  @media (max-width: 1100px) {
+    #screen-model .albert-bubble {
+      right: calc(50% + 160px + 12px);
+      width: 170px;
+      font-size: 11px;
+    }
   }
 
   /* ========== 03 VERSES — Editorial frost chips ========== */
