@@ -250,11 +250,17 @@
   #screen-door .door-loader > span {
     position: absolute;
     top: 0; left: 0; bottom: 0;
-    width: 50%;
+    width: 0%;
     background: #3D9BFF;
     border-radius: 0;
     box-shadow: none;
-    animation: none;
+  }
+  #screen-door .door-loader.loading > span {
+    animation: doorLoad 1.8s cubic-bezier(.4,0,.2,1) forwards;
+  }
+  @keyframes doorLoad {
+    from { width: 0%; }
+    to { width: 100%; }
   }
   #screen-door .door-ai {
     font-size: clamp(14px, 1.6vw, 18px);
@@ -1137,14 +1143,32 @@
     show("verse");
   }
 
-  // Door
+  // Door — animate loader L→R, then open page 2
   (function () {
     var openDoor = document.getElementById("open-door");
-    function go() { show("model"); }
+    var loader = openDoor.querySelector(".door-loader");
+    var fill = loader.querySelector("span");
+    var done = false;
+    function go() {
+      if (done) return;
+      done = true;
+      loader.classList.remove("loading");
+      show("model");
+    }
+    function startLoad() {
+      if (done) return;
+      loader.classList.remove("loading");
+      void loader.offsetWidth;
+      loader.classList.add("loading");
+    }
+    fill.addEventListener("animationend", function (e) {
+      if (e.animationName === "doorLoad") go();
+    });
     openDoor.addEventListener("click", go);
     openDoor.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
     });
+    startLoad();
   })();
 
   // Model chips
