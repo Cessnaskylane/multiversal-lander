@@ -712,7 +712,7 @@
     letter-spacing: .32em;
     text-transform: uppercase;
     color: var(--mute2);
-    margin-bottom: 6px;
+    margin-bottom: 14px;
   }
   .verse-title {
     font-family: "Instrument Serif", serif;
@@ -917,7 +917,6 @@
             <button type="button" class="chip" data-wire="tiktok" aria-pressed="false">TikTok</button>
             <button type="button" class="chip" data-wire="instagram" aria-pressed="false">Instagram</button>
             <button type="button" class="chip" data-wire="youtube" aria-pressed="false">YouTube</button>
-            <button type="button" class="chip" data-wire="ytbots" aria-pressed="false">@multiversalbots</button>
             <button type="button" class="chip" data-wire="facebook" aria-pressed="false">Facebook</button>
           </div>
           <div class="chip-row">
@@ -1099,14 +1098,13 @@
   var modelLabel = { grok: "Grok", gpt: "GPT", gemini: "Gemini", claude: "Claude", deepseek: "DeepSeek" };
   var wireLabel = {
     domain: "www.", mail: "Email", tiktok: "TikTok", x: "X",
-    instagram: "Instagram", youtube: "YouTube", ytbots: "@multiversalbots",
+    instagram: "Instagram", youtube: "YouTube",
     slack: "Slack", linkedin: "LinkedIn", facebook: "Facebook",
     discord: "Discord", bitcoin: "₿"
   };
   var wireActs = {
     tiktok: [["hook","Post a video"],["story","Post a story"],["comments","Reply to comments"],["dms","Check DMs"]],
     youtube: [["hook","Post a video"],["title","Write a title"],["comment","Reply to comments"],["desc","Write a description"]],
-    ytbots: [["hook","Post a video"],["title","Write a title"],["comment","Reply to comments"],["desc","Write a description"]],
     x: [["post","Post message"],["thread","Reply"],["quote","Quote"],["mentions","Check mentions"]],
     instagram: [["post","Post a pic or video"],["story","Post a story"],["dms","Check DMs"],["comments","Reply to comments"]],
     facebook: [["post","Post a pic or video"],["story","Post a story"],["message","Check messages"],["comment","Reply to comments"]],
