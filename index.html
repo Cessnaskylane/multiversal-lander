@@ -116,6 +116,13 @@
     padding: 0;
     font-weight: 300;
   }
+  .mail-short { display: none; }
+  .account-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+  }
   .header-face {
     width: 22px; height: 22px;
     border-radius: 50%;
@@ -879,19 +886,30 @@
   @media (max-width: 820px) {
     .mark {
       top: 14px;
-      font-size: 10px;
-      letter-spacing: .36em;
+      left: 14px;
+      transform: none;
+      font-size: 9px;
+      letter-spacing: .28em;
     }
     .header-actions {
-      top: 44px;
-      left: 50%;
-      right: auto;
-      transform: translateX(-50%);
-      gap: 12px;
+      top: 12px;
+      right: 14px;
+      left: auto;
+      transform: none;
+      gap: 10px;
       white-space: nowrap;
     }
-    .mail-link, .account-link { font-size: 9px; }
-    .header-face { width: 18px; height: 18px; }
+    .mail-long, .account-label { display: none; }
+    .mail-short {
+      display: inline;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: none;
+      font-weight: 400;
+    }
+    .mail-link { font-size: 14px; letter-spacing: 0; }
+    .account-link { gap: 0; }
+    .header-face { width: 20px; height: 20px; }
 
     #screen-model.active,
     #screen-verses.active {
@@ -903,7 +921,7 @@
     .frame-wrap {
       display: flex;
       order: -1;
-      padding: 76px 20px 12px;
+      padding: 52px 20px 12px;
       background: #E8ECF1;
       min-height: 0;
     }
@@ -946,9 +964,8 @@
 <div class="app" id="app">
   <p class="mark" id="wordmark" role="link" tabindex="0" title="multiversal.ai">M U L T I V E R S A L <span class="dot">· ai</span></p>
   <div class="header-actions" id="header-actions">
-    <a class="mail-link" href="mailto:hello@multiversal.ai">hello@</a>
-    <img class="header-face" src="assets/header-face.webp" alt="" width="22" height="22">
-    <button type="button" class="account-link">My account</button>
+    <a class="mail-link" href="mailto:hello@multiversal.ai" aria-label="Email hello@multiversal.ai"><span class="mail-long">hello@</span><span class="mail-short">@</span></a>
+    <button type="button" class="account-link" aria-label="My account"><img class="header-face" src="assets/header-face.webp" alt="" width="22" height="22"><span class="account-label">My account</span></button>
   </div>
   <p class="promise" id="promise"></p>
 
