@@ -181,6 +181,10 @@
     font-weight: 300;
   }
   .chip-row, .chip-lines { display: flex; flex-wrap: wrap; gap: 8px; }
+  #screen-verses .chip-row {
+    max-width: 420px;
+    gap: 8px;
+  }
   .chip-lines { flex-direction: column; gap: 10px; }
   .world-btn, .back-btn {
     appearance: none;
@@ -918,26 +922,21 @@
       <div>
         <div class="kicker">Your agent</div>
         <h1>Where should<br>they<br>appear?</h1>
-        <p class="sub">Select the rails where they appear.</p>
-      </div>
+              </div>
       <div class="editorial-controls">
         <p class="chip-label">Select verses</p>
-        <div class="chip-lines" role="group" aria-label="Select verses">
-          <div class="chip-row">
-            <button type="button" class="chip" data-wire="x" aria-pressed="false">X</button>
-            <button type="button" class="chip" data-wire="tiktok" aria-pressed="false">TikTok</button>
-            <button type="button" class="chip" data-wire="instagram" aria-pressed="false">Instagram</button>
-            <button type="button" class="chip" data-wire="youtube" aria-pressed="false">YouTube</button>
-            <button type="button" class="chip" data-wire="facebook" aria-pressed="false">Facebook</button>
-          </div>
-          <div class="chip-row">
-            <button type="button" class="chip" data-wire="domain" aria-pressed="false">www.</button>
-            <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
-            <button type="button" class="chip" data-wire="discord" aria-pressed="false">Discord</button>
-            <button type="button" class="chip" data-wire="linkedin" aria-pressed="false">LinkedIn</button>
-            <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
-            <button type="button" class="chip" data-wire="bitcoin" aria-pressed="false">₿</button>
-          </div>
+        <div class="chip-row" role="group" aria-label="Select verses">
+          <button type="button" class="chip" data-wire="x" aria-pressed="false">X</button>
+          <button type="button" class="chip" data-wire="tiktok" aria-pressed="false">TikTok</button>
+          <button type="button" class="chip" data-wire="instagram" aria-pressed="false">Instagram</button>
+          <button type="button" class="chip" data-wire="youtube" aria-pressed="false">YouTube</button>
+          <button type="button" class="chip" data-wire="facebook" aria-pressed="false">Facebook</button>
+          <button type="button" class="chip" data-wire="domain" aria-pressed="false">www.</button>
+          <button type="button" class="chip" data-wire="mail" aria-pressed="false">Email</button>
+          <button type="button" class="chip" data-wire="discord" aria-pressed="false">Discord</button>
+          <button type="button" class="chip" data-wire="linkedin" aria-pressed="false">LinkedIn</button>
+          <button type="button" class="chip" data-wire="slack" aria-pressed="false">Slack</button>
+          <button type="button" class="chip" data-wire="bitcoin" aria-pressed="false">₿</button>
         </div>
         <p class="hint-soft" id="verse-hint" hidden>please select verses</p>
         <div class="nav-pair" style="justify-content:flex-start;margin-top:28px">
