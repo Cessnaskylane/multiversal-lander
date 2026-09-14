@@ -1231,39 +1231,49 @@
     show("verse");
   }
 
-  // Door — animate loader L→R, then open page 2
+  // Door — animate loader L→R once, then open page 2
   (function () {
     var openDoor = document.getElementById("open-door");
+    if (!openDoor) return;
     var loader = openDoor.querySelector(".door-loader");
-    var fill = loader.querySelector("span");
+    var fill = loader && loader.querySelector("span");
     var done = false;
+    var started = false;
     var timer = null;
     function go() {
       if (done) return;
       done = true;
-      if (timer) clearTimeout(timer);
-      loader.classList.remove("loading");
+      if (timer) { clearTimeout(timer); timer = null; }
+      if (loader) loader.classList.remove("loading");
       show("model");
     }
     function startLoad() {
-      if (done) return;
+      if (done || started || !loader || !fill) return;
+      started = true;
+      fill.style.transform = "scaleX(0)";
       loader.classList.remove("loading");
       void loader.offsetWidth;
       loader.classList.add("loading");
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(go, 1900);
+      fill.style.transform = "";
+      timer = setTimeout(go, 2000);
     }
-    fill.addEventListener("animationend", function (e) {
-      var name = e.animationName || "";
-      if (name === "doorLoad" || name.indexOf("doorLoad") !== -1) go();
-    });
+    if (fill) {
+      fill.addEventListener("animationend", function (e) {
+        var name = e.animationName || "";
+        if (name !== "doorLoad" && name.indexOf("doorLoad") === -1) return;
+        // Ignore cancel/restart ends — only a near-full run advances early
+        if (typeof e.elapsedTime === "number" && e.elapsedTime < 1.5) return;
+        go();
+      });
+    }
     openDoor.addEventListener("click", go);
     openDoor.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
     });
-    if (document.readyState === "complete") startLoad();
-    else window.addEventListener("load", startLoad);
-    startLoad();
+    // One start after first paint — avoids first-visit double-start race
+    requestAnimationFrame(function () {
+      requestAnimationFrame(startLoad);
+    });
   })();
 
   // Model chips
