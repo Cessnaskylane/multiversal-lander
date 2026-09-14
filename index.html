@@ -388,7 +388,7 @@
     height: 100%;
     max-height: 620px;
     max-width: 420px;
-    background: rgba(255,255,255,.55);
+    background: #0a0a0e;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 16px solid #fff;
@@ -399,11 +399,12 @@
   }
   .frost-frame img {
     width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center 18%;
+    object-fit: contain;
+    object-position: center center;
     filter: saturate(.58) brightness(1.05);
     display: block;
     min-height: 420px;
+    background: #0a0a0e;
   }
   .frost-frame::before {
     content: "";
@@ -473,7 +474,7 @@
     grid-template-columns: 1fr 1fr;
   }
   #screen-verses .editorial-type { padding-top: 96px; }
-  #screen-verses .frost-frame img { min-height: 380px; }
+  #screen-verses .frost-frame img { min-height: 380px; object-fit: contain; object-position: center center; }
 
   /* ========== 04 LAYER PICK — Full-bleed quiet cards ========== */
   #screen-layer {
@@ -896,7 +897,7 @@
         Hi, I'm Albert, your default mind. I exist in multiple verses, including at <a href="https://www.alberteinstein.ai" target="_blank" rel="noopener">www.AlbertEinstein.ai</a>.
       </aside>
       <div class="frost-frame">
-        <img id="agent-face" src="assets/agent-face.webp" alt="Einstein">
+        <img id="agent-face" src="assets/scenarios/einstein.webp" alt="Einstein">
       </div>
     </div>
   </section>
@@ -937,7 +938,7 @@
     </div>
     <div class="frame-wrap">
       <div class="frost-frame">
-        <img id="agent-face-verses" src="assets/agent-face.webp" alt="">
+        <img id="agent-face-verses" src="assets/scenarios/einstein.webp" alt="">
       </div>
     </div>
   </section>
@@ -1093,7 +1094,7 @@
   var lastLayerScreen = screens.celebs;
   var personalityMd = null;
   var verseCopy = "";
-  var agentFaceSrc = "assets/agent-face.webp";
+  var agentFaceSrc = "assets/scenarios/einstein.webp";
 
   var modelLabel = { grok: "Grok", gpt: "GPT", gemini: "Gemini", claude: "Claude", deepseek: "DeepSeek" };
   var wireLabel = {
