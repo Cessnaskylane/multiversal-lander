@@ -922,10 +922,16 @@
       order: 2;
     }
     #screen-model .albert-bubble::after { display: none; }
-    .frost-frame {
+    .frost-frame,
+    #screen-model .frost-frame,
+    #screen-verses .frost-frame {
       width: min(220px, 58vw);
+      max-width: min(220px, 58vw);
       max-height: none;
       order: 1;
+    }
+    #screen-verses .frame-wrap {
+      justify-content: center;
     }
     .editorial-type {
       padding: 20px 20px max(28px, env(safe-area-inset-bottom));
