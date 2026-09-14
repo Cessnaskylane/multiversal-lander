@@ -877,9 +877,62 @@
   #screen-job .verse-app { width: min(280px, 100%); }
 
   @media (max-width: 820px) {
+    .mark {
+      top: 14px;
+      font-size: 10px;
+      letter-spacing: .36em;
+    }
+    .header-actions {
+      top: 44px;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      gap: 12px;
+      white-space: nowrap;
+    }
+    .mail-link, .account-link { font-size: 9px; }
+    .header-face { width: 18px; height: 18px; }
+
     #screen-model.active,
-    #screen-verses.active { grid-template-columns: 1fr; }
-    .frame-wrap { display: none; }
+    #screen-verses.active {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto minmax(0, 1fr);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .frame-wrap {
+      display: flex;
+      order: -1;
+      padding: 76px 20px 12px;
+      background: #E8ECF1;
+      min-height: 0;
+    }
+    #screen-model .frame-wrap {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      overflow: visible;
+    }
+    #screen-model .albert-bubble {
+      position: relative;
+      width: min(260px, 88vw);
+      max-width: min(260px, 88vw);
+      flex: 0 0 auto;
+      font-size: 11px;
+      order: 2;
+    }
+    #screen-model .albert-bubble::after { display: none; }
+    .frost-frame {
+      width: min(220px, 58vw);
+      max-height: none;
+      order: 1;
+    }
+    .editorial-type {
+      padding: 20px 20px max(28px, env(safe-area-inset-bottom));
+    }
+    .editorial-type h1 {
+      font-size: clamp(28px, 8vw, 36px);
+    }
   }
 </style>
 </head>
