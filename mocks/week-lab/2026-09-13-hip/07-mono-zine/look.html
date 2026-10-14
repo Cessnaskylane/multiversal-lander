@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Mono Zine</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:#EDE7DC;color:#0D0D0D;font-family:Syne,system-ui,sans-serif;overflow:hidden}
+  .page{height:100vh;height:100dvh;padding:18px;display:grid;grid-template-rows:auto 1fr auto;gap:14px}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;border-top:3px solid #0D0D0D;border-bottom:3px solid #0D0D0D;padding:10px 4px}
+  .stamp{font-weight:800;font-size:clamp(28px,4vw,42px);letter-spacing:-.03em;text-transform:uppercase;transform:rotate(-1.2deg)}
+  .issue{font-family:"DM Sans",sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:right;line-height:1.5}
+  .spread{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;min-height:0}
+  .hero{position:relative;overflow:hidden;border:3px solid #0D0D0D;background:#111;
+    clip-path: polygon(0% 2%, 98% 0%, 100% 97%, 2% 100%)}
+  .hero img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.35) brightness(.95)}
+  .side{display:flex;flex-direction:column;justify-content:space-between;padding:8px 4px;border-left:2px dashed #0D0D0D}
+  h1{font-size:clamp(26px,3.2vw,38px);line-height:1.05;font-weight:700;text-transform:uppercase;letter-spacing:-.02em}
+  .body{font-family:"DM Sans",sans-serif;font-size:13px;line-height:1.5;max-width:260px}
+  .cta{display:inline-block;background:#0D0D0D;color:#EDE7DC;padding:12px 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;transform:rotate(.6deg)}
+  .foot{font-family:"DM Sans",sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;border-top:2px solid #0D0D0D;padding-top:10px}
+  @media (max-width:700px){
+    .spread{grid-template-columns:1fr}
+    .side{border-left:0;border-top:2px dashed #0D0D0D;padding-top:14px;gap:16px}
+    .hero{min-height:42vh}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="stamp">MULTIVERSAL</div>
+    <div class="issue">Issue 07<br>Underground<br>Xerox press</div>
+  </div>
+  <div class="spread">
+    <div class="hero"><img src="../../../../assets/scenarios/editor.webp" alt=""></div>
+    <div class="side">
+      <h1>Cooler than<br>the algorithm.</h1>
+      <p class="body">Raw zine energy. Torn edges. Stamped logo. A named voice you put on Grok — for people who skip the neon.</p>
+      <div class="cta">Put on Grok</div>
+    </div>
+  </div>
+  <div class="foot"><span>multiversal.ai</span><span>No HUD · No Marvel · No Magma</span></div>
+</div>
+</body>
+</html>

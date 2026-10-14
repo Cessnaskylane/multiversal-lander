@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Presence in View</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:"DM Sans",system-ui,sans-serif;background:#0B0C10;color:#F2F0F8}
+body{min-height:100vh;overflow:hidden;position:relative}
+.stage{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(11,12,16,.35) 0%, rgba(11,12,16,.15) 35%, rgba(11,12,16,.55) 100%),
+    url("../_shared/worlds/walk.png") center/cover no-repeat;
+}
+.vignette{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 60% at 50% 45%, transparent 40%, rgba(0,0,0,.45) 100%);
+}
+/* soft glasses frame silhouette — not a Meta lockup */
+.frames{
+  position:absolute;inset:0;pointer-events:none;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+}
+.frames svg{width:min(92vw,1100px);height:auto;opacity:.55;filter:drop-shadow(0 8px 24px rgba(0,0,0,.4))}
+.nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:28px 44px}
+.mark{font-size:12px;letter-spacing:.42em;text-transform:lowercase;font-weight:400}
+.mark .m{color:#A78BFF}.mark .v{color:#F2F0F8}.mark .ai{color:#5EEAD4;letter-spacing:.14em}
+.nav a{color:rgba(242,240,248,.45);text-decoration:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:300}
+.hero{
+  position:relative;z-index:10;
+  max-width:560px;margin:6vh 0 0 7vw;padding:0 24px;
+}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#A78BFF;margin-bottom:18px;font-weight:300}
+h1{
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
+  font-size:clamp(40px,5.2vw,64px);line-height:1.08;letter-spacing:-.01em;margin-bottom:18px
+}
+h1 em{font-style:italic;color:#C4B5FF}
+.sub{font-size:16px;font-weight:300;line-height:1.55;color:rgba(242,240,248,.65);max-width:420px;margin-bottom:32px}
+.cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.92);color:#0B0C10;padding:15px 28px;border-radius:999px;
+  text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.02em;
+  box-shadow:0 16px 40px rgba(0,0,0,.35)
+}
+.cta i{width:7px;height:7px;border-radius:50%;background:#5EEAD4;box-shadow:0 0 8px #5EEAD4;font-style:normal}
+.ghost{margin-left:18px;color:rgba(242,240,248,.55);text-decoration:none;font-size:13px;font-weight:300;border-bottom:1px solid rgba(94,234,212,.35)}
+
+/* calm Albert overlay floating in view */
+.presence{
+  position:absolute;z-index:8;right:10vw;top:28vh;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  animation:float 6s ease-in-out infinite
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.presence .orb{
+  width:112px;height:112px;border-radius:50%;overflow:hidden;
+  border:1.5px solid rgba(255,255,255,.35);
+  box-shadow:0 0 0 8px rgba(167,139,255,.12), 0 20px 50px rgba(0,0,0,.4);
+  backdrop-filter:blur(4px)
+}
+.presence .orb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.presence .label{
+  background:rgba(12,14,22,.55);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.18);border-radius:999px;
+  padding:8px 16px;font-size:12px;letter-spacing:.06em;color:#F2F0F8;
+  display:flex;align-items:center;gap:8px
+}
+.presence .label .dot{width:6px;height:6px;border-radius:50%;background:#5EEAD4;box-shadow:0 0 8px #5EEAD4}
+.whisper{
+  position:absolute;z-index:8;right:8vw;bottom:18vh;max-width:280px;
+  background:rgba(12,14,22,.5);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 18px;
+  font-size:13px;font-weight:300;line-height:1.45;color:rgba(242,240,248,.85)
+}
+.whisper strong{display:block;font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A78BFF;margin-bottom:6px}
+.rail-hint{
+  position:absolute;z-index:10;left:7vw;bottom:36px;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,240,248,.35);font-weight:300
+}
+@media(max-width:900px){
+  body{overflow:auto}
+  .nav{padding:20px}.nav a{display:none}
+  .hero{margin:4vh 0 0;max-width:100%}
+  h1{font-size:36px}
+  .presence{right:6vw;top:52vh;transform:scale(.9)}
+  .whisper{right:5vw;bottom:12vh;max-width:70%}
+  .frames svg{opacity:.35}
+  .ghost{display:block;margin:16px 0 0;width:fit-content}
+}
+</style>
+</head>
+<body>
+<div class="stage"></div>
+<div class="vignette"></div>
+<div class="frames" aria-hidden="true">
+  <svg viewBox="0 0 1000 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M80 210 C80 120, 160 70, 280 70 L380 70 C420 70, 450 100, 450 140 L450 180 C450 210, 480 230, 520 230 C560 230, 590 210, 590 180 L590 140 C590 100, 620 70, 660 70 L760 70 C880 70, 960 120, 960 210 C960 300, 880 350, 760 350 L660 350 C620 350, 590 320, 590 280 L590 260 C590 240, 560 220, 520 220 C480 220, 450 240, 450 260 L450 280 C450 320, 420 350, 380 350 L280 350 C160 350, 80 300, 80 210 Z"
+      stroke="rgba(255,255,255,.55)" stroke-width="10" fill="rgba(255,255,255,.03)"/>
+    <circle cx="520" cy="225" r="8" fill="rgba(255,255,255,.4)"/>
+  </svg>
+</div>
+<nav class="nav">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <a href="#">Glasses rail</a>
+</nav>
+<main class="hero">
+  <p class="eyebrow">Presence · not another app</p>
+  <h1>He appears in your <em>view</em> — not on another screen.</h1>
+  <p class="sub">One calm companion in the frames. Albert rides the glasses rail as a soft presence in the world you’re already walking through.</p>
+  <div>
+    <a class="cta" href="#"><i></i> Meet Albert on your glasses</a>
+    <a class="ghost" href="#">How the glasses rail works</a>
+  </div>
+</main>
+<div class="presence">
+  <div class="orb"><img src="../_shared/faces/einstein.webp" alt="Albert"></div>
+  <div class="label"><span class="dot"></span> Albert · with you</div>
+</div>
+<div class="whisper">
+  <strong>Soft aside</strong>
+  Same street, different night. Want to walk the thought out together?
+</div>
+<p class="rail-hint">Glasses rail · calm overlay · no HUD spam</p>
+</body>
+</html>

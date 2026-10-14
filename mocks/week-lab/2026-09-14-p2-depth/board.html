@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Page 2 depth mock</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500&family=Instrument+Serif:ital@0;1&family=Syne:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ice: #EEF1F4;
+    --ink: #2F3A44;
+    --ink-soft: #3E4A54;
+    --mute: #7A8692;
+    --mute2: #8A949E;
+    --glass: rgba(255,255,255,.48);
+    --glass-strong: rgba(255,255,255,.62);
+    --select: rgba(255,255,255,.78);
+    --accent: #3D9BFF;
+    --shadow: rgba(70,90,110,.10);
+    --hair: rgba(47,58,68,.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-weight: 300;
+    color: var(--ink-soft);
+    background: #F4F6F8;
+    overflow: hidden;
+  }
+  button { font-family: inherit; cursor: pointer; }
+
+  .app {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  /* —— Depth atmosphere —— */
+  .depth-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .depth-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: .55;
+    filter: saturate(.72) brightness(1.08) contrast(.96);
+  }
+  .depth-veil {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(165deg, rgba(244,246,248,.48), rgba(236,240,244,.42) 55%, rgba(228,233,238,.50)),
+      radial-gradient(ellipse 70% 55% at 20% 30%, rgba(255,255,255,.28), transparent 60%),
+      radial-gradient(ellipse 55% 45% at 80% 70%, rgba(255,255,255,.18), transparent 65%);
+  }
+
+  /* —— Header —— */
+  .mark {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+    font-size: 11px;
+    letter-spacing: .48em;
+    text-transform: uppercase;
+    color: var(--mute);
+    font-weight: 300;
+    white-space: nowrap;
+    user-select: none;
+    isolation: isolate;
+  }
+  .mark .dot { letter-spacing: .2em; opacity: .55; }
+  .mark::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 280px;
+    height: 64px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
+    background:
+      radial-gradient(ellipse 70% 55% at 30% 50%, rgba(61,155,255,.28), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(61,155,255,.18), transparent 72%);
+    filter: blur(14px);
+  }
+
+  .header-actions {
+    position: absolute;
+    top: 26px;
+    right: 36px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: .55;
+  }
+  .mail-link, .account-link {
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--mute);
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font-weight: 300;
+  }
+
+  /* —— Page 2 grid —— */
+  #screen-model {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .editorial-type {
+    padding: 88px 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(165deg, rgba(244,246,248,.72), rgba(230,234,239,.58));
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    min-height: 0;
+    border-right: 1px solid rgba(255,255,255,.45);
+  }
+  .editorial-type .kicker {
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: .45;
+    margin-bottom: 16px;
+  }
+  .editorial-type h1 {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-size: clamp(36px, 4.2vw, 52px);
+    line-height: 1.08;
+    color: var(--ink);
+    letter-spacing: -.02em;
+    max-width: 400px;
+  }
+  .editorial-type .sub {
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.65;
+    opacity: .58;
+    max-width: 300px;
+  }
+  .editorial-controls { margin-top: 28px; }
+
+  .chip {
+    appearance: none;
+    border: 1px solid rgba(255,255,255,.7);
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: var(--ink-soft);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 9px 14px;
+    border-radius: 999px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 8px 24px rgba(80,100,120,.04);
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--select);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), 0 0 18px rgba(61,155,255,.35);
+    color: var(--ink);
+  }
+  .chip-label {
+    font-size: 10px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--mute2);
+    margin-bottom: 12px;
+    font-weight: 300;
+  }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .world-btn {
+    appearance: none;
+    border: 1px solid rgba(255,255,255,.75);
+    background: rgba(255,255,255,.42);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(70,90,110,.06);
+  }
+  .nav-pair {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .frame-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 48px 48px;
+    background: rgba(232,236,241,.42);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .frost-frame {
+    width: 100%;
+    height: 100%;
+    max-height: 620px;
+    max-width: 420px;
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 16px solid #fff;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px var(--shadow);
+    position: relative;
+  }
+  .frost-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    filter: saturate(.58) brightness(1.05);
+    display: block;
+    min-height: 420px;
+  }
+  .frost-frame::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.12), transparent 30%, rgba(230,234,239,.2));
+    pointer-events: none;
+  }
+
+  .albert-bubble {
+    position: absolute;
+    right: calc(50% + 210px + 18px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    z-index: 3;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 16px 16px 4px 16px;
+    padding: 14px 16px;
+    box-shadow: 0 12px 32px rgba(70,90,110,.08);
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.55;
+    letter-spacing: .01em;
+  }
+  .albert-bubble::after {
+    content: "";
+    position: absolute;
+    right: -7px;
+    top: 28px;
+    width: 14px;
+    height: 14px;
+    background: rgba(255,255,255,.72);
+    border-right: 1px solid rgba(255,255,255,.9);
+    border-top: 1px solid rgba(255,255,255,.9);
+    transform: rotate(45deg);
+  }
+  .albert-bubble a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(61,155,255,.35);
+  }
+
+  @media (max-width: 1100px) {
+    .albert-bubble {
+      right: calc(50% + 160px + 12px);
+      width: 170px;
+      font-size: 11px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="depth-bg" aria-hidden="true">
+    <img id="depth-img" src="bgs/01-cloud-sheets.png" alt="">
+  </div>
+  <div class="depth-veil" aria-hidden="true"></div>
+
+  <p class="mark">M U L T I V E R S A L <span class="dot">· ai</span></p>
+  <div class="header-actions">
+    <a class="mail-link" href="mailto:hello@multiversal.ai">hello@</a>
+    <button type="button" class="account-link">My account</button>
+  </div>
+
+  <section id="screen-model" aria-label="Your agent / Model">
+    <div class="editorial-type">
+      <div>
+        <div class="kicker">Your agent</div>
+        <h1>Choose the<br>mind<br>beneath.</h1>
+        <p class="sub">Select a model, then continue into the verses.</p>
+      </div>
+      <div class="editorial-controls">
+        <p class="chip-label">Select model</p>
+        <div class="chip-row" role="group" aria-label="Select model">
+          <button type="button" class="chip" data-model="grok" aria-pressed="true">Grok</button>
+          <button type="button" class="chip" data-model="gpt" aria-pressed="false">GPT</button>
+          <button type="button" class="chip" data-model="claude" aria-pressed="false">Claude</button>
+          <button type="button" class="chip" data-model="gemini" aria-pressed="false">Gemini</button>
+          <button type="button" class="chip" data-model="deepseek" aria-pressed="false">DeepSeek</button>
+        </div>
+        <div class="nav-pair">
+          <button type="button" class="world-btn">Continue</button>
+        </div>
+      </div>
+    </div>
+    <div class="frame-wrap">
+      <aside class="albert-bubble" aria-label="Albert intro">
+        Hi, I'm Albert, your default mind. I exist in multiple verses, including at <a href="https://www.alberteinstein.ai" target="_blank" rel="noopener">www.AlbertEinstein.ai</a>.
+      </aside>
+      <div class="frost-frame">
+        <img src="agent-face.webp" alt="Einstein">
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var bg = params.get("bg") || "01-cloud-sheets";
+    var img = document.getElementById("depth-img");
+    img.src = "bgs/" + bg + ".png";
+    var op = params.get("op");
+    if (op) img.style.opacity = op;
+  })();
+</script>
+</body>
+</html>

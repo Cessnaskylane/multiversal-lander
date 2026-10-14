@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Glass Runway 04 Stacked glass cards</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;font-family:"DM Sans",system-ui,sans-serif;font-weight:300;color:#45505A;background:#E6EAEF}
+  .bg{position:absolute;inset:0;background:linear-gradient(125deg,#E6EAEF,#D6DCE4 40%,#EEF1F5)}
+  .peek{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:min(420px,38vw);height:min(560px,78vh);border-radius:24px;overflow:hidden;opacity:.85}
+  .peek img{width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:saturate(.55) brightness(1.08)}
+  .stack{position:relative;z-index:2;height:100vh;height:100dvh;display:flex;align-items:center;padding-left:8%;gap:0}
+  .cards{position:relative;width:min(480px,44vw);height:420px}
+  .card{position:absolute;left:0;width:100%;background:rgba(255,255,255,.46);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.65);border-radius:20px;padding:28px 32px;box-shadow:0 20px 50px rgba(70,90,110,.08)}
+  .c1{top:0;z-index:3}
+  .c2{top:118px;left:28px;z-index:2;width:calc(100% - 28px)}
+  .c3{top:236px;left:56px;z-index:1;width:calc(100% - 56px)}
+  .label{font-size:10px;letter-spacing:.35em;text-transform:uppercase;opacity:.5;margin-bottom:10px}
+  .c1 h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:36px;color:#2E3842;letter-spacing:-.01em}
+  .c2 p{font-size:15px;line-height:1.55;opacity:.75;max-width:320px}
+  .c3 .cta{font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.55}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="peek"><img src="../assets/muse.webp" alt=""></div>
+<div class="stack">
+  <div class="cards">
+    <div class="card c1"><div class="label">Multiversal</div><h1>Glass on glass.</h1></div>
+    <div class="card c2"><div class="label">Promise</div><p>Named voices through translucent quiet — couture silence, not chrome.</p></div>
+    <div class="card c3"><div class="label">Action</div><div class="cta">Put on Grok →</div></div>
+  </div>
+</div>
+</body>
+</html>

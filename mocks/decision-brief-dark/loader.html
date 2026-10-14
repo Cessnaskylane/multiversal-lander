@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>multiversal.ai</title><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="dark.css"><style>
+body{overflow:hidden;height:100vh}
+.photo{position:absolute;inset:0;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover;filter:blur(22px) saturate(.5) brightness(.35);transform:scale(1.22) translateX(7%)}
+.frost{position:absolute;inset:0;background:rgba(6,9,18,.72)}
+.halo{position:absolute;left:50%;top:50%;width:620px;height:300px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(61,155,255,.22),transparent 65%);filter:blur(10px)}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+/* door-mark / door-loader / door-ai: from live #screen-door, dark */
+.door-mark,.door-ai{font-weight:400;letter-spacing:.55em;text-indent:.55em;text-transform:uppercase;line-height:1;background:linear-gradient(100deg,#7ec8ff 0%,#3D9BFF 25%,#b8e0ff 50%,#3D9BFF 75%,#7ec8ff 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:markFillFlow 10s ease-in-out infinite}
+.door-mark{font-size:12px}.door-ai{font-size:10px;opacity:.85}
+.door-loader{width:240px;height:3px;background:rgba(160,175,200,.18);border-radius:2px;overflow:hidden;position:relative}
+.door-loader span{position:absolute;inset:0;background:#3D9BFF;box-shadow:0 0 12px #3D9BFF;transform:scaleX(0);transform-origin:left;animation:doorLoad 1.8s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes doorLoad{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.freeze .door-loader span{animation-play-state:paused;animation-delay:-.75s}
+</style></head><body class="freeze"><div class="photo"><img src="../../assets/scenarios/einstein.webp" alt=""></div><div class="frost"></div><div class="halo"></div>
+<a class="center" href="home.html"><div class="door-mark">M U L T I V E R S A L</div><div class="door-loader"><span></span></div><div class="door-ai">A I</div></a>
+<script>if(!location.hash.includes('shot')){document.body.classList.remove('freeze');setTimeout(()=>location.href='home.html',2400)}</script></body></html>

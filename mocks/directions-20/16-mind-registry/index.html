@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Mind Registry</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:"Libre Franklin",system-ui,sans-serif;background:#F3F1EC;color:#1E1E1E}
+body{min-height:100vh}
+.nav{display:flex;justify-content:space-between;padding:24px 40px;border-bottom:1px solid rgba(30,30,30,.08);align-items:center}
+.mark{font-size:12px;letter-spacing:.38em;text-transform:lowercase}
+.mark .m{color:#7B5CFF}.mark .v{color:#1E1E1E}.mark .ai{color:#3D9BFF}
+.nav a{font-size:12px;color:#6B6B6B;text-decoration:none;margin-left:20px}
+.hero{max-width:1200px;margin:0 auto;padding:48px 40px 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.hero h1{font-family:"Playfair Display",Georgia,serif;font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1.15;max-width:520px}
+.hero h1 em{font-style:italic;color:#7B5CFF}
+.hero .right{max-width:320px}
+.hero .right p{font-size:14px;font-weight:300;color:#6B6B6B;line-height:1.5;margin-bottom:16px}
+.cta{display:inline-block;background:#1E1E1E;color:#F3F1EC;padding:11px 20px;text-decoration:none;font-size:12px;letter-spacing:.06em}
+.grid{max-width:1200px;margin:0 auto;padding:24px 40px 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{
+  background:#fff;border:1px solid rgba(30,30,30,.08);border-radius:4px;overflow:hidden;
+  transition:transform .2s, box-shadow .2s
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(30,30,30,.08)}
+.card .img{aspect-ratio:3/4;overflow:hidden;background:#E8E4DC}
+.card img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.card .meta{padding:14px 14px 16px}
+.card .meta strong{display:block;font-size:14px;font-weight:500;margin-bottom:2px}
+.card .meta span{font-size:12px;color:#8A8A8A;font-weight:300}
+.card .meta .tag{display:inline-block;margin-top:8px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7B5CFF}
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);padding:16px 16px 40px;gap:10px}
+  .hero{padding:28px 16px 16px}.nav{padding:16px}.nav a{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <div><a href="#">Catalog</a><a href="#">Collections</a><a href="#">Sign in</a></div>
+</nav>
+<header class="hero">
+  <h1>A museum of minds.<br><em>Pick your company.</em></h1>
+  <div class="right">
+    <p>Named historical and creative personas — layerable on any model. No living-celebrity likenesses. Just presence with provenance.</p>
+    <a class="cta" href="#">Browse registry</a>
+  </div>
+</header>
+<section class="grid">
+  <article class="card"><div class="img"><img src="../_shared/faces/einstein.webp" alt=""></div><div class="meta"><strong>Albert</strong><span>Physics & wonder</span><div class="tag">Classic</div></div></article>
+  <article class="card"><div class="img"><img src="../_shared/faces/joan.webp" alt=""></div><div class="meta"><strong>Joan</strong><span>Courage & counsel</span><div class="tag">Classic</div></div></article>
+  <article class="card"><div class="img"><img src="../_shared/faces/plato.webp" alt=""></div><div class="meta"><strong>Plato</strong><span>Forms & dialogue</span><div class="tag">Classic</div></div></article>
+  <article class="card"><div class="img"><img src="../_shared/faces/beethoven.webp" alt=""></div><div class="meta"><strong>Ludwig</strong><span>Sound & storm</span><div class="tag">Arts</div></div></article>
+  <article class="card"><div class="img"><img src="../_shared/faces/murray.webp" alt=""></div><div class="meta"><strong>Murray</strong><span>Dry wit · late night</span><div class="tag">Voice</div></div></article>
+  <article class="card"><div class="img"><img src="../_shared/faces/zeus.webp" alt=""></div><div class="meta"><strong>Zeus</strong><span>Myth · command</span><div class="tag">Mythos</div></div></article>
+  <article class="card"><div class="img"><img src="../_shared/faces/muse.webp" alt=""></div><div class="meta"><strong>Muse</strong><span>Creative spark</span><div class="tag">Studio</div></div></article>
+  <article class="card"><div class="img"><img src="../_shared/faces/scientist.webp" alt=""></div><div class="meta"><strong>Ada</strong><span>Builder · rigor</span><div class="tag">Studio</div></div></article>
+</section>
+</body>
+</html>

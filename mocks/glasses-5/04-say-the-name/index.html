@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Say the Name</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,system-ui,sans-serif;background:#0C0E14;color:#F4F2FA}
+body{
+  min-height:100vh;overflow:hidden;position:relative;
+  background:
+    radial-gradient(ellipse 55% 50% at 70% 35%, rgba(61,155,255,.12), transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(123,92,255,.1), transparent 50%),
+    #0C0E14;
+}
+.nav{display:flex;justify-content:space-between;padding:28px 48px;align-items:center;position:relative;z-index:5}
+.mark{font-size:12px;letter-spacing:.4em;text-transform:lowercase;font-weight:400}
+.mark .m{color:#A78BFF}.mark .v{color:#F4F2FA}.mark .ai{color:#3D9BFF;letter-spacing:.14em}
+.nav a{font-size:11px;color:rgba(244,242,250,.4);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;margin-left:22px;font-weight:300}
+
+.main{
+  position:relative;z-index:5;
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  max-width:1200px;margin:6vh auto 0;padding:0 48px
+}
+.left{max-width:520px}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#8A847C;margin-bottom:18px;font-weight:300}
+h1{
+  font-family:Fraunces,Georgia,serif;font-weight:400;
+  font-size:clamp(36px,4.2vw,56px);line-height:1.08;letter-spacing:-.02em;margin-bottom:16px
+}
+h1 em{font-style:italic;color:#A78BFF}
+.sub{font-size:15px;font-weight:300;color:rgba(244,242,250,.55);line-height:1.55;margin-bottom:36px;max-width:440px}
+
+.domain{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;padding:22px 26px;margin-bottom:20px;
+  box-shadow:0 24px 60px rgba(0,0,0,.25)
+}
+.domain .addr{
+  font-family:Fraunces,Georgia,serif;font-size:clamp(22px,2.8vw,32px);font-weight:500;
+  letter-spacing:-.01em;margin-bottom:8px
+}
+.domain .addr .name{color:#A78BFF}
+.domain .addr .dot{color:#F4F2FA}
+.domain .addr .tld{color:#3D9BFF}
+.domain .hint{font-size:12px;color:rgba(244,242,250,.4);font-weight:300;letter-spacing:.04em}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.cta{
+  background:#F4F2FA;color:#0C0E14;padding:14px 26px;border-radius:999px;
+  text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.04em
+}
+.ghost{
+  color:rgba(244,242,250,.5);text-decoration:none;font-size:13px;padding:14px 8px;
+  border-bottom:1px solid rgba(61,155,255,.35)
+}
+
+/* glasses surface answering the address */
+.surface{
+  position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 40px 90px rgba(0,0,0,.5);
+  background:url("../_shared/worlds/paris.png") center/cover
+}
+.surface::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(12,14,20,.25) 0%, rgba(12,14,20,.55) 100%)
+}
+.lens-rim{
+  position:absolute;inset:14px;border:1.5px solid rgba(255,255,255,.18);
+  border-radius:16px;z-index:3;pointer-events:none
+}
+.answer{
+  position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:32px;text-align:center
+}
+.answer img{
+  width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:top;
+  border:2px solid rgba(255,255,255,.4);
+  box-shadow:0 0 0 10px rgba(167,139,255,.12), 0 16px 40px rgba(0,0,0,.4);
+  margin-bottom:18px
+}
+.answer .summoned{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#5EEAD4;margin-bottom:10px;font-weight:300
+}
+.answer .spoken{
+  font-family:Fraunces,Georgia,serif;font-size:22px;font-weight:400;margin-bottom:8px
+}
+.answer .spoken span{color:#A78BFF}
+.answer .spoken em{font-style:normal;color:#3D9BFF}
+.answer p{font-size:13px;font-weight:300;color:rgba(244,242,250,.6);max-width:260px;line-height:1.45}
+.mic{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:4;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(12,14,20,.6);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:10px 18px;
+  font-size:12px;letter-spacing:.06em;color:rgba(244,242,250,.75)
+}
+.mic .wave{display:flex;gap:3px;align-items:center;height:14px}
+.mic .wave i{width:2px;background:#5EEAD4;border-radius:1px;animation:wave 1s ease-in-out infinite;font-style:normal}
+.mic .wave i:nth-child(1){height:6px;animation-delay:0s}
+.mic .wave i:nth-child(2){height:12px;animation-delay:.15s}
+.mic .wave i:nth-child(3){height:8px;animation-delay:.3s}
+.mic .wave i:nth-child(4){height:14px;animation-delay:.45s}
+.mic .wave i:nth-child(5){height:5px;animation-delay:.6s}
+@keyframes wave{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.4)}}
+
+.alts{
+  position:absolute;bottom:40px;left:48px;right:48px;z-index:5;
+  display:flex;gap:10px;flex-wrap:wrap
+}
+.alt{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;padding:10px 14px;font-size:12px;font-weight:300;color:rgba(244,242,250,.5)
+}
+.alt strong{color:#F4F2FA;font-weight:400}
+.alt .c{color:#3D9BFF}
+@media(max-width:900px){
+  body{overflow:auto}
+  .nav{padding:20px}.nav a{display:none}
+  .main{grid-template-columns:1fr;gap:28px;padding:0 20px;margin-top:3vh}
+  .alts{position:relative;bottom:auto;left:auto;right:auto;padding:28px 20px 40px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <div><a href="#">Registry</a><a href="#">Claim</a></div>
+</nav>
+<div class="main">
+  <div class="left">
+    <p class="eyebrow">Domain as summon address</p>
+    <h1>Say the name.<br>The frames <em>answer</em>.</h1>
+    <p class="sub">Glance or speak a Multiversal address — albert.multiversal.ai — and the mind opens on the glasses rail. Your name is the door.</p>
+    <div class="domain">
+      <div class="addr"><span class="name">albert</span><span class="dot">.multiversal</span><span class="tld">.ai</span></div>
+      <p class="hint">Summon address · works on glasses, web, and voice</p>
+    </div>
+    <div class="actions">
+      <a class="cta" href="#">Summon Albert</a>
+      <a class="ghost" href="#">Claim yourname.ai</a>
+    </div>
+  </div>
+  <div class="surface">
+    <div class="lens-rim"></div>
+    <div class="answer">
+      <img src="../_shared/faces/einstein.webp" alt="Albert">
+      <div class="summoned">Address answered</div>
+      <div class="spoken"><span>albert</span>.multiversal<em>.ai</em></div>
+      <p>I’m here. You called the door — I’ll stay in the frames until you close it.</p>
+    </div>
+    <div class="mic">
+      <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      “Albert…” · listening
+    </div>
+  </div>
+</div>
+<div class="alts">
+  <div class="alt"><strong>albert</strong><span class="c">.multiversal.ai</span> · named mind</div>
+  <div class="alt"><strong>yourname</strong><span class="c">.ai</span> · personal door</div>
+  <div class="alt">Glance · speak · open</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+
+    .verse-app {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 420px);
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .verse-screen .screen-title {
+      flex: 0 0 auto;
+    }
+    .app {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .app .verse-acts {
+      width: 100%;
+      padding: 8px 12px 0;
+    }
+    .app-stage {
+      flex: 1 1 auto;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      margin: 0 12px;
+      border: 1px solid rgba(232, 61, 154, 0.5);
+      background: #050508;
+    }
+    .app-stage img.cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 12%;
+      display: block;
+    }
+    .app-meta {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      color: #f4f0f6;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.85);
+      pointer-events: none;
+    }
+    .app-user {
+      margin: 0 0 4px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .app-sub {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.35;
+      color: rgba(244, 240, 246, 0.88);
+    }
+    .app-sound {
+      margin: 8px 0 0;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--line);
+    }
+    .app-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      flex: 0 0 auto;
+      color: #f4f0f6;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .app-bar .dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      flex: 0 0 auto;
+    }
+    .app-bar .dot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 10%;
+      display: block;
+    }
+    .app-bar strong {
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+    .app-bar span {
+      color: rgba(244, 240, 246, 0.45);
+      letter-spacing: 0.08em;
+      text-transform: none;
+    }
+    .out-sheet {
+      position: absolute;
+      inset: auto 0 0 0;
+      max-height: 72%;
+      overflow-y: auto;
+      background: linear-gradient(to top, rgba(5,5,8,0.96) 70%, rgba(5,5,8,0.55));
+      padding: 16px 14px 18px;
+      color: #f4f0f6;
+    }
+    .out-sheet h2 {
+      margin: 0 0 10px;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--line);
+      font-weight: 500;
+    }
+    .out-post {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+      color: #f4f0f6;
+    }
+    .thread-row {
+      margin: 0 0 12px;
+    }
+    .thread-row .who {
+      margin: 0;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 246, 0.45);
+    }
+    .thread-row .inn {
+      margin: 2px 0 4px;
+      font-size: 13px;
+      color: rgba(244, 240, 246, 0.88);
+    }
+    .thread-row .out {
+      margin: 0;
+      padding-left: 10px;
+      border-left: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--line);
+    }
+    .inbox-bucket {
+      margin: 0 0 12px;
+    }
+    .inbox-bucket h3 {
+      margin: 0 0 6px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--line);
+      font-weight: 500;
+    }
+    .story-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+    }
+    .story-frame {
+      border: 1px solid var(--line);
+      aspect-ratio: 9 / 16;
+      display: flex;
+      align-items: flex-end;
+      padding: 8px;
+      background: rgba(232, 61, 154, 0.08);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--line);
+    }
+    .app-web .url {
+      margin: 0 12px 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(232, 61, 154, 0.35);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: rgba(244, 240, 246, 0.55);
+      flex: 0 0 auto;
+    }
+    .app-mail .mail-list,
+    .app-slack .sl-log,
+    .app-x .x-feed {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      margin: 0 12px;
+      border: 1px solid rgba(232, 61, 154, 0.5);
+      padding: 12px;
+      background: #050508;
+    }
+    .mail-item, .sl-msg, .x-tweet {
+      margin: 0 0 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(232, 61, 154, 0.18);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .mail-item:last-child, .sl-msg:last-child, .x-tweet:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+    .mail-item .from, .sl-msg .from, .x-tweet .from {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--line);
+      margin-bottom: 4px;
+    }
+    .app-ord .ord-id {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      margin: 0;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--line);
+    }
+    .out-status {
+      margin: 10px 0 0;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 246, 0.38);
+    }

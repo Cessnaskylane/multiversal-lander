@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Glass Runway 06 Mirror panes</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;font-family:"DM Sans",system-ui,sans-serif;font-weight:300;color:#45505A;background:#E5E9EE}
+  .bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,#F2F4F7, #D8DEE6)}
+  .page{position:relative;height:100vh;height:100dvh;display:grid;place-items:center;padding:40px}
+  .storefront{width:min(960px,92vw);height:min(580px,76vh);display:grid;grid-template-columns:1fr 1px 1fr;background:rgba(255,255,255,.36);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.6);border-radius:4px;overflow:hidden;box-shadow:0 28px 70px rgba(70,90,110,.1)}
+  .divider{background:rgba(255,255,255,.85);box-shadow:0 0 0 0.5px rgba(120,130,140,.15)}
+  .pane{padding:48px 44px;display:flex;flex-direction:column}
+  .left{justify-content:space-between}
+  .mark{font-size:10px;letter-spacing:.42em;text-transform:uppercase;opacity:.5}
+  h1{font-weight:200;font-size:28px;line-height:1.25;color:#343E48;margin-top:40px}
+  .list{list-style:none;margin-top:auto;font-size:13px;line-height:2.1;letter-spacing:.08em;opacity:.6}
+  .right{padding:0;position:relative}
+  .right img{width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:.9;filter:saturate(.6) brightness(1.05)}
+  .right::before{content:"";position:absolute;inset:0;background:rgba(230,234,239,.18);backdrop-filter:blur(1px);z-index:1;pointer-events:none}
+  .cap{position:absolute;bottom:28px;left:28px;z-index:2;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#fff;opacity:.75;text-shadow:0 1px 8px rgba(0,0,0,.2)}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="page">
+  <div class="storefront">
+    <div class="pane left">
+      <div class="mark">MULTIVERSAL</div>
+      <h1>Storefront glass.<br>Two panes. One voice.</h1>
+      <ul class="list">
+        <li>— Elsa</li>
+        <li>— Freeman</li>
+        <li>— Companion</li>
+        <li>— Editor</li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="pane right">
+      <img src="../assets/freeman.webp" alt="">
+      <div class="cap">Open portrait</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Parallel Fork</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:"IBM Plex Sans",system-ui,sans-serif;background:#0B0C0F;color:#F2F0EB}
+body{min-height:100vh;overflow:hidden}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 36px;border-bottom:1px solid rgba(242,240,235,.08);position:relative;z-index:5}
+.mark{font-size:12px;letter-spacing:.4em;text-transform:lowercase}
+.mark .m{color:#A78BFF}.mark .v{color:#F2F0EB}.mark .ai{color:#5EEAD4;letter-spacing:.15em}
+.nav a{color:rgba(242,240,235,.45);text-decoration:none;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-left:24px}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 70px)}
+.pane{position:relative;padding:56px 48px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border-right:1px solid rgba(242,240,235,.1)}
+.pane:last-child{border-right:none}
+.pane img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;filter:saturate(.7) contrast(1.05)}
+.pane::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(11,12,15,.92) 85%)}
+.pane .label{position:relative;z-index:2;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#5EEAD4;margin-bottom:14px}
+.pane h2{position:relative;z-index:2;font-family:"IBM Plex Serif",serif;font-weight:400;font-size:36px;line-height:1.15;margin-bottom:12px;max-width:380px}
+.pane p{position:relative;z-index:2;font-size:14px;font-weight:300;color:rgba(242,240,235,.55);max-width:340px;line-height:1.5;margin-bottom:24px}
+.pane .path{position:relative;z-index:2;font-size:12px;letter-spacing:.08em;color:rgba(242,240,235,.7)}
+.center{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;
+  text-align:center;width:min(520px,90vw);pointer-events:none
+}
+.center .kicker{font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:rgba(242,240,235,.5);margin-bottom:16px}
+.center h1{font-family:"IBM Plex Serif",serif;font-size:clamp(32px,3.8vw,48px);font-weight:400;line-height:1.1;margin-bottom:18px}
+.center h1 em{font-style:italic;color:#A78BFF}
+.cta-wrap{pointer-events:auto;display:inline-flex;gap:12px;margin-top:8px}
+.cta{background:#F2F0EB;color:#0B0C0F;padding:12px 22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:500}
+.cta-ghost{border:1px solid rgba(242,240,235,.35);color:#F2F0EB;padding:12px 22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+.vs{
+  position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:8;
+  width:48px;height:48px;border-radius:50%;background:#0B0C0F;border:1px solid rgba(242,240,235,.25);
+  display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.15em;color:#A78BFF
+}
+@media(max-width:900px){
+  body{overflow:auto}.hero{grid-template-columns:1fr}.pane{min-height:50vh;border-right:none;border-bottom:1px solid rgba(242,240,235,.1);padding:40px 24px}
+  .center{position:relative;left:auto;top:auto;transform:none;width:100%;padding:32px 24px;background:#0B0C0F;border-bottom:1px solid rgba(242,240,235,.1)}
+  .vs{display:none}.nav a{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <div><a href="#">Product</a><a href="#">Fork a decision</a></div>
+</nav>
+<div class="center">
+  <p class="kicker">Parallel outcomes</p>
+  <h1>Fork any decision into<br><em>two realities</em></h1>
+  <div class="cta-wrap">
+    <a class="cta" href="#">Start a fork</a>
+    <a class="cta-ghost" href="#">Watch a demo</a>
+  </div>
+</div>
+<div class="vs">OR</div>
+<main class="hero">
+  <section class="pane">
+    <img class="bg" src="../_shared/worlds/rooftop.png" alt="">
+    <p class="label">Path A · stay</p>
+    <h2>You keep the offer. Life stays familiar.</h2>
+    <p>Simulate the conversations, risks, and quiet costs of saying yes to what you already know.</p>
+    <p class="path">→ Explore Path A</p>
+  </section>
+  <section class="pane">
+    <img class="bg" src="../_shared/worlds/london.png" alt="">
+    <p class="label">Path B · leave</p>
+    <h2>You move cities. Everything rewires.</h2>
+    <p>Talk through the alternate self — same you, different rails — before you burn the bridges.</p>
+    <p class="path">→ Explore Path B</p>
+  </section>
+</main>
+</body>
+</html>

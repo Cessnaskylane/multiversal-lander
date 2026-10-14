@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Multiversal — Single column dossier</title>
+<style>
+@font-face {
+  font-family: 'Syne';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(assets/syne-latin-700.woff2) format('woff2');
+}
+:root {
+  --ink: #070a0f;
+  --ink-2: #0d1219;
+  --paper: #f2ebe0;
+  --amber: #e8a23a;
+  --amber-hot: #f0b84f;
+  --teal: #2dd4bf;
+  --muted: rgba(242,235,224,0.52);
+  --line: rgba(242,235,224,0.12);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; margin: 0; }
+html, body {
+  height: 100%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: Syne, "Segoe UI", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+a { color: inherit; text-decoration: none; }
+
+.phone {
+  position: relative;
+  width: 100%;
+  height: 100svh; height: 100dvh;
+  max-width: 430px;
+  margin: 0 auto;
+  background: var(--ink);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chrome {
+  flex: 0 0 auto;
+  padding: 16px 20px 8px;
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.mark {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.mark em { font-style: normal; color: var(--amber); }
+.file-meta {
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dossier {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.portrait-wrap {
+  position: relative;
+  flex: 0 0 42%;
+  min-height: 220px;
+  overflow: hidden;
+  background: var(--ink-2);
+}
+.portrait-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  filter: grayscale(0.15) contrast(1.08);
+  opacity: 0.95;
+  transition: opacity 0.3s, transform 0.45s ease;
+}
+.portrait-wrap::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, transparent 40%, var(--ink) 100%),
+    linear-gradient(90deg, rgba(7,10,15,0.35) 0%, transparent 30%);
+  pointer-events: none;
+}
+.stamp {
+  position: absolute; z-index: 2;
+  top: 14px; left: 14px;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid rgba(232,162,58,0.45);
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: rgba(7,10,15,0.55);
+  backdrop-filter: blur(6px);
+}
+
+.copy {
+  flex: 1;
+  padding: 8px 22px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+.promise-line {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+}
+.name {
+  font-size: clamp(42px, 13vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  color: var(--paper);
+}
+.tone {
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 28ch;
+  border-left: 2px solid var(--amber);
+  padding-left: 14px;
+  margin-top: 4px;
+}
+.meta-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 6px;
+}
+.chip {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--paper);
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(13,18,25,0.6);
+}
+
+.actions {
+  flex: 0 0 auto;
+  padding: 12px 20px calc(16px + var(--safe-b));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, transparent, rgba(7,10,15,0.95));
+}
+.btn {
+  min-height: 54px;
+  border-radius: 12px;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.03em;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: transform 0.12s, background 0.15s, border-color 0.15s;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary {
+  background: var(--amber);
+  color: #1a1004;
+  grid-column: 1 / -1;
+  box-shadow: 0 10px 28px rgba(232,162,58,0.22);
+}
+.btn-primary:hover { background: var(--amber-hot); }
+.btn-secondary {
+  border: 1px solid var(--line);
+  color: var(--paper);
+  background: var(--ink-2);
+}
+.btn-secondary:hover { border-color: rgba(232,162,58,0.4); }
+.btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+/* Bottom sheet */
+.sheet-backdrop {
+  position: absolute; inset: 0; z-index: 30;
+  background: rgba(0,0,0,0.55);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
+}
+.sheet-backdrop.open { opacity: 1; pointer-events: auto; }
+
+.sheet {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 40;
+  background: #0f141c;
+  border-radius: 22px 22px 0 0;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  padding: 10px 18px calc(18px + var(--safe-b));
+  transform: translateY(110%);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  max-height: 72%;
+  display: flex; flex-direction: column;
+  box-shadow: 0 -20px 60px rgba(0,0,0,0.5);
+}
+.sheet.open { transform: translateY(0); }
+.sheet-handle {
+  width: 40px; height: 4px; border-radius: 4px;
+  background: rgba(242,235,224,0.2);
+  margin: 4px auto 14px;
+}
+.sheet h2 {
+  font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+}
+.voice-list {
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: 6px;
+  -webkit-overflow-scrolling: touch;
+}
+.voice-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  text-align: left;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+  min-height: 64px;
+}
+.voice-row:hover, .voice-row:focus-visible {
+  background: rgba(232,162,58,0.08);
+  border-color: rgba(232,162,58,0.25);
+}
+.voice-row.is-active {
+  background: rgba(232,162,58,0.12);
+  border-color: rgba(232,162,58,0.4);
+}
+.voice-row img {
+  width: 44px; height: 44px; border-radius: 10px;
+  object-fit: cover; object-position: center top;
+}
+.voice-row .v-name { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+.voice-row .v-tone { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.sheet-more {
+  margin-top: 10px;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px dashed rgba(242,235,224,0.18);
+  color: var(--muted);
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.sheet-more:hover { border-color: var(--amber); color: var(--paper); }
+
+/* YouTube sheet card */
+.yt-link {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255,0,51,0.08);
+  border: 1px solid rgba(255,0,51,0.22);
+  min-height: 64px;
+}
+.yt-link img {
+  width: 44px; height: 44px; border-radius: 50%;
+  object-fit: cover;
+}
+.yt-link strong { display: block; font-size: 14px; }
+.yt-link span { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+@media (min-width: 700px) {
+  body { display: flex; align-items: center; justify-content: center; background: #030508; }
+  .phone {
+    height: min(844px, 96svh);
+    width: 390px;
+    border-radius: 28px;
+    box-shadow: 0 0 0 1px rgba(242,235,224,0.06), 0 30px 80px rgba(0,0,0,0.55);
+  }
+}
+</style>
+</head>
+<body>
+  <div class="phone" id="phone">
+    <header class="chrome">
+      <p class="mark">MULTI<em>VERSAL</em></p>
+      <p class="file-meta" id="fileMeta">Dossier · 01 / 06</p>
+    </header>
+
+    <main class="dossier">
+      <div class="portrait-wrap">
+        <span class="stamp">Classified · calm</span>
+        <img id="face" src="assets/elsa.webp" alt="Elsa voice portrait">
+      </div>
+      <div class="copy">
+        <p class="promise-line">A named voice you put on Grok.</p>
+        <h1 class="name" id="name">Elsa</h1>
+        <p class="tone" id="tone">Calm, crystalline counsel.</p>
+        <div class="meta-row">
+          <span class="chip" id="chipA">Cold register</span>
+          <span class="chip" id="chipB">Precise</span>
+        </div>
+      </div>
+    </main>
+
+    <div class="actions">
+      <button class="btn btn-primary" type="button" id="cta">Put on Grok</button>
+      <button class="btn btn-secondary" type="button" id="openSheet">Choose voice</button>
+      <button class="btn btn-ghost" type="button" id="nextVoice">Next →</button>
+    </div>
+
+    <div class="sheet-backdrop" id="backdrop" aria-hidden="true"></div>
+    <aside class="sheet" id="sheet" role="dialog" aria-label="Select a voice" aria-hidden="true">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <h2>Select a voice · 6 on desk</h2>
+      <div class="voice-list" id="voiceList"></div>
+      <button class="sheet-more" type="button" id="moreVoices">More voices…</button>
+      <a class="yt-link" href="https://www.youtube.com/@multiversalbots" target="_blank" rel="noopener">
+        <img src="assets/yt-avatar.png" alt="" width="44" height="44">
+        <div>
+          <strong>Watch on YouTube</strong>
+          <span>@multiversalbots</span>
+        </div>
+      </a>
+    </aside>
+  </div>
+
+<script>
+(function () {
+  var voices = [
+    { name: 'Elsa', file: 'elsa.webp', tone: 'Calm, crystalline counsel.', a: 'Cold register', b: 'Precise' },
+    { name: 'Einstein', file: 'einstein.webp', tone: 'Precise, curious, slightly amused.', a: 'Curious', b: 'Measured' },
+    { name: 'Keanu', file: 'keanu.webp', tone: 'Grounded. Quiet intensity.', a: 'Grounded', b: 'Sparse' },
+    { name: 'Plato', file: 'plato.webp', tone: 'Socratic clarity for hard questions.', a: 'Socratic', b: 'Clear' },
+    { name: 'Murray', file: 'murray.webp', tone: 'Dry wit. Zero fluff.', a: 'Dry', b: 'Deadpan' },
+    { name: 'Freeman', file: 'freeman.webp', tone: 'Measured gravitas.', a: 'Gravitas', b: 'Warm bass' },
+    { name: 'Muse', file: 'muse.webp', tone: 'Creative pressure, soft edges.', a: 'Creative', b: 'Soft' },
+    { name: 'Coach', file: 'coach.webp', tone: 'Form first. Then speed.', a: 'Direct', b: 'Kinetic' }
+  ];
+  var desk = voices.slice(0, 6);
+  var idx = 0;
+  var showingMore = false;
+
+  var face = document.getElementById('face');
+  var nameEl = document.getElementById('name');
+  var toneEl = document.getElementById('tone');
+  var chipA = document.getElementById('chipA');
+  var chipB = document.getElementById('chipB');
+  var fileMeta = document.getElementById('fileMeta');
+  var sheet = document.getElementById('sheet');
+  var backdrop = document.getElementById('backdrop');
+  var list = document.getElementById('voiceList');
+  var cta = document.getElementById('cta');
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  function render(i, animate) {
+    idx = ((i % voices.length) + voices.length) % voices.length;
+    var v = voices[idx];
+    if (animate) {
+      face.style.opacity = '0';
+      face.style.transform = 'scale(1.04)';
+      setTimeout(apply, 160);
+    } else apply();
+    function apply() {
+      face.src = 'assets/' + v.file;
+      face.alt = v.name + ' voice portrait';
+      nameEl.textContent = v.name;
+      toneEl.textContent = v.tone;
+      chipA.textContent = v.a;
+      chipB.textContent = v.b;
+      fileMeta.textContent = 'Dossier · ' + pad(idx + 1) + ' / ' + pad(voices.length);
+      face.onload = function () {
+        face.style.opacity = '0.95';
+        face.style.transform = 'scale(1)';
+      };
+      // if cached
+      face.style.opacity = '0.95';
+      face.style.transform = 'scale(1)';
+      paintList();
+    }
+  }
+
+  function paintList() {
+    var rows = showingMore ? voices : desk;
+    list.innerHTML = '';
+    rows.forEach(function (v, i) {
+      var realIdx = voices.indexOf(v);
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'voice-row' + (realIdx === idx ? ' is-active' : '');
+      btn.innerHTML =
+        '<img src="assets/' + v.file + '" alt="">' +
+        '<div><div class="v-name">' + v.name + '</div><div class="v-tone">' + v.tone + '</div></div>';
+      btn.addEventListener('click', function () {
+        render(realIdx, true);
+        closeSheet();
+      });
+      list.appendChild(btn);
+    });
+  }
+
+  function openSheet() {
+    sheet.classList.add('open');
+    backdrop.classList.add('open');
+    sheet.setAttribute('aria-hidden', 'false');
+    backdrop.setAttribute('aria-hidden', 'false');
+  }
+  function closeSheet() {
+    sheet.classList.remove('open');
+    backdrop.classList.remove('open');
+    sheet.setAttribute('aria-hidden', 'true');
+    backdrop.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('openSheet').addEventListener('click', openSheet);
+  backdrop.addEventListener('click', closeSheet);
+  document.getElementById('nextVoice').addEventListener('click', function () {
+    render(idx + 1, true);
+  });
+  document.getElementById('moreVoices').addEventListener('click', function () {
+    showingMore = !showingMore;
+    this.textContent = showingMore ? 'Show fewer' : 'More voices…';
+    paintList();
+  });
+  cta.addEventListener('click', function () {
+    var prev = cta.textContent;
+    cta.textContent = voices[idx].name + ' · on Grok';
+    setTimeout(function () { cta.textContent = prev; }, 1400);
+  });
+
+  // swipe left/right on portrait for next/prev
+  var startX = 0, startY = 0;
+  var wrap = document.querySelector('.portrait-wrap');
+  wrap.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  wrap.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - startX;
+    var dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      render(idx + (dx < 0 ? 1 : -1), true);
+    }
+  }, { passive: true });
+
+  render(0, false);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — What-If Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:"Space Grotesk",system-ui,sans-serif;background:#050510;color:#E8E6FF}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 60% 50% at 75% 45%, rgba(123,92,255,.35), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 20% 70%, rgba(61,155,255,.2), transparent 50%),
+    #050510;
+}
+.nav{display:flex;justify-content:space-between;padding:24px 40px;align-items:center}
+.mark{font-family:Syne,sans-serif;font-size:14px;letter-spacing:.08em;font-weight:500}
+.mark .m{color:#A78BFF}.mark .v{color:#fff}.mark .ai{color:#5EEAD4}
+.nav-r a{color:rgba(232,230,255,.5);text-decoration:none;font-size:12px;margin-left:20px;letter-spacing:.04em}
+.wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:32px;padding:20px 40px 48px;max-width:1440px;margin:0 auto;align-items:center;min-height:calc(100vh - 80px)}
+.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#5EEAD4;margin-bottom:18px}
+h1{font-family:Syne,sans-serif;font-weight:500;font-size:clamp(36px,4.2vw,56px);line-height:1.05;letter-spacing:-.03em;margin-bottom:20px}
+h1 span{display:block;color:#A78BFF}
+.sub{font-size:16px;font-weight:300;line-height:1.55;color:rgba(232,230,255,.6);max-width:400px;margin-bottom:32px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.cta{background:linear-gradient(135deg,#7B5CFF,#3D9BFF);color:#fff;padding:14px 24px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.04em;box-shadow:0 0 40px rgba(123,92,255,.4)}
+.ghost{color:rgba(232,230,255,.7);text-decoration:none;font-size:13px;padding:14px 8px;border-bottom:1px solid rgba(94,234,212,.4)}
+.studio{
+  position:relative;border-radius:24px;overflow:hidden;height:580px;
+  border:1px solid rgba(167,139,255,.25);
+  box-shadow:0 0 80px rgba(123,92,255,.25), inset 0 0 60px rgba(61,155,255,.08);
+}
+.studio .grid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;filter:saturate(1.2) brightness(.85)}
+.studio .person{
+  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  height:92%; width:auto; max-width:55%; object-fit:contain;
+  filter:drop-shadow(0 0 30px rgba(123,92,255,.5));
+  z-index:2;
+}
+.hud{
+  position:absolute;top:20px;left:20px;right:20px;z-index:3;
+  display:flex;justify-content:space-between;align-items:flex-start
+}
+.tag{font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:8px;background:rgba(5,5,16,.65);border:1px solid rgba(94,234,212,.35);color:#5EEAD4;backdrop-filter:blur(10px)}
+.seed{font-size:11px;color:rgba(232,230,255,.7);background:rgba(5,5,16,.55);padding:8px 12px;border-radius:8px;border:1px solid rgba(167,139,255,.3);backdrop-filter:blur(10px)}
+.meter{
+  position:absolute;bottom:20px;left:20px;right:20px;z-index:3;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px
+}
+.meter div{background:rgba(5,5,16,.7);border:1px solid rgba(167,139,255,.25);border-radius:10px;padding:12px;backdrop-filter:blur(12px)}
+.meter strong{display:block;font-size:12px;font-weight:500;margin-bottom:4px}
+.meter span{font-size:10px;color:rgba(232,230,255,.45);letter-spacing:.06em}
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;padding:16px 20px 40px;gap:24px}
+  .studio{height:440px}.nav{padding:18px 20px}.nav-r a{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <div class="nav-r"><a href="#">Studio</a><a href="#">Gallery</a><a href="#">Sign in</a></div>
+</nav>
+<main class="wrap">
+  <div>
+    <p class="eyebrow">What-if studio</p>
+    <h1>Seed a person.<span>Merge a world.</span></h1>
+    <p class="sub">Compose parallel scenes — a mind, a place, a question — then step inside. Neon grids, living presence, no costume IP.</p>
+    <div class="ctas">
+      <a class="cta" href="#">Open the studio</a>
+      <a class="ghost" href="#">Browse seeds</a>
+    </div>
+  </div>
+  <div class="studio">
+    <img class="grid" src="../_shared/worlds/imagine-seed.jpg" alt="">
+    <img class="person" src="../_shared/faces/cut-woman-silver.png" alt="">
+    <div class="hud">
+      <div class="tag">Live compose</div>
+      <div class="seed">seed · silver / neon district</div>
+    </div>
+    <div class="meter">
+      <div><strong>Mind</strong><span>Guide · calm</span></div>
+      <div><strong>World</strong><span>Voxel night</span></div>
+      <div><strong>Question</strong><span>What if I stay?</span></div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Quiet Observatory</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:"Source Sans 3",system-ui,sans-serif;background:#E8EDF2;color:#2C3640}
+body{min-height:100vh;background:linear-gradient(165deg,#EEF2F6 0%,#D8E0E8 55%,#CDD6E0 100%)}
+.nav{display:flex;justify-content:space-between;padding:28px 48px;align-items:center}
+.mark{font-size:11px;letter-spacing:.42em;text-transform:lowercase;font-weight:400}
+.mark .m{color:#6B5CE0}.mark .v{color:#2C3640}.mark .ai{color:#3D8FCC;letter-spacing:.14em}
+.nav a{font-size:12px;color:#6A7682;text-decoration:none;margin-left:24px;font-weight:300}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1280px;margin:0 auto;padding:40px 48px 60px;align-items:center;min-height:calc(100vh - 90px)}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#6A7682;margin-bottom:20px}
+h1{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:clamp(32px,3.8vw,48px);line-height:1.2;margin-bottom:20px;letter-spacing:-.01em}
+h1 em{font-style:italic;color:#5A4FC7}
+.sub{font-size:16px;font-weight:300;line-height:1.6;color:#5A6672;max-width:420px;margin-bottom:32px}
+.ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.cta{background:#2C3640;color:#EEF2F6;padding:13px 24px;text-decoration:none;font-size:13px;letter-spacing:.04em;border-radius:4px}
+.ghost{font-size:13px;color:#5A6672;text-decoration:none;border-bottom:1px solid rgba(90,102,114,.35)}
+.desk{
+  position:relative;background:rgba(255,255,255,.55);border:1px solid rgba(44,54,64,.1);
+  border-radius:4px;padding:36px;backdrop-filter:blur(8px);
+  box-shadow:0 30px 70px rgba(60,80,100,.1)
+}
+.portal{
+  width:100%;aspect-ratio:1.2;border-radius:50% / 45%;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,255,255,.9) 0%, rgba(200,220,240,.4) 35%, rgba(100,130,170,.25) 60%, transparent 72%),
+    linear-gradient(180deg,#C5D4E4,#A8B8C8);
+  border:1px solid rgba(44,54,64,.12);
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-bottom:24px
+}
+.portal img{width:42%;border-radius:50%;object-fit:cover;aspect-ratio:1;opacity:.92;box-shadow:0 10px 40px rgba(40,60,80,.25)}
+.portal .ring{position:absolute;inset:12%;border:1px solid rgba(44,54,64,.12);border-radius:50%;pointer-events:none}
+.portal .ring2{position:absolute;inset:22%;border:1px dashed rgba(90,79,199,.25);border-radius:50%}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.meta div{padding:12px 0;border-top:1px solid rgba(44,54,64,.1)}
+.meta strong{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A7682;font-weight:400;margin-bottom:4px}
+.meta span{font-family:"Libre Baskerville",serif;font-size:15px}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;padding:24px 20px 48px;gap:28px}
+  .nav{padding:20px}.nav a{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <div><a href="#">Desk</a><a href="#">Library</a><a href="#">Sign in</a></div>
+</nav>
+<main class="layout">
+  <div>
+    <p class="eyebrow">Quiet observatory</p>
+    <h1>A research desk for<br>the <em>minds</em> you keep</h1>
+    <p class="sub">Cool ice greys. Serif clarity. No sci-fi kitsch — just a portal to think with named presence, like a telescope aimed inward.</p>
+    <div class="ctas">
+      <a class="cta" href="#">Open the desk</a>
+      <a class="ghost" href="#">Read the method</a>
+    </div>
+  </div>
+  <div class="desk">
+    <div class="portal">
+      <div class="ring"></div><div class="ring2"></div>
+      <img src="../_shared/faces/plato.webp" alt="Plato">
+    </div>
+    <div class="meta">
+      <div><strong>Focus</strong><span>Ethics · forms</span></div>
+      <div><strong>Session</strong><span>Quiet · 42m</span></div>
+      <div><strong>Lens</strong><span>Dialogue</span></div>
+      <div><strong>Rail</strong><span>Web · private</span></div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

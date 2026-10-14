@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Workbench</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,system-ui,sans-serif;background:#111113;color:#E8E8EC}
+body{min-height:100vh;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #2A2A30;background:#161618}
+.mark{font-size:13px;font-weight:600}
+.mark .m{color:#8B7CFF}.mark .v{color:#E8E8EC}.mark .ai{color:#5EEAD4;font-weight:500}
+.topbar .acts{display:flex;gap:8px}
+.topbar button,.topbar a{
+  font-family:inherit;font-size:12px;padding:6px 12px;border-radius:6px;border:1px solid #2A2A30;
+  background:#1C1C20;color:#E8E8EC;text-decoration:none;cursor:pointer
+}
+.topbar .prim{background:#8B7CFF;border-color:#8B7CFF;color:#fff;font-weight:500}
+.shell{flex:1;display:grid;grid-template-columns:220px 1fr 280px;min-height:0}
+.panel{border-right:1px solid #2A2A30;background:#141416;padding:16px;overflow:auto}
+.panel:last-child{border-right:none;border-left:1px solid #2A2A30}
+.panel h3{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6B6B78;margin-bottom:12px;font-weight:500}
+.tool{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:6px;font-size:13px;color:#C8C8D0;margin-bottom:4px;cursor:default}
+.tool:hover,.tool.on{background:#1C1C22;color:#fff}
+.tool .ic{width:20px;height:20px;border-radius:4px;background:#2A2A34;display:flex;align-items:center;justify-content:center;font-size:10px;font-family:"JetBrains Mono",monospace;color:#8B7CFF}
+.canvas{padding:28px 32px;display:flex;flex-direction:column;gap:20px;background:#111113}
+.canvas .eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;color:#6B6B78}
+.canvas h1{font-size:28px;font-weight:600;letter-spacing:-.03em;line-height:1.2}
+.canvas h1 em{font-style:normal;color:#8B7CFF}
+.canvas p{font-size:14px;color:#8A8A98;line-height:1.5;max-width:480px}
+.board{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.card{background:#1A1A1E;border:1px solid #2A2A30;border-radius:10px;padding:16px}
+.card .lab{font-family:"JetBrains Mono",monospace;font-size:10px;color:#8B7CFF;margin-bottom:8px}
+.card strong{display:block;font-size:14px;margin-bottom:6px}
+.card span{font-size:12px;color:#8A8A98;line-height:1.4}
+.card img{width:48px;height:48px;border-radius:8px;object-fit:cover;margin-bottom:10px}
+.ship{display:flex;gap:8px;margin-top:8px}
+.ship a{font-size:13px;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:500}
+.ship .go{background:#8B7CFF;color:#fff}
+.ship .sec{border:1px solid #2A2A30;color:#C8C8D0}
+.side .mind{display:flex;gap:10px;padding:10px;border-radius:8px;background:#1A1A1E;border:1px solid #2A2A30;margin-bottom:8px;align-items:center}
+.side .mind img{width:36px;height:36px;border-radius:6px;object-fit:cover}
+.side .mind strong{display:block;font-size:12px}
+.side .mind span{font-size:11px;color:#6B6B78}
+.verse{font-family:"JetBrains Mono",monospace;font-size:11px;padding:8px 10px;background:#1A1A1E;border-radius:6px;border:1px solid #2A2A30;margin-bottom:6px;color:#A8A8B8}
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .panel{display:none}.panel.side{display:block;border-left:none;border-top:1px solid #2A2A30}
+  .board{grid-template-columns:1fr}.canvas{padding:20px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <div class="acts">
+    <a href="#">Docs</a>
+    <button type="button">Preview</button>
+    <a class="prim" href="#">Ship mind</a>
+  </div>
+</header>
+<div class="shell">
+  <aside class="panel">
+    <h3>Tools</h3>
+    <div class="tool on"><span class="ic">M</span> Mind builder</div>
+    <div class="tool"><span class="ic">V</span> Attach verse</div>
+    <div class="tool"><span class="ic">R</span> Rails</div>
+    <div class="tool"><span class="ic">T</span> Tests</div>
+    <div class="tool"><span class="ic">P</span> Publish</div>
+  </aside>
+  <main class="canvas">
+    <p class="eyebrow">workbench / new-mind</p>
+    <h1>Build a mind.<br>Attach verses. <em>Ship.</em></h1>
+    <p>Maker studio — productive panels, not mysticism. Compose personality, memory rules, and delivery rails like real software.</p>
+    <div class="board">
+      <div class="card">
+        <img src="../_shared/faces/scientist.webp" alt="">
+        <div class="lab">persona</div>
+        <strong>Ada · builder</strong>
+        <span>Tone: precise · curious · no fluff</span>
+      </div>
+      <div class="card">
+        <div class="lab">verse</div>
+        <strong>lab.night</strong>
+        <span>World: quiet bench · late fluorescent</span>
+      </div>
+      <div class="card">
+        <div class="lab">memory</div>
+        <strong>Project fabric</strong>
+        <span>Retain: specs · decisions · open questions</span>
+      </div>
+      <div class="card">
+        <div class="lab">rails</div>
+        <strong>Web + iMessage</strong>
+        <span>Presence where makers already are</span>
+      </div>
+    </div>
+    <div class="ship">
+      <a class="go" href="#">Ship to registry</a>
+      <a class="sec" href="#">Run test chat</a>
+    </div>
+  </main>
+  <aside class="panel side">
+    <h3>Active draft</h3>
+    <div class="mind">
+      <img src="../_shared/faces/scientist.webp" alt="">
+      <div><strong>Ada</strong><span>Draft · unsaved</span></div>
+    </div>
+    <h3 style="margin-top:20px">Verses attached</h3>
+    <div class="verse">lab.night</div>
+    <div class="verse">review.loop</div>
+    <div class="verse">ship.checklist</div>
+  </aside>
+</div>
+</body>
+</html>

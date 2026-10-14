@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Multiversal — Split card</title>
+<style>
+@font-face {
+  font-family: 'Syne';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(assets/syne-latin-700.woff2) format('woff2');
+}
+:root {
+  --bg: #0a0a0a;
+  --chalk: #f4f1ea;
+  --muted: rgba(244,241,234,0.55);
+  --lime: #c8f542;
+  --lime-ink: #14180a;
+  --card: #121212;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; margin: 0; }
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--chalk);
+  font-family: Syne, "Segoe UI", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+a { color: inherit; text-decoration: none; }
+
+.phone {
+  position: relative;
+  width: 100%;
+  height: 100svh; height: 100dvh;
+  max-width: 430px;
+  margin: 0 auto;
+  background: var(--bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px 8px;
+  z-index: 5;
+}
+.mark {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.mark span { color: var(--lime); }
+.promise {
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); text-align: right; max-width: 48%; line-height: 1.3;
+}
+
+.rail {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 0;
+  padding: 0;
+}
+.rail::-webkit-scrollbar { display: none; }
+
+.card {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px 10px;
+  min-width: 100%;
+}
+
+.face-pane {
+  flex: 0 0 60%;
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #161616;
+  box-shadow: 0 0 0 1px rgba(244,241,234,0.06);
+}
+.face-pane img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+.face-pane .edge {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.55) 100%),
+    linear-gradient(90deg, rgba(10,10,10,0.2), transparent 25%);
+  pointer-events: none;
+}
+.face-pane .tag {
+  position: absolute; top: 12px; left: 12px;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  background: rgba(10,10,10,0.55);
+  color: var(--lime);
+  padding: 6px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(200,245,66,0.25);
+}
+
+.info-pane {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 8px 8px;
+  min-height: 0;
+}
+.info-pane .index {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+}
+.info-pane h1 {
+  font-size: clamp(34px, 10vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin: 6px 0 8px;
+}
+.info-pane .tone {
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--muted);
+  max-width: 28ch;
+  flex: 1;
+}
+.cta {
+  margin-top: 14px;
+  min-height: 54px;
+  width: 100%;
+  border-radius: 14px;
+  background: var(--lime);
+  color: var(--lime-ink);
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 32px rgba(200,245,66,0.18);
+  transition: transform 0.12s, filter 0.15s;
+}
+.cta:hover { filter: brightness(1.05); }
+.cta:active { transform: scale(0.98); }
+
+/* YouTube snap card */
+.yt-card .face-pane {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,245,66,0.1), transparent 60%),
+    #121412;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+.yt-card .face-pane img.avatar {
+  width: 112px; height: 112px; border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(200,245,66,0.45);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.yt-card .yt-badge {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--lime);
+}
+.yt-card .cta { background: #ff0033; color: #fff; box-shadow: none; }
+.yt-card .cta:hover { filter: brightness(1.08); }
+
+.dots {
+  flex: 0 0 auto;
+  display: flex; justify-content: center; gap: 6px;
+  padding: 4px 0 calc(14px + var(--safe-b));
+}
+.dots button {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(244,241,234,0.22);
+  transition: width 0.2s, background 0.2s;
+}
+.dots button.on {
+  width: 18px; border-radius: 4px;
+  background: var(--lime);
+}
+
+.nudge {
+  position: absolute;
+  right: 10px; top: 48%;
+  z-index: 8;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(244,241,234,0.35);
+  writing-mode: vertical-rl;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.phone.moved .nudge { opacity: 0; }
+
+@media (min-width: 700px) {
+  body { display: flex; align-items: center; justify-content: center; background: #050505; }
+  .phone {
+    height: min(844px, 96svh);
+    width: 390px;
+    border-radius: 28px;
+    box-shadow: 0 0 0 1px rgba(244,241,234,0.06), 0 30px 80px rgba(0,0,0,0.55);
+  }
+}
+</style>
+</head>
+<body>
+  <div class="phone" id="phone">
+    <header class="top">
+      <p class="mark">MULTI<span>VERSAL</span></p>
+      <p class="promise">A named voice you put on Grok.</p>
+    </header>
+
+    <div class="rail" id="rail" role="region" aria-label="Voice cards">
+      <!-- cards -->
+    </div>
+
+    <p class="nudge" id="nudge">Swipe →</p>
+    <nav class="dots" id="dots" aria-label="Card position"></nav>
+  </div>
+
+<script>
+(function () {
+  var voices = [
+    { name: 'Einstein', file: 'einstein.webp', tone: 'Precise, curious, slightly amused.', tag: 'Science register' },
+    { name: 'Elsa', file: 'elsa.webp', tone: 'Calm, crystalline counsel.', tag: 'Cold clarity' },
+    { name: 'Keanu', file: 'keanu.webp', tone: 'Grounded. Quiet intensity.', tag: 'Night walk' },
+    { name: 'Plato', file: 'plato.webp', tone: 'Socratic clarity for hard questions.', tag: 'Dialogue' },
+    { name: 'Murray', file: 'murray.webp', tone: 'Dry wit. Zero fluff.', tag: 'Deadpan' },
+    { name: 'Freeman', file: 'freeman.webp', tone: 'Measured gravitas.', tag: 'Narration' }
+  ];
+
+  var rail = document.getElementById('rail');
+  var dots = document.getElementById('dots');
+  var phone = document.getElementById('phone');
+  var cards = [];
+
+  voices.forEach(function (v, i) {
+    var card = document.createElement('article');
+    card.className = 'card';
+    card.innerHTML =
+      '<div class="face-pane">' +
+        '<span class="tag">' + v.tag + '</span>' +
+        '<img src="assets/' + v.file + '" alt="' + v.name + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '">' +
+        '<div class="edge" aria-hidden="true"></div>' +
+      '</div>' +
+      '<div class="info-pane">' +
+        '<div>' +
+          '<p class="index">Voice ' + String(i + 1).padStart(2, '0') + ' · of ' + String(voices.length).padStart(2, '0') + '</p>' +
+          '<h1>' + v.name + '</h1>' +
+          '<p class="tone">' + v.tone + '</p>' +
+        '</div>' +
+        '<button class="cta" type="button" data-name="' + v.name + '">Put on Grok</button>' +
+      '</div>';
+    rail.appendChild(card);
+    cards.push(card);
+
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Go to ' + v.name);
+    if (i === 0) d.className = 'on';
+    d.addEventListener('click', function () {
+      rail.scrollTo({ left: card.offsetLeft - rail.offsetLeft, behavior: 'smooth' });
+    });
+    dots.appendChild(d);
+  });
+
+  // YouTube as one of the snaps
+  var yt = document.createElement('article');
+  yt.className = 'card yt-card';
+  yt.innerHTML =
+    '<div class="face-pane">' +
+      '<p class="yt-badge">Channel · first-class</p>' +
+      '<img class="avatar" src="assets/yt-avatar.png" alt="Multiversal AI">' +
+    '</div>' +
+    '<div class="info-pane">' +
+      '<div>' +
+        '<p class="index">YouTube · @multiversalbots</p>' +
+        '<h1>Watch</h1>' +
+        '<p class="tone">Named voices in short cuts. Product proof for Multiversal.</p>' +
+      '</div>' +
+      '<a class="cta" href="https://www.youtube.com/@multiversalbots" target="_blank" rel="noopener">Open @multiversalbots</a>' +
+    '</div>';
+  rail.appendChild(yt);
+  cards.push(yt);
+
+  var yd = document.createElement('button');
+  yd.type = 'button';
+  yd.setAttribute('aria-label', 'YouTube channel card');
+  yd.addEventListener('click', function () {
+    rail.scrollTo({ left: yt.offsetLeft - rail.offsetLeft, behavior: 'smooth' });
+  });
+  dots.appendChild(yd);
+
+  var dotBtns = dots.querySelectorAll('button');
+
+  function syncDots() {
+    var w = rail.clientWidth || 1;
+    var i = Math.round(rail.scrollLeft / w);
+    i = Math.max(0, Math.min(cards.length - 1, i));
+    dotBtns.forEach(function (d, n) { d.className = n === i ? 'on' : ''; });
+    if (rail.scrollLeft > 20) phone.classList.add('moved');
+  }
+
+  rail.addEventListener('scroll', syncDots, { passive: true });
+
+  rail.addEventListener('click', function (e) {
+    var btn = e.target.closest('.cta[data-name]');
+    if (!btn) return;
+    var n = btn.getAttribute('data-name');
+    btn.textContent = n + ' · on Grok';
+    setTimeout(function () { btn.textContent = 'Put on Grok'; }, 1300);
+  });
+
+  window.addEventListener('keydown', function (e) {
+    var w = rail.clientWidth;
+    if (e.key === 'ArrowRight') { e.preventDefault(); rail.scrollBy({ left: w, behavior: 'smooth' }); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); rail.scrollBy({ left: -w, behavior: 'smooth' }); }
+  });
+
+  syncDots();
+})();
+</script>
+</body>
+</html>

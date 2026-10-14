@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Night Dock</title>
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,system-ui,sans-serif;background:#050508;color:#F5F3FF}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(123,92,255,.25), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 80% 80%, rgba(61,155,255,.12), transparent 50%),
+    #050508;
+}
+.phone-frame{
+  max-width:420px;margin:40px auto 0;min-height:calc(100vh - 80px);
+  display:flex;flex-direction:column;padding:0 20px 28px;position:relative
+}
+@media(min-width:900px){
+  body{display:flex;align-items:stretch;justify-content:center;gap:80px;padding:40px 60px}
+  .copy{max-width:420px;display:flex;flex-direction:column;justify-content:center}
+  .phone-frame{margin:0;width:390px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:36px;padding:28px 20px 24px;box-shadow:0 40px 100px rgba(0,0,0,.5)}
+}
+.copy{display:none}
+@media(min-width:900px){.copy{display:flex}}
+.copy .mark{font-size:12px;letter-spacing:.4em;text-transform:lowercase;margin-bottom:32px}
+.copy .mark .m{color:#A78BFF}.copy .mark .v{color:#F5F3FF}.copy .mark .ai{color:#5EEAD4}
+.copy h1{font-size:44px;font-weight:500;letter-spacing:-.03em;line-height:1.1;margin-bottom:18px}
+.copy h1 em{font-style:normal;color:#A78BFF}
+.copy p{font-size:16px;font-weight:300;color:rgba(245,243,255,.55);line-height:1.55;margin-bottom:28px}
+.copy .cta{display:inline-block;background:#F5F3FF;color:#050508;padding:14px 24px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:500}
+.status{display:flex;justify-content:space-between;font-size:12px;color:rgba(245,243,255,.5);margin-bottom:24px;padding:0 8px}
+.hero-m{text-align:center;flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:20px}
+.avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;margin:0 auto 20px;border:2px solid rgba(167,139,255,.4);box-shadow:0 0 40px rgba(123,92,255,.35)}
+.hero-m .brand{font-size:11px;letter-spacing:.35em;text-transform:lowercase;margin-bottom:16px}
+.hero-m .brand .m{color:#A78BFF}.hero-m .brand .v{color:#F5F3FF}.hero-m .brand .ai{color:#5EEAD4}
+.hero-m h2{font-size:28px;font-weight:500;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+.hero-m p{font-size:14px;font-weight:300;color:rgba(245,243,255,.5);line-height:1.5;margin-bottom:24px;padding:0 12px}
+.pill{display:inline-block;background:linear-gradient(135deg,#7B5CFF,#3D9BFF);color:#fff;padding:12px 28px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:500}
+.dock{
+  margin-top:auto;background:rgba(20,20,28,.85);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:14px 10px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:4px
+}
+.dock a{text-align:center;text-decoration:none;color:rgba(245,243,255,.7);font-size:10px;letter-spacing:.02em;padding:8px 4px}
+.dock .ico{
+  width:44px;height:44px;border-radius:12px;margin:0 auto 6px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600
+}
+.dock .im{background:#34C759;color:#fff}
+.dock .x{background:#111;color:#fff;border:1px solid #333}
+.dock .yt{background:#FF0033;color:#fff}
+.dock .web{background:linear-gradient(135deg,#7B5CFF,#3D9BFF);color:#fff}
+</style>
+</head>
+<body>
+<aside class="copy">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <h1>Nightlife for<br>your <em>rails</em></h1>
+  <p>Phone-first presence. Sticky dock to iMessage, X, YouTube, and web — Multiversal where you already stay up late.</p>
+  <a class="cta" href="#">Open on phone</a>
+</aside>
+<div class="phone-frame">
+  <div class="status"><span>9:41</span><span>●●● 5G</span></div>
+  <div class="hero-m">
+    <img class="avatar" src="../_shared/faces/muse.webp" alt="">
+    <div class="brand"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+    <h2>Your mind,<br>after dark</h2>
+    <p>Thumb-ready dock. Pick a rail. Keep talking.</p>
+    <a class="pill" href="#">Resume with Muse</a>
+  </div>
+  <nav class="dock">
+    <a href="#"><div class="ico im">↑</div>iMessage</a>
+    <a href="#"><div class="ico x">𝕏</div>X</a>
+    <a href="#"><div class="ico yt">▶</div>YouTube</a>
+    <a href="#"><div class="ico web">M</div>Web</a>
+  </nav>
+</div>
+</body>
+</html>

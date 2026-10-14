@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Film Title</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,system-ui,sans-serif;background:#000;color:#F4F0E8}
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.letterbox{
+  width:100%;max-width:1440px;aspect-ratio:2.35/1;max-height:85vh;
+  position:relative;overflow:hidden;background:#111;
+  box-shadow:0 0 0 1px rgba(255,255,255,.06)
+}
+@media(max-width:900px){.letterbox{aspect-ratio:9/16;max-height:92vh;width:100%}}
+.letterbox img.bg{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.55) brightness(.45) contrast(1.1)
+}
+.letterbox::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,transparent 35%,transparent 55%,rgba(0,0,0,.75) 100%)
+}
+.bar{position:absolute;left:0;right:0;height:8%;background:#000;z-index:5}
+.bar.top{top:0}.bar.bot{bottom:0}
+.content{
+  position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:40px 24px
+}
+.prod{font-size:10px;letter-spacing:.45em;text-transform:uppercase;color:rgba(244,240,232,.5);margin-bottom:28px}
+.mark{font-size:13px;letter-spacing:.5em;text-transform:lowercase;margin-bottom:20px}
+.mark .m{color:#B39BFF}.mark .v{color:#F4F0E8}.mark .ai{color:#5EEAD4;letter-spacing:.2em}
+h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(42px,6vw,84px);line-height:1.05;letter-spacing:-.02em;margin-bottom:18px;max-width:900px}
+h1 em{font-style:italic}
+.tagline{font-size:14px;font-weight:300;letter-spacing:.08em;color:rgba(244,240,232,.65);margin-bottom:36px;max-width:420px;line-height:1.5}
+.cta{display:inline-block;border:1px solid rgba(244,240,232,.5);color:#F4F0E8;padding:12px 28px;text-decoration:none;font-size:11px;letter-spacing:.28em;text-transform:uppercase}
+.cta:hover{background:rgba(244,240,232,.08)}
+.credits{position:absolute;bottom:12%;left:0;right:0;z-index:4;text-align:center;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,240,232,.35)}
+</style>
+</head>
+<body>
+<div class="letterbox">
+  <div class="bar top"></div>
+  <img class="bg" src="../_shared/worlds/heaven.png" alt="">
+  <div class="content">
+    <p class="prod">A Multiversal presentation</p>
+    <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+    <h1>Every life<br>has a <em>parallel</em></h1>
+    <p class="tagline">Step into the mind that meets you where the story forks.</p>
+    <a class="cta" href="#">Enter</a>
+  </div>
+  <p class="credits">Personality layer · across rails · original worlds</p>
+  <div class="bar bot"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiversal — Brutal Clarity</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,system-ui,sans-serif;background:#FFF;color:#000}
+body{min-height:100vh;overflow:hidden}
+.nav{display:flex;justify-content:space-between;padding:20px 32px;border-bottom:3px solid #000;align-items:center}
+.mark{font-size:14px;font-weight:600;letter-spacing:-.02em}
+.mark .m{color:#7B5CFF}.mark .v{color:#000}.mark .ai{color:#000}
+.nav a{font-size:13px;font-weight:600;color:#000;text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+.hero{padding:48px 32px 32px;max-width:1200px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;color:#7B5CFF}
+h1{
+  font-family:Anton,Impact,sans-serif;font-weight:400;
+  font-size:clamp(52px,9vw,120px);line-height:.92;letter-spacing:-.02em;
+  text-transform:uppercase;margin-bottom:28px;max-width:1000px
+}
+.sub{font-size:18px;line-height:1.45;max-width:520px;margin-bottom:36px;font-weight:500}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.cta{background:#000;color:#fff;padding:16px 28px;text-decoration:none;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.ghost{border:3px solid #000;color:#000;padding:13px 28px;text-decoration:none;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.strip{
+  position:absolute;bottom:0;left:0;right:0;border-top:3px solid #000;
+  display:grid;grid-template-columns:repeat(4,1fr)
+}
+.strip div{padding:20px 24px;border-right:3px solid #000;font-size:13px;font-weight:500;line-height:1.35}
+.strip div:last-child{border-right:none}
+.strip strong{display:block;font-family:Anton,sans-serif;font-size:18px;letter-spacing:.02em;margin-bottom:4px;text-transform:uppercase}
+.accent{position:absolute;top:120px;right:40px;width:120px;height:120px;background:#7B5CFF;border:3px solid #000}
+@media(max-width:900px){
+  body{overflow:auto}.hero{padding:32px 20px 160px}
+  h1{font-size:48px}.strip{grid-template-columns:1fr 1fr;position:relative}
+  .strip div{border-bottom:3px solid #000}.accent{display:none}.nav{padding:16px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="mark"><span class="m">multi</span><span class="v">versal</span><span class="ai">.ai</span></div>
+  <a href="#">Manifesto</a>
+</nav>
+<main class="hero">
+  <p class="eyebrow">Anti-slop · 2026</p>
+  <h1>Stop chatting<br>with no one.</h1>
+  <p class="sub">Multiversal is a personality layer with a name, a memory, and a door. Not another pastel void that forgets you by morning.</p>
+  <div class="ctas">
+    <a class="cta" href="#">Talk to someone</a>
+    <a class="ghost" href="#">Read the bet</a>
+  </div>
+</main>
+<div class="accent" aria-hidden="true"></div>
+<footer class="strip">
+  <div><strong>Named</strong>Not anonymous autocomplete</div>
+  <div><strong>Remembered</strong>Fabric across rails</div>
+  <div><strong>Addressable</strong>yourname.ai</div>
+  <div><strong>Yours</strong>Layer on any model</div>
+</footer>
+</body>
+</html>
