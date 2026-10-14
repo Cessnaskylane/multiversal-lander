@@ -44,7 +44,7 @@ function show(d){$('cq').textContent=d.question;$('ca').textContent=d.answer;$('
 $('chips').innerHTML=d.models.map(m=>{const[c,l]=META[m.name]||['#7c6cff',m.name[0]];return `<span class="chip"><i style="background:${c}">${esc(l)}</i>${esc(m.name)}<b class="${m.agrees?'y':'n'}">${m.agrees?'✓':'✕'}</b></span>`}).join('');
 document.body.classList.add('answered');requestAnimationFrame(()=>$('cb').style.width=(d.total?100*d.agree/d.total:0)+'%')}
 $('f').onsubmit=async e=>{e.preventDefault();const q=$('q').value.trim();if(!q)return;$('err').textContent='';$('go').disabled=true;$('go').textContent='Asking…';
-try{if(P.get('demo')||(!P.get('api')&&!window.MV_API)){$('demo').style.display='block';show({...DEMO,question:q});return}
+try{if(P.get('demo')||(!P.get('api')&&!window.MV_API)){$('demo').style.display='block';show(DEMO);return}
 const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:q})});const d=await r.json();if(!r.ok)throw new Error(d.error||r.status);show(d)}
 catch(x){$('err').textContent='Couldn’t reach the AIs right now. Please try again.'}finally{$('go').disabled=false;$('go').textContent='Ask all'}};
 $('again').onclick=()=>{document.body.classList.remove('answered');$('cb').style.width=0;$('q').value='';$('q').focus()};
