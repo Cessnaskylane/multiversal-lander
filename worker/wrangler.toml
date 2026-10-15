@@ -1,0 +1,6 @@
+name = "multiversal-api"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+[vars]
+ALLOWED_ORIGIN = "https://multiversal.ai"
+# Secrets (wrangler secret put ...): either OPENROUTER_API_KEY alone (one key, all four models) or OPENAI_API_KEY ANTHROPIC_API_KEY GEMINI_API_KEY XAI_API_KEY
